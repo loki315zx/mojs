@@ -1,19 +1,12 @@
 {
-  "name": "mo-js",
-  "description": "motion graphics toolbelt for the web",
-  "version": "0.119.0",
+  "name": "mojs-demo-1",
+  "description": "motion graphics for the web",
+  "version": "0.0.0",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "test": "karma start --single-run"
+    "start": "webpack-dev-server"
   },
-  "main": "build/mo.min.js",
-  "keywords": [
-    "motion",
-    "effects",
-    "animation",
-    "motion graphics"
-  ],
   "author": {
     "name": "LegoMushroom",
     "email": "legomushroom@gmail.com",
@@ -22,55 +15,64 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/legomushroom/mojs.git"
+    "url": ""
   },
+  "keywords": [
+    "motion",
+    "effects",
+    "animation",
+    "motion graphics"
+  ],
   "bugs": {
-    "url": "https://github.com/legomushroom/mojs/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/legomushroom/mojs",
-  "dependencies": {},
+  "homepage": "",
+  "main": "",
+  "dependencies": {
+    "classlist-polyfill": "^1.0.0",
+    "fastclick": "^1.0.6",
+    "hammerjs": "^2.0.4",
+    "howler": "^1.1.26",
+    "iscroll": "^5.1.3",
+    "mo-js": "^0.119.0",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3"
+  },
   "devDependencies": {
-    "brfs": "^1.2.0",
-    "browserify": "^6.2.0",
-    "browserify-istanbul": "^0.1.2",
-    "browserify-shim": "~3.8.0",
-    "chalk": "^0.5.1",
-    "coffeeify": "latest",
-    "coveralls": "^2.11.2",
-    "grock": "git+https://github.com/legomushroom/grock.git",
+    "6to5-loader": "^2.0.0",
+    "cjsx-loader": "^2.0.1",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.9.1",
+    "core-js": "^0.4.5",
+    "css-loader": "^0.9.1",
+    "file-loader": "^0.8.1",
     "gulp": "latest",
     "gulp-autoprefixer": "0.0.6",
+    "gulp-babel": "^4.0.0",
     "gulp-browserify": "latest",
     "gulp-changed": "~0.2.0",
     "gulp-coffee": "~1.4.1",
-    "gulp-coffeeify": "^0.1.8",
     "gulp-coffeelint": "*",
     "gulp-concat": "*",
     "gulp-csslint": "*",
-    "gulp-insert": "^0.4.0",
     "gulp-jade": "~0.4.2",
-    "gulp-json-editor": "^2.2.1",
     "gulp-karma": "*",
     "gulp-livereload": "~1.2.0",
     "gulp-minify-css": "~0.3.0",
     "gulp-notify": "~0.5.1",
     "gulp-plumber": "*",
     "gulp-rename": "latest",
-    "gulp-shell": "^0.4.0",
+    "gulp-rimraf": "^0.1.1",
     "gulp-stylus": "latest",
     "gulp-uglify": "latest",
     "gulp-watch": "*",
-    "karma": "^0.12.24",
-    "karma-browserify": "^2.0.0",
-    "karma-chrome-launcher": "^0.1.4",
-    "karma-clear-screen-reporter": "0.0.1",
-    "karma-cli": "0.0.4",
-    "karma-coverage": "0.2.6",
-    "karma-jasmine": "^0.2.0",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "karma-sauce-launcher": "^0.2.10",
+    "marked": "^0.3.3",
     "nodemon": "*",
-    "pygments": "^0.2.0",
-    "run-sequence": "^1.0.2"
+    "run-sequence": "^1.0.2",
+    "style-loader": "^0.8.3",
+    "stylus": "^0.49.3",
+    "stylus-loader": "^0.5.0",
+    "webpack": "^1.4.15",
+    "webpack-dev-server": "^1.6.5"
   }
 }
