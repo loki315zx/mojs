@@ -66,6 +66,8 @@
     "gulp-stylus": "latest",
     "gulp-uglify": "latest",
     "gulp-watch": "*",
+    "jade": "^1.9.2",
+    "jade-loader": "^0.7.1",
     "marked": "^0.3.3",
     "nodemon": "*",
     "run-sequence": "^1.0.2",
