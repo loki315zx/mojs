@@ -1,0 +1,21 @@
+// units
+PX = (1/16)rem
+gs = 10*PX
+
+// z-indexes
+baseLayer   = 0
+modalLayer  = 10
+headerLayer = 20
+
+// mixins
+rect()
+  width   arguments
+  height  arguments
+  
+circle()
+  border-radius 50%
+  rect          arguments
+    
+nw()
+  left arguments
+  top  arguments

@@ -1,7 +1,9 @@
 React  = require 'react'
 Router = require 'react-router'
-Link              = Router.Link
-RouteHandler      = Router.RouteHandler
+Link         = Router.Link
+RouteHandler = Router.RouteHandler
+
+require './css/main.styl'
 
 Header = require './partials/header'
 
