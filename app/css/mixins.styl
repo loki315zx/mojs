@@ -23,3 +23,21 @@ nw()
 fly()
   margin-left   auto
   margin-right  auto
+
+retina(path, color=transparent)
+  background color url(path+'.png') no-repeat center center
+  background-size 100% 100%
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi)
+    background color url(path+'@2x.png') no-repeat center center
+    background-size 100% 100%
+    
+hl(color=deeppink, size=1px)
+  outline size solid color
+
+clearfix()
+  zoom 1
+  &:after, &:before
+    content ''
+    display table
+  &:after
+    clear both
