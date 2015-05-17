@@ -3,7 +3,7 @@ Router = require 'react-router'
 Link   = Router.Link
 Icon   = require './icon'
 Button = require './button'
-require '../css/blocks/header.styl'
+require '../css/partials/header.styl'
 
 # <Link to="app" className="header__link">main</Link>
 Header = React.createClass

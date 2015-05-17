@@ -2,7 +2,7 @@ React  = require 'react'
 Router = require 'react-router'
 Link   = Router.Link
 
-require '../css/blocks/button.styl'
+require '../css/partials/button.styl'
 
 Button = React.createClass
   render:->
