@@ -15,8 +15,8 @@ Header = React.createClass
       <div className="header__links">  
         <Link to="tutorials" className="header__link">Tutorials</Link>
         <Link to="app" className="header__link">APIs</Link>
-        <Link to="app" className="header__link">Demos</Link>
-        <Link to="app" className="header__link">Contribute</Link>
+        <a href="https://github.com/legomushroom/mojs" className="header__link">Demos</a>
+        <a href="https://github.com/legomushroom/mojs" className="header__link">Contribute</a>
         <Button text="Download" className="button--orange header__link" link="https://github.com/legomushroom/mojs" />
       </div>
     </header>
