@@ -11,10 +11,10 @@ part = (100/gridSize)%
   for i in 0..gutterSizes
     &--gutter-x{i}
       .grid-bit
-        padding-left i*gls
-        padding-right: (i*gls/2)
+        padding-left    (i*gls/2)
+        padding-right   (i*gls/2)
         &:last-of-type
-          padding-right i*gls
+          padding-right i*gls/2
         & + .grid-bit
           padding-left: (i*gls/2)
   for i in 0..gutterSizes
@@ -41,7 +41,7 @@ part = (100/gridSize)%
   padding-left gls
   padding-right: (gls/2)
   &:last-of-type
-    padding-right gls
+    padding-right gls/2
   & + .grid-bit
     padding-left: (gls/2)
   for i in 1..gridSize

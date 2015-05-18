@@ -2,6 +2,7 @@
 @import '../blocks/feature'
 @import '../blocks/motion-lettering'
 @import '../blocks/code-block'
+@import '../blocks/social-networks-about'
 
 .main-page
   position relative
@@ -17,10 +18,14 @@
     margin-top    3*gs
   &__api-demo
     margin-top    6.5*gs
-  &:after
-    content     ''
-    position    absolute
-    sw          0
-    height      gs
-    width       100%
-    background  rgba(white, .2)
+  &__buttons
+    margin-top  10*gs
+    // padding     0 2*gs
+    // width       96%
+    fly()
+    a
+      display   block
+      width     100%
+  .social-networks-about
+    margin-top  13.5*gs
+    fly()

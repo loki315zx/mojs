@@ -1,7 +1,10 @@
 React       = require 'react'
 mojs        = require 'mo-js'
 {PrismCode} = require 'react-prism'
-
+Button      = require '../partials/button'
+Router      = require 'react-router'
+Link        = Router.Link
+Icon        = require '../partials/icon'
 require '../css/pages/main-page'
 
 Main = React.createClass
@@ -126,7 +129,31 @@ Main = React.createClass
           </div>
         </div>
 
+      <div className="motion-demo"></div>
+      
+      <div className="main-page__buttons [ grid grid--sliced1 grid--gutter-x6 ]">
+        <div className="grid-bit grid-bit--4-12">
+          <Button text="Download" className="button--orange" link="https://github.com/legomushroom/mojs" />
+        </div>
+        <div className="grid-bit grid-bit--4-12">
+          <Link to="tutorials" className="button button--green">Learn</Link>
+        </div>
+        <div className="grid-bit grid-bit--4-12">
+          <Button text="Contribute" className="button--blue" link="https://github.com/legomushroom/mojs" />
+        </div>
       </div>
+
+      <div className="social-networks-about">
+        <div className="social-networks-about__icons">
+          <Icon className="social-networks-about__icon social-networks-about__icon--twitter" path="twitter" />
+          <Icon className="social-networks-about__icon social-networks-about__icon--dribbble" path="dribbble" />
+        </div>
+        <div className="social-networks-about__text">
+          <a className="social-networks-about__link" href="https://twitter.com/legomushroom">@legomushroom</a> 2015 MIT
+        </div>
+      </div>
+
+      </div> {# content end }
     </div>
 
 # <pre className="code-block__body">
