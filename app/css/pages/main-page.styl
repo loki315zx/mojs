@@ -4,13 +4,23 @@
 @import '../blocks/code-block'
 
 .main-page
+  position relative
   &__content
     width 70*gs
     fly()
   .motion-lettering
-    margin-top 16*gs
+    margin-top    16*gs
+    margin-bottom 2*gs
+    // margin-bottom 7*gs
     fly()
-  .code-block
-    width         66*gs
+  &__quick-start
     margin-top    3*gs
-    margin-left   gs
+  &__api-demo
+    margin-top    6.5*gs
+  &:after
+    content     ''
+    position    absolute
+    sw          0
+    height      gs
+    width       100%
+    background  rgba(white, .2)
