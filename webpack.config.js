@@ -1,5 +1,8 @@
+var path = require('path');
+
 module.exports = {
   watch: true,
+  context: __dirname + "/app",
   entry: [
     __dirname + '/app/main.cjsx'
   ],
@@ -12,17 +15,19 @@ module.exports = {
       { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader?paths=node_modules/' },
       {
         test: /\.(eot|woff|ttf|svg|png|jpg)$/,
-        loader: 'url-loader?limit=30000&name=dist/[name]-[hash].[ext]',
+        loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]',
         paths: '/app/css/i/'
       }
     ]
   },
   output: {
-    path: __dirname + '/dist',
-    filename: 'main.js'
+    path:     __dirname + '/dist',
+    filename: 'main.js',
+    publicPath: 'dist/'
   },
-  moduleDirectories: ['node_modules', 'app/css/i'],
+  moduleDirectories: ['node_modules'],
   resolve: {
+    // root: path.resolve('app/js/'),
     extensions: [
       '', '.js', '.jsx', '.es6',
       '.styl',   '.jade',

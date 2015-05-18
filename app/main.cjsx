@@ -9,7 +9,7 @@ Main      = require './pages/main'
 Tutorials = require './pages/tutorials'
 
 routes = (
-  <Route name="app" path="/mojs/" handler={App}>
+  <Route name="app" path="/" handler={App}>
     <Route name="main"      handler={Main}/>
     <Route name="tutorials" handler={Tutorials}/>
     <DefaultRoute           handler={Main}/>

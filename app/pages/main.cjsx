@@ -7,6 +7,10 @@ Link        = Router.Link
 Icon        = require '../partials/icon'
 require '../css/pages/main-page'
 
+require ['./motion-demo/js/main'], ->
+  # console.log arguments
+  # console.log(MotionDemo = require './motion-demo/js/main.coffee')
+
 Main = React.createClass
   runBurst:->
     if !@burst?
@@ -145,8 +149,8 @@ Main = React.createClass
 
       <div className="social-networks-about">
         <div className="social-networks-about__icons">
-          <Icon className="social-networks-about__icon social-networks-about__icon--twitter" path="twitter" />
-          <Icon className="social-networks-about__icon social-networks-about__icon--dribbble" path="dribbble" />
+          <Icon link="https://twitter.com/legomushroom" className="social-networks-about__icon social-networks-about__icon--twitter" path="twitter" />
+          <Icon link="http://dribbble.com/sol0mka" className="social-networks-about__icon social-networks-about__icon--dribbble" path="dribbble" />
         </div>
         <div className="social-networks-about__text">
           <a className="social-networks-about__link" href="https://twitter.com/legomushroom">@legomushroom</a> 2015 MIT

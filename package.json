@@ -5,7 +5,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "dev": "webpack-dev-server --devtool eval --hot --inline --progress --colors"
   },
   "author": {
     "name": "LegoMushroom",
