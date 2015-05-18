@@ -7,9 +7,12 @@ Link        = Router.Link
 Icon        = require '../partials/icon'
 require '../css/pages/main-page'
 
-require ['./motion-demo/js/main'], ->
-  # console.log arguments
-  # console.log(MotionDemo = require './motion-demo/js/main.coffee')
+
+require [
+  './motion-demo/motion-demo.html',
+  './motion-demo/js/main'
+], (MotionDemoHtml, MotionDemo)->
+  console.log MotionDemoHtml, MotionDemo
 
 Main = React.createClass
   runBurst:->
