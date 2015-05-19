@@ -1,10 +1,61 @@
-.motion-demo
-  overflow  hidden
+{el = '.motion-demo'}
+  overflow          hidden
   &__header
     font-size       13*PX
     color           white
     letter-spacing  2*PX
     padding-left    .5*gs
+  ghostWidth  = 399
+  ghostHeight = 274
+  &__ghost
+    width           ghostWidth*PX
+    height          ghostHeight*PX
+    margin-left    -(ghostWidth/2 + 25*PX)*PX
+    margin-top     -80*PX
+    opacity         .2
+    position        absolute
+    nw              50%
+    background      url('../i/motion-demo.svg')
+  &__play
+    border              1.8*gs solid transparent
+    border-left-width   3*gs
+    border-left-color   white
+    position            absolute
+    nw                  50%
+    margin-top          7*PX
+    margin-left        -4*gs
+    z-index             1
+    rect                0
+    &:hover
+      opacity           .85
+      cursor            pointer
+    &:after
+      content         'play'
+      position        absolute
+      top             -.8*gs
+      left            1.5*gs
+      color           white
+      letter-spacing  2*PX
+      font-size       12*PX
+    &:before
+      content         ''
+      position        absolute
+      width       8*gs
+      height      4*gs
+      left       -3*gs
+      top        -2*gs
+      z-index     1
   .motion
-    margin-top     -6.5*gs
+    margin-top   -6.5*gs
+    opacity       0
     fly()
+  &.is-play
+    opacity       1
+  &.is-play
+    {el}__ghost
+      display     none
+    {el}__play
+      display     none
+    .motion
+      opacity     1
+

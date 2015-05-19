@@ -22,9 +22,13 @@ class Main
   STROKE_WIDTH:   2
   CIRCLE_RADIUS:  5
   IS_RUNLESS:     true
-  constructor:->
+  constructor:-> @
+    
+  init:->
     @vars(); @listenSlider()
     @createBits(); @createSounds()
+    @
+
   vars:->
     @slider   = document.querySelector '#js-slider'
     @ctx      = document.querySelector '#js-svg-canvas'
@@ -134,7 +138,8 @@ class Main
     audio = require "./sounds/bells-1-half.#{ext}"
     @bells1 = new Howl
       urls: [audio]
-      onload:=> setTimeout (=> @tween.start()), 500
+
+  run:-> setTimeout (=> @tween.start()), 500
 
   playSound:(audio)-> return if !@isOn; audio.play()
 
