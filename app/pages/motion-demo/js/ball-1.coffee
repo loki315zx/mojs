@@ -38,7 +38,7 @@ class FirstBall
       shiftY:           135
 
     trail2 = new mojs.Transit
-      x: @o.o2Left, y: @o.bottomLine - 92
+      x: @o.o2Left,     y: @o.bottomLine - 92
       parent:           @o.ctx
       delay:            (@o.BALL_1_START+700)*@S
       duration:         400*@S

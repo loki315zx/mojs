@@ -1,4 +1,5 @@
-mojs = require './vendor/mo.js'
+mojs         = require 'mo-js'
+{ Howl }     = require 'howler'
 mojs.isDebug = false
 
 Ball_1 = require './ball-1'
@@ -24,7 +25,6 @@ class Main
   constructor:->
     @vars(); @listenSlider()
     @createBits(); @createSounds()
-    @listenLinks()
   vars:->
     @slider   = document.querySelector '#js-slider'
     @ctx      = document.querySelector '#js-svg-canvas'
@@ -55,8 +55,8 @@ class Main
     @BALL_7_ARCDUR  = 600
 
     @STAGGER_COLORS = [ @PINK, @CYAN, @WHITE ]
-    @STAGGER_EASING = 'sinusoidal.out'
-    @BG = '#333'
+    @STAGGER_EASING = 'sin.out'
+    @BG = '#3a0839'
     # @BG = 'deeppink'
     @TRAIL_DASH  = '4 4'
     @TRAIL_WIDTH = 1
@@ -130,47 +130,16 @@ class Main
     /^Opera\//.test(userAgent) or /\x20OPR\//.test(userAgent)
 
   createSounds:->
-    audioLink = if @isOpera() then 'sounds/bells-1-half.wav'
-    else 'sounds/bells-1-half.mp3'
+    ext = if @isOpera() then 'wav' else 'mp3'
+    audio = require "./sounds/bells-1-half.#{ext}"
     @bells1 = new Howl
-      urls: [audioLink]
+      urls: [audio]
       onload:=> setTimeout (=> @tween.start()), 500
 
   playSound:(audio)-> return if !@isOn; audio.play()
 
-  listenLinks:->
-    @lego = document.querySelector '#js-by-logo'
-    @legoSnowball = document.querySelector '#js-by-snowball'
-
-    @addEvent @lego, (e)=>
-      e.preventDefault()
-      href = e.target.getAttribute 'href'
-      @legoSnowball.classList.add 'is-shown'
-      setTimeout ->
-        window.location.href = href
-      , 200
-      false
-
-    @mojs = document.querySelector '#js-with-logo'
-    @mojsSnowball = document.querySelector '#js-with-snowball'
-    @addEvent @mojs, (e)=>
-      e.preventDefault()
-      href = e.target.getAttribute 'href'
-      @mojsSnowball.classList.add 'is-shown'
-      setTimeout ->
-        window.location.href = href
-      , 200
-      false
-
   addEvent:(el, handler)->
     el.addEventListener @clickHandler, handler
-
-
-
-
-
-
-
 
   generateBezier: (mX1, mY1, mX2, mY2) ->
     NEWTON_ITERATIONS = 4

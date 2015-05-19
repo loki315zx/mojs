@@ -89,7 +89,7 @@ class Ball
       isShowEnd:        true
       delay:            "stagger(#{(@o.DELAY_START+3000)*@S}, 200)"
       # easing:           @o.STAGGER_EASING
-      easing:           'sinusoidal.out'
+      easing:           'sin.out'
       stroke:           [@o.YELLOW, @o.CYAN, @o.PINK]
       strokeWidth:      5:0
       strokeDasharray:  '20 100 40 50'

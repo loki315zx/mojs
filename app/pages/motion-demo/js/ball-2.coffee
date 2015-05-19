@@ -84,7 +84,7 @@ class FirstBall
       isRunLess:    @o.IS_RUNLESS
       isShowEnd:    true
       delay:        "stagger(#{(@o.BALL_2_START)*@S}, 200)"
-      easing:       'sinusoidal.out'
+      easing:       'sin.out'
       stroke:       @o.STAGGER_COLORS
       strokeDasharray:  '0 100%': '100% 100%'
       strokeDashoffset: '50%': '200%'
@@ -92,7 +92,7 @@ class FirstBall
     it = @
     translate = "translate(253, 174)"
     oDelay = (@o.BALL_2_START+400)*@S
-    oEasing = 'sinusoidal.out'
+    oEasing = 'sin.out'
     oStagger = new mojs.Stagger
       els:          @o2
       duration:     oDuration

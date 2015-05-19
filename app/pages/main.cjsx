@@ -6,13 +6,7 @@ Router      = require 'react-router'
 Link        = Router.Link
 Icon        = require '../partials/icon'
 require '../css/pages/main-page'
-
-
-require [
-  './motion-demo/motion-demo.html',
-  './motion-demo/js/main'
-], (MotionDemoHtml, MotionDemo)->
-  console.log MotionDemoHtml, MotionDemo
+MotionDemo  = require '../pages/motion-demo/motion-demo.cjsx'
 
 Main = React.createClass
   runBurst:->
@@ -108,8 +102,7 @@ Main = React.createClass
                           stroke:     [ 'deeppink', 'cyan', 'orange' ],
                           x: '50%',   y: '50%'
                       });
-                      """
-                    }
+                      """}
                   </PrismCode>
                 </pre>
 
@@ -136,7 +129,7 @@ Main = React.createClass
           </div>
         </div>
 
-      <div className="motion-demo"></div>
+      <MotionDemo />
       
       <div className="main-page__buttons [ grid grid--sliced1 grid--gutter-x6 ]">
         <div className="grid-bit grid-bit--4-12">
