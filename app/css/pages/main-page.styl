@@ -5,11 +5,13 @@
 @import '../blocks/social-networks-about'
 @import '../blocks/motion-demo'
 
-.main-page
+{el = '.main-page'}
   position relative
   &__content
     max-width 70*gs
     fly()
+    +mobile()
+      padding 0 2*gs
   .motion-lettering
     margin-top    16*gs
     margin-bottom 2*gs
@@ -19,8 +21,33 @@
       margin-bottom 0*gs
     +tablet()
       margin-top    8*gs
+    +mobile()
+      margin-top    4.5*gs
+      margin-bottom 3.5*gs
+  +mobile()
+    .code-block
+      &__body
+        padding         1.5*gs 1.5*gs
   &__quick-start
-    margin-top    3*gs
+    margin-top          3*gs
+    border-bottom       PX solid c-white-transparent
+    padding-top         gs
+    padding-bottom      4*gs
+    +mobile()
+      .code-block
+        &__body
+          font-size     9*PX
+        &__footer
+          line-height   1.9
+          width         80%
+          font-size     11*PX
+  &__quick-start-normal
+    +mobile()
+      display     none
+  &__quick-start-mobile
+    display       none
+    +mobile()
+      display     block
   &__api-demo
     margin-top    6.5*gs
   &__buttons
@@ -35,3 +62,93 @@
   .social-networks-about
     margin-top  13.5*gs
     fly()
+
+  feature       = '.feature'
+  featureMargin = 2
+  &__features-row
+    +mobile()
+      {feature}
+        width             100%
+        text-align        left
+        max-width         32*gs
+        height            10*gs
+        fly()
+        &__header
+          font-size       14*PX
+          margin-bottom   1.5*gs
+          letter-spacing  1.3*PX
+        &__text
+          font-size       10*PX
+          letter-spacing  .8*PX
+          line-height     1.6
+        &__image
+          position relative
+        &__header
+          margin-top    0
+        &--fast
+          {feature}__image
+            top           gs
+        &--retina
+          {feature}__image
+            top           .5*gs
+            left          -.5*gs
+        &--simple
+          {feature}__text,
+          {feature}__header
+            margin-left   12*gs
+          {feature}__image
+            margin-left   1.5*gs
+            top           .5*gs
+        &--modular
+          {feature}__text,
+          {feature}__header
+            width    55%
+          {feature}__image
+            top      gs
+            // left   - gs
+        &--robust
+          {feature}__image
+            margin-left   -4*gs
+            top           gs
+            left          2*gs
+        &--open-sourced
+          {feature}__text,
+          {feature}__header
+            width    55%
+          {feature}__image
+            top      .5*gs
+            left    -1*gs
+      .grid-bit
+        width             100%
+        margin-bottom     2*gs
+        float             none
+        clearfix()
+      &--1
+        padding             0!important
+        .grid-bit
+          &:nth-of-type(odd)
+            {feature}__image
+              float         left
+              margin-right  featureMargin*gs
+          &:nth-of-type(even)
+            {feature}__image
+              float         right
+              margin-left   featureMargin*gs
+      &--2
+        border-bottom       PX solid c-white-transparent
+        padding-bottom      .5*gs !important
+        .grid-bit
+          &:nth-of-type(even)
+            {feature}__image
+              float         left
+              margin-right  featureMargin*gs
+          &:nth-of-type(odd)
+            {feature}__image
+              float         right
+              margin-left   featureMargin*gs
+            
+
+
+
+
+          

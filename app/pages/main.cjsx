@@ -26,9 +26,9 @@ Main = React.createClass
       <div className="main-page__content">
         <div className="motion-lettering"></div>
         
-        <div className="[ grid grid--gutter-x0 grid--row-gutter-x6 grid--sliced ]">
+        <div className="main-page__features [ grid grid--gutter-x0 grid--row-gutter-x6 grid--sliced ]">
 
-          <div className="grid-row">
+          <div className="[ main-page__features-row main-page__features-row--1 ] grid-row">
             <div className="grid-bit grid-bit--4-12">
               <div className="feature feature--fast">
                 <div className="feature__image"></div>
@@ -47,12 +47,12 @@ Main = React.createClass
               <div className="feature feature--simple">
                 <div className="feature__image"></div>
                 <div className="feature__header">Simple</div>
-                <div className="feature__text">Simple declarative API for any coding skills level.</div>
+                <div className="feature__text">Simple declarative API for any coding skills level. any coding skills level.</div>
               </div>
             </div>
           </div>
 
-          <div className="grid-row">
+          <div className="[ main-page__features-row main-page__features-row--2 ] grid-row">
             <div className="grid-bit grid-bit--4-12">
               <div className="feature feature--modular">
                 <div className="feature__image"></div>
@@ -80,9 +80,14 @@ Main = React.createClass
 
         <div className="main-page__quick-start code-block">
           <div className="code-block__header">Quick start:</div>
-          <div className="code-block__body">
+          <div className="code-block__body main-page__quick-start-normal">
             <PrismCode className="language-markup">
-              {'<script src="http://cdn.jsdelivr.net/mojs/0.119.0/mo.min.js"></script>'}
+              {'<script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>'}
+            </PrismCode>
+          </div>
+          <div className="code-block__body main-page__quick-start-mobile">
+            <PrismCode className="language-markup">
+              {'//cdn.jsdelivr.net/mojs/latest/mo.min.js'}
             </PrismCode>
           </div>
           <div className="code-block__footer">

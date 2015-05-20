@@ -1,5 +1,13 @@
+
+elWidth  = 397
+elHeight = 276
 .motion-lettering
-  width     397*PX
-  height    276*PX
-  background url('../i/motion-lettering.svg') no-repeat center center
-  opacity 1
+  width             elWidth*PX
+  height            elHeight*PX
+  background        url('../i/motion-lettering.svg') no-repeat center center
+  background-size   100% 100%
+  opacity           1
+  +mobile()
+    width       .52*elWidth*PX
+    height      .52*elHeight*PX
+    

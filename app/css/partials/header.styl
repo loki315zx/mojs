@@ -3,6 +3,8 @@
 
 .headroom
   transition all .3s ease-out
+  z-index   headerLayer
+  transform translateZ(0)
 
 .header
   position  fixed
@@ -13,6 +15,8 @@
     float         right
     padding-top   3*gs
     padding-right gs
+    +mobile()
+      display     none
   &__link
     color             c-orange
     display           inline-block
@@ -30,4 +34,7 @@
     position          absolute
     left              4.5*gs
     top               3.5*gs
+    +mobile()
+      top             1.8*gs
+      left            2*gs
   
