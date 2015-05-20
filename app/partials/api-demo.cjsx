@@ -69,7 +69,9 @@ module.exports = React.createClass
         <Tapable className="api-demo__button api-demo__button--code #{codeBtnClass}" onTap=@showCode>Code</Tapable>
         <Tapable className="api-demo__button api-demo__button--result #{resultBtnClass}" onTap=@showResult >Result</Tapable>
       </div>
+      
       <div className="api-demo__more code-block__footer">
         See more <a href="#">tutorials</a> or <a href="#">docs</a>. Inspire at <a href="#">demos</a>.
       </div>
+
     </div>
