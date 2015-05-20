@@ -7,20 +7,9 @@ Link        = Router.Link
 Icon        = require '../partials/icon'
 require '../css/pages/main-page'
 MotionDemo  = require '../pages/motion-demo/motion-demo.cjsx'
-Tapable     = require 'react-tappable'
+ApiDemo     = require '../partials/api-demo'
 
 Main = React.createClass
-  runBurst:->
-    if !@burst?
-      @burst = new mojs.Burst
-        parent:       document.querySelector('#js-burst-container')
-        shape:        'circle'
-        stroke:       ['deeppink', 'cyan', 'orange']
-        strokeWidth:  2:0
-        x: '50%',     y: '50%'
-        isRunLess:    true
-    @burst.run()
-    # console.log 'a'
   render:->
     <div className="page main-page">
       <div className="main-page__content">
@@ -95,45 +84,7 @@ Main = React.createClass
           </div>
         </div>
 
-        <div className="main-page__api-demo  [ grid grid--sliced grid--gutter-x2 ]">
-          <div className="grid-bit grid-bit--8-12">
-           
-            <div className="code-block">
-              <div className="code-block__header">Declarative API demo:</div>
-              <div className="code-block__body">
-                <pre>
-                  <PrismCode className="language-javascript">
-                    { """var burst = new Burst({
-                          shape:      'circle',
-                          stroke:     [ 'deeppink', 'cyan', 'orange' ],
-                          x: '50%',   y: '50%'
-                      });
-                      """}
-                  </PrismCode>
-                </pre>
-
-              </div>
-              <div className="code-block__footer">
-                See more <a href="#">tutorials</a> or <a href="#">docs</a>. Inspire at <a href="#">demos</a>.
-              </div>
-            </div>
-
-          </div>
-          <div className="grid-bit grid-bit--4-12">
-            
-            <div className="code-block">
-              <div className="code-block__header">Result(Tap):</div>
-              <Tapable className="code-block__body" id="js-burst-container" onTap=@runBurst>
-                <pre>
-                  <PrismCode className="language-markup">
-                    {"""\n\n\n\n\n"""}
-                  </PrismCode>
-                </pre>
-              </Tapable>
-            </div>
-
-          </div>
-        </div>
+        <ApiDemo />
 
       <MotionDemo />
       
