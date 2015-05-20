@@ -1,6 +1,7 @@
 @import '../imports.styl'
 
 {el = '.api-demo'}
+  position relative
   &.is-result
     {el}__result
       opacity         1
@@ -38,9 +39,10 @@
       display         none
   &__more
     position          absolute
-    top               28.5*gs
     color             white
-
+    top               19.5*gs
+    +mobile()
+      top             28.5*gs
   +mobile()
     height            35*gs
     margin-top        6.5*gs
@@ -72,7 +74,7 @@
       &__footer
         line-height   1.9*gs
         font-size     11*PX
-        width         65%
+        width         20*gs
 
 
 
