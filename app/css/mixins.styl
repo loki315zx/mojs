@@ -5,8 +5,18 @@ BRADIUS = 4*PX
 
 // z-indexes
 baseLayer   = 0
-modalLayer  = 10
+modalLayer  = 10 
 headerLayer = 20
+
+desktop()
+  @media all and (max-width: 1024px)
+    {block}
+tablet()
+  @media all and (max-width: 768px)
+    {block}
+mobile()
+  @media all and (max-width: 640px)
+    {block}
 
 // mixins
 rect()

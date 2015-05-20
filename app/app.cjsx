@@ -2,6 +2,8 @@ React  = require 'react'
 Router = require 'react-router'
 Link         = Router.Link
 RouteHandler = Router.RouteHandler
+require 'sys'
+require 'tapjs'
 
 require './css/main.styl'
 

@@ -1,4 +1,4 @@
-# mojs = require './vendor/mo.js'
+mojs = require 'mo-js'
 
 class FirstBall
   constructor:(@o={})-> @vars(); return @create()
@@ -9,7 +9,7 @@ class FirstBall
     @o1Line1   = document.querySelector '#js-o1-line-1'
     @o1Line2   = document.querySelector '#js-o1-line-2'
     @o1circle  = document.querySelector '#js-o1-circle'
-    @easing = @o.generateBezier(0.435, 0.715, 0.635, 0.395)
+    @easing = mojs.easing.bezier(0.435, 0.715, 0.635, 0.395)
     # @easing = @o.generateBezier(0.435, 0.715, 0.795, 0.570)
 
   create:->

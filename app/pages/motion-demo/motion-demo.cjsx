@@ -1,5 +1,6 @@
 React = require 'react'
 require './css/main.styl'
+Tapable = require 'react-tappable'
 
 MotionDemoComponent = React.createClass
   getInitialState:-> @state = {}
@@ -8,7 +9,7 @@ MotionDemoComponent = React.createClass
     <div className="motion-demo #{playClass}">
       <div className="motion-demo__header">Quick demo:</div>
       <div className="motion-demo__ghost"></div>
-      <div className="motion-demo__play" onClick=@launchDemo></div>
+      <Tapable className="motion-demo__play" onTap=@launchDemo></Tapable>
       <div  className="motion"
             dangerouslySetInnerHTML={{__html: @state.html }}>
       </div>

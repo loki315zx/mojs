@@ -1,4 +1,4 @@
-# mojs = require './vendor/mo.js'
+mojs = require 'mo-js'
 
 class FirstBall
   constructor:(@o={})-> @vars(); return @create()
@@ -11,7 +11,7 @@ class FirstBall
     @line1    = document.querySelector '#js-t-line-1'
     @line2    = document.querySelector '#js-t-line-2'
     @line3    = document.querySelector '#js-t-line-3'
-    @easing = @o.generateBezier(0.220, 0.665, 0.825, 0.430)
+    @easing   = mojs.easing.bezier(0.220, 0.665, 0.825, 0.430)
 
   create:->
     trail = new mojs.Transit

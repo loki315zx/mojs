@@ -128,154 +128,17 @@ class Main
     @tween.add new Ball_5 @
     @tween.add new Ball_6 @
     @tween.add new Ball_7 @
-
   isOpera:->
     userAgent = navigator.userAgent
     /^Opera\//.test(userAgent) or /\x20OPR\//.test(userAgent)
-
   createSounds:->
     ext = if @isOpera() then 'wav' else 'mp3'
     audio = require "./sounds/bells-1-half.#{ext}"
     @bells1 = new Howl
       urls: [audio]
-
   run:-> setTimeout (=> @tween.start()), 500
-
   playSound:(audio)-> return if !@isOn; audio.play()
-
-  addEvent:(el, handler)->
-    el.addEventListener @clickHandler, handler
-
-  generateBezier: (mX1, mY1, mX2, mY2) ->
-    NEWTON_ITERATIONS = 4
-    NEWTON_MIN_SLOPE = 0.001
-    SUBDIVISION_PRECISION = 0.0000001
-    SUBDIVISION_MAX_ITERATIONS = 10
-    kSplineTableSize = 11
-    kSampleStepSize = 1.0 / (kSplineTableSize - 1.0)
-    float32ArraySupported = 'Float32Array' in window
-
-    ### Must contain four arguments. ###
-
-    A = (aA1, aA2) ->
-      1.0 - 3.0 * aA2 + 3.0 * aA1
-
-    B = (aA1, aA2) ->
-      3.0 * aA2 - 6.0 * aA1
-
-    C = (aA1) ->
-      3.0 * aA1
-
-    calcBezier = (aT, aA1, aA2) ->
-      ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT
-
-    getSlope = (aT, aA1, aA2) ->
-      3.0 * A(aA1, aA2) * aT * aT + 2.0 * B(aA1, aA2) * aT + C(aA1)
-
-    newtonRaphsonIterate = (aX, aGuessT) ->
-      i = 0
-      while i < NEWTON_ITERATIONS
-        currentSlope = getSlope(aGuessT, mX1, mX2)
-        if currentSlope == 0.0
-          return aGuessT
-        currentX = calcBezier(aGuessT, mX1, mX2) - aX
-        aGuessT -= currentX / currentSlope
-        ++i
-      aGuessT
-
-    calcSampleValues = ->
-      i = 0
-      while i < kSplineTableSize
-        mSampleValues[i] = calcBezier(i * kSampleStepSize, mX1, mX2)
-        ++i
-      return
-
-    binarySubdivide = (aX, aA, aB) ->
-      currentX = undefined
-      currentT = undefined
-      i = 0
-      loop
-        currentT = aA + (aB - aA) / 2.0
-        currentX = calcBezier(currentT, mX1, mX2) - aX
-        if currentX > 0.0
-          aB = currentT
-        else
-          aA = currentT
-        isSubDiv = Math.abs(currentX) > SUBDIVISION_PRECISION
-        unless isSubDiv and ++i < SUBDIVISION_MAX_ITERATIONS
-          break
-      currentT
-
-    getTForX = (aX) ->
-      intervalStart = 0.0
-      currentSample = 1
-      lastSample = kSplineTableSize - 1
-      while currentSample != lastSample and mSampleValues[currentSample] <= aX
-        intervalStart += kSampleStepSize
-        ++currentSample
-      --currentSample
-      one = (aX-mSampleValues[currentSample])/(mSampleValues[currentSample + 1]
-      dist = one - mSampleValues[currentSample])
-      guessForT = intervalStart + dist * kSampleStepSize
-      initialSlope = getSlope(guessForT, mX1, mX2)
-      if initialSlope >= NEWTON_MIN_SLOPE
-        newtonRaphsonIterate aX, guessForT
-      else if initialSlope == 0.0
-        guessForT
-      else
-        binarySubdivide aX, intervalStart, intervalStart + kSampleStepSize
-
-    precompute = ->
-      _precomputed = true
-      if mX1 != mY1 or mX2 != mY2
-        calcSampleValues()
-      return
-
-    if arguments.length != 4
-      return false
-
-    ### Arguments must be numbers. ###
-
-    i = 0
-    while i < 4
-      isNan = isNaN(arguments[i])
-      if typeof arguments[i] != 'number' or isNan or !isFinite(arguments[i])
-        return false
-      ++i
-
-    ### X values must be in the [0, 1] range. ###
-
-    mX1 = Math.min(mX1, 1)
-    mX2 = Math.min(mX2, 1)
-    mX1 = Math.max(mX1, 0)
-    mX2 = Math.max(mX2, 0)
-    mSampleValues = if float32ArraySupported
-      new Float32Array(kSplineTableSize)
-    else new Array(kSplineTableSize)
-    _precomputed = false
-
-    f = (aX) ->
-      if !_precomputed
-        precompute()
-      if mX1 == mY1 and mX2 == mY2
-        return aX
-      if aX == 0
-        return 0
-      if aX == 1
-        return 1
-      calcBezier getTForX(aX), mY1, mY2
-
-    f.getControlPoints = ->
-      [
-        {
-          x: mX1
-          y: mY1
-        }
-        {
-          x: mX2
-          y: mY2
-        }
-      ]
-    f
+  addEvent:(el, handler)-> el.addEventListener @clickHandler, handler
+  
 module.exports = Main
 # new Main

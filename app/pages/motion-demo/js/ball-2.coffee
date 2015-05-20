@@ -1,4 +1,4 @@
-# mojs = require './vendor/mo.js'
+mojs = require 'mo-js'
 
 class FirstBall
   constructor:(@o={})-> @vars(); return @create()
@@ -8,7 +8,7 @@ class FirstBall
     @pathMask = document.querySelector '#js-curve-1-mask'
     @o2       = document.querySelector '#js-o2'
     @o2Line   = document.querySelector '#js-o2-line'
-    @easing = @o.generateBezier(0.240, 0.725, 0.790, 0.395)
+    @easing   = mojs.easing.bezier(0.240, 0.725, 0.790, 0.395)
 
   create:->
     @o.BALL_2_ARCDUR = 800

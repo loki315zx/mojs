@@ -1,4 +1,4 @@
-# mojs = require './vendor/mo.js'
+mojs = require 'mo-js'
 
 class FirstBall
   constructor:(@o={})-> @vars(); return @create()
@@ -8,7 +8,7 @@ class FirstBall
     @pathMask = document.querySelector '#js-curve-5-mask'
     @line1    = document.querySelector '#js-m-line-1'
     @line2    = document.querySelector '#js-m-line-2'
-    @easing = @o.generateBezier(0.435, 0.715, 0.635, 0.395)
+    @easing   = mojs.easing.bezier(0.435, 0.715, 0.635, 0.395)
 
   create:->
     trail = new mojs.Transit

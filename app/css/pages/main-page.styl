@@ -8,13 +8,17 @@
 .main-page
   position relative
   &__content
-    width 70*gs
+    max-width 70*gs
     fly()
   .motion-lettering
     margin-top    16*gs
     margin-bottom 2*gs
-    // margin-bottom 7*gs
     fly()
+    +desktop()
+      margin-top    12*gs
+      margin-bottom 0*gs
+    +tablet()
+      margin-top    8*gs
   &__quick-start
     margin-top    3*gs
   &__api-demo

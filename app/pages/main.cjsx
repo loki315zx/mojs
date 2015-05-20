@@ -7,6 +7,7 @@ Link        = Router.Link
 Icon        = require '../partials/icon'
 require '../css/pages/main-page'
 MotionDemo  = require '../pages/motion-demo/motion-demo.cjsx'
+Tapable     = require 'react-tappable'
 
 Main = React.createClass
   runBurst:->
@@ -117,13 +118,13 @@ Main = React.createClass
             
             <div className="code-block">
               <div className="code-block__header">Result(Tap):</div>
-              <div className="code-block__body" id="js-burst-container" onClick=@runBurst>
+              <Tapable className="code-block__body" id="js-burst-container" onTap=@runBurst>
                 <pre>
                   <PrismCode className="language-markup">
                     {"""\n\n\n\n\n"""}
                   </PrismCode>
                 </pre>
-              </div>
+              </Tapable>
             </div>
 
           </div>
