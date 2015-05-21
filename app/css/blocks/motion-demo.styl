@@ -1,4 +1,4 @@
-mobileScaleAmount = .70
+mobileScaleAmount = .80
 {el = '.motion-demo'}
   overflow       hidden
   +mobile()
@@ -29,14 +29,15 @@ mobileScaleAmount = .70
     +mobile()
       width         mobileScaleAmount*ghostWidth*PX
       height        mobileScaleAmount*ghostHeight*PX
-      margin-left  -14*gs
+      margin-left  -15.5*gs
+      margin-top   -10.2*gs
   &__play
     border              1.8*gs solid transparent
     border-left-width   3*gs
     border-left-color   white
     position            absolute
     nw                  50%
-    margin-top          7*PX
+    margin-top         -2*gs
     margin-left        -4*gs
     z-index             1
     rect                0
@@ -64,7 +65,8 @@ mobileScaleAmount = .70
     opacity       0
     fly()
     +mobile()
-      transform     scale(.8)
+      transform   scale(.8)
+      margin-top -11*gs
     @media all and (max-width: 510px)
       left          50%
       transform     scale(.8) translateX(-61%)
@@ -75,7 +77,7 @@ mobileScaleAmount = .70
       opacity     0
     {el}__play
       opacity     0
-      z-index -1
+      z-index    -1
     .motion
       opacity           1
       transition-delay  .5s

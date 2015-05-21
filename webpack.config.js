@@ -12,7 +12,7 @@ module.exports = {
       { test: /\.coffee$/, exclude: /node_modules/, loaders: ['coffee-loader?bare=true'] },
       { test: /\.cjsx$/, loaders: ['coffee', 'cjsx']},
       { test: /\.jade$/, loaders: ['jade'] },
-      { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader?paths=node_modules/' },
+      { test: /\.styl$/, loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 4 version!stylus-loader?paths=node_modules/' },
       { test: /\.html$/, loader: 'raw-loader' },
       {
         test: /\.(eot|woff|ttf|svg|png|jpg|wav|mp3)$/,
