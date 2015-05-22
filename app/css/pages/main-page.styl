@@ -59,7 +59,8 @@
       margin-top -1.5*gs
     .grid-bit
       +mobile()
-        width     70% !important
+        width     100%
+        max-width 24*gs
         float     none
         fly()
   .button
@@ -85,7 +86,11 @@
   feature       = '.feature'
   featureMargin = 2
   &__features-row
+    padding-top           6*gs
+    padding-bottom        6*gs
     +mobile()
+      padding-top         0
+      padding-bottom      0
       {feature}
         width             100%
         text-align        left
@@ -143,7 +148,6 @@
         float             none
         clearfix()
       &--1
-        padding             0!important
         .grid-bit
           &:nth-of-type(odd)
             {feature}__image
@@ -155,7 +159,7 @@
               margin-left   featureMargin*gs
       &--2
         border-bottom       PX solid c-white-transparent
-        padding-bottom      .5*gs !important
+        padding-bottom      .5*gs
         .grid-bit
           &:nth-of-type(even)
             {feature}__image

@@ -15,7 +15,7 @@ Main = React.createClass
       <div className="main-page__content">
         <div className="motion-lettering"></div>
         
-        <div className="main-page__features [ grid grid--gutter-x0 grid--row-gutter-x6 grid--sliced ]">
+        <div className="main-page__features [ grid grid--gutter-x0 grid--sliced ]">
 
           <div className="[ main-page__features-row main-page__features-row--1 ] grid-row">
             <div className="grid-bit grid-bit--4-12">
