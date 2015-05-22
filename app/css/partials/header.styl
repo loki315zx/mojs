@@ -1,7 +1,9 @@
 @import '../imports.styl'
 @import '../blocks/sandwich-menu.styl'
 
-// .headroom
+.headroom
+  transition all .3s ease-out
+  
 {el = '.header'}
   position  fixed
   z-index   headerLayer
@@ -11,6 +13,7 @@
   &.is-show-menu
     {el}__links
       opacity     1
+      transform   translateX(0)
   &__links
     float         right
     padding-top   3*gs
@@ -26,6 +29,8 @@
       border-top-right-radius 0
       padding     2*gs gs
       opacity     0
+      transform   translateX(140px)
+      transition all .3s ease-out
   &__link
     color             c-orange
     display           inline-block
