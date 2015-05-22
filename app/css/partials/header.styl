@@ -16,10 +16,10 @@
       transition  all .3s ease-out
       for i in 1..5
         &:nth-of-type({i})
-          transition-delay (.1 + i*.07)s
+          transition-delay (i*.07)s
     {el}__links
       opacity     1
-      transform   translateX(0)
+      // transform   translateX(0)
   &__links
     float         right
     padding-top   3*gs
@@ -35,8 +35,10 @@
       border-top-right-radius 0
       padding     2*gs gs
       opacity     0
-      transform   translateX(125px)
+      // transform   translateX(125px)
       transition  all .3s ease-out
+      @media all and (max-height: 240px)
+        padding   gs 0
   &__link
     color             c-orange
     display           inline-block
@@ -52,7 +54,11 @@
         margin-top    gs
       &.button
         border        0
-        margin-top    gs
+        margin-top    .7*gs
+      @media all and (max-height: 240px)
+        margin-top      1*gs
+        &.button
+          margin-top    -.2*gs
     // &.active
     //   border-bottom PX solid
   &__logo

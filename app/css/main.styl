@@ -16,6 +16,35 @@ html, body
 *
   box-sizing border-box
   
+.link
+  position  relative
+  &:after
+    content     ''
+    height      1*PX
+    width       100%
+    background  currentColor
+    position    absolute
+    left        0
+    bottom     -3*PX
+    // transform-origin center center
+    transform scaleX(0)
+    transition transform .1s ease-out
+  &:hover
+    &:after
+      transform scaleX(1)
+  &.active
+    &:after
+      transform   scaleX(1)
+  // &.button
+  //   &:after
+  //     bottom      9*PX
+  //   &:hover
+  //     &:after
+  //       transform scaleX(.58)
+      
+
+    
+  
 // CLEARFIX
 .cf:after,
 .cf:before
