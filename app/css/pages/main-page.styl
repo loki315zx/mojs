@@ -49,21 +49,39 @@
     display       none
     +mobile()
       display     block
-        
   &__buttons
     margin-top    9*gs
     fly()
-    a
+    .button
       display     block
       width       100%
+    +mobile()
+      margin-top -1.5*gs
+    .grid-bit
+      +mobile()
+        width     70% !important
+        float     none
+        fly()
+  .button
+    +mobile()
+      margin-top  3*gs
+      font-size   14*PX
+      
   .motion-demo
     padding-top   7*gs
     position      relative
     +mobile()
       padding-top 4*gs
-  .social-networks-about
-    margin-top  13.5*gs
+  {social = '.social-networks-about'}
+    margin-top        13.5*gs
     fly()
+    +mobile()
+      margin-top      7.5*gs
+      {social}__text
+        margin-top    -1*gs
+  .api-demo
+    z-index           1
+      
   feature       = '.feature'
   featureMargin = 2
   &__features-row
