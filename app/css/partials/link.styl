@@ -1,0 +1,31 @@
+@import '../imports'
+
+{el = '.link'}
+  position  relative
+  display   inline-block
+  &__underline
+    content     ''
+    height      1*PX
+    width       100%
+    background  currentColor
+    position    absolute
+    left        0
+    bottom     -3*PX
+    border-radius inherit
+    transform     scaleX(0)
+    transition    transform .1s ease-out
+  &:hover
+    {el}__underline
+      transform scaleX(1)
+  &.active
+    {el}__underline
+      transform   scaleX(1)
+  &.button
+    {el}__underline
+      bottom    0
+      opacity   .15
+      rect      100%
+      // display none
+  //   &:hover
+  //     &:after
+  //       transform scaleX(.58)

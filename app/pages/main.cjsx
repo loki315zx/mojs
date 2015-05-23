@@ -1,7 +1,7 @@
 React       = require 'react'
 mojs        = require 'mo-js'
 {PrismCode} = require 'react-prism'
-Button      = require '../partials/button'
+UniteLink   = require '../partials/unite-link'
 Router      = require 'react-router'
 Link        = Router.Link
 Icon        = require '../partials/icon'
@@ -10,6 +10,11 @@ MotionDemo  = require '../pages/motion-demo/motion-demo.cjsx'
 ApiDemo     = require '../partials/api-demo'
 
 Main = React.createClass
+  onGlobalTap:(evt)->
+    @reaction ?= new mojs.Transit
+      isRunLess: true
+    @reaction.run
+    
   render:->
     <div className="page main-page">
       <div className="main-page__content">
@@ -90,13 +95,22 @@ Main = React.createClass
       
       <div className="main-page__buttons [ grid grid--sliced1 grid--gutter-x6 ]">
         <div className="grid-bit grid-bit--4-12">
-          <Button text="Download" className="button--orange" link="https://github.com/legomushroom/mojs" />
+          <UniteLink
+            type="button"
+            link="https://github.com/legomushroom/mojs"
+            className="button--orange"> Download </UniteLink>
         </div>
         <div className="grid-bit grid-bit--4-12">
-          <Link to="tutorials" className="button button--green">Learn</Link>
+          <UniteLink
+            type="button"
+            link="tutorials"
+            className="button--green"> Learn </UniteLink>
         </div>
         <div className="grid-bit grid-bit--4-12">
-          <Button text="Contribute" className="button--blue" link="https://github.com/legomushroom/mojs" />
+          <UniteLink
+            type="button"
+            link="https://github.com/legomushroom/mojs"
+            className="button--blue"> Contribute </UniteLink>
         </div>
       </div>
 
