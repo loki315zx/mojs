@@ -19,7 +19,6 @@ html, body
 .touchable
   &:active
     transform translate(0, 2*PX)
-    
   
 // CLEARFIX
 .cf:after,
@@ -30,4 +29,30 @@ html, body
   clear both
 .cf
   zoom 1
+
+shift     = 300
+duration  = .3s
+.example-enter
+  transform   translateX((shift)px)
+  opacity     0
+.example-enter.example-enter-active
+  transform   translateX(0)
+  opacity     1
+  transition  all duration ease-out
+  
+.example-leave
+  transform   translateX(0)
+  opacity     1
+.example-leave.example-leave-active
+  transform   translateX((shift)px)
+  transition  all duration ease-out
+  opacity     0
+
+.example-appear
+  transform   translateY((shift)px)
+  // opacity     0.01
+.example-appear.example-appear-active
+  transform   translateY(0)
+  transition  all duration ease-in
+  // opacity     1
 

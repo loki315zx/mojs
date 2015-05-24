@@ -19,13 +19,14 @@ MotionDemoComponent = React.createClass
     it = @
     require [ './motion-demo.html', './js/main'],
       (MotionDemoHtml, MotionDemo)->
-        it.setState
-          html: MotionDemoHtml
-          demo: new MotionDemo
-        it.state.demo.init()
+        it.setState html: MotionDemoHtml
+        setTimeout ->
+          it.demo = new MotionDemo
+          it.demo.init()
+        , 100
 
   launchDemo:->
-    @state.demo.run()
+    @it.demo.run()
     @setState isDemoLaunched: true
 
 

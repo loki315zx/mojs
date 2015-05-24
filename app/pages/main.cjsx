@@ -5,16 +5,12 @@ UniteLink   = require '../partials/unite-link'
 Router      = require 'react-router'
 Link        = Router.Link
 Icon        = require '../partials/icon'
-require '../css/pages/main-page'
 MotionDemo  = require '../pages/motion-demo/motion-demo.cjsx'
 ApiDemo     = require '../partials/api-demo'
 
+require '../css/pages/main-page'
+
 Main = React.createClass
-  onGlobalTap:(evt)->
-    @reaction ?= new mojs.Transit
-      isRunLess: true
-    @reaction.run
-    
   render:->
     <div className="page main-page">
       <div className="main-page__content">

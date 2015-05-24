@@ -1,30 +1,22 @@
 React  = require 'react'
 Router = require 'react-router'
-Link         = Router.Link
-RouteHandler = Router.RouteHandler
-Tapable      = require 'react-tappable'
-Header       = require './partials/header'
-mojs         = require 'mo-js'
+{ Route, RouteHandler, Link } = Router
+Header          = require './partials/header'
+TransitionGroup = require('react/lib/ReactTransitionGroup')
 
-require 'sys'
-require 'tapjs'
 require './css/main.styl'
 
-
-# document.body.addEventListener 'click', a = ()->
-#   document.body.removeEventListener 'click', a
-#   console.log 'click', a
-
 App = React.createClass
-  onGlobalTap:(e)->
-    @reaction ?= new mojs.Transit
-      isRunLess: true
-    @reaction.run
-    console.log e
+  contextTypes: router: React.PropTypes.func
+  willEnter:->
+    console.log aurguments
   render:->
-    <Tapable onTap=@onGlobalTap>
-      <Header />
-      <RouteHandler />
-    </Tapable>
+    name = @context.router.getCurrentPath()
+    <div>
+      <TransitionGroup transitionName="example" transitionAppear="true">
+        <Header />
+        <RouteHandler  key={name} componentWillEnter=@willEnter componentDidEnter=@willEnter />
+      </TransitionGroup>
+    </div>
 
 module.exports = App
