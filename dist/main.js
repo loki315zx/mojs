@@ -27795,7 +27795,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(165)();
-	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(228)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  height: 125rem;\n  background-color: #800080;\n}\n", ""]);
+	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(228)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  height: 125rem;\n  background-color: #0cc;\n}\n", ""]);
 
 /***/ }
 /******/ ]);
