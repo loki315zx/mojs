@@ -2,21 +2,26 @@ React  = require 'react'
 Router = require 'react-router'
 { Route, RouteHandler, Link } = Router
 Header          = require './partials/header'
-TransitionGroup = require('react/lib/ReactTransitionGroup')
+TransitionGroup = require('react/lib/ReactCssTransitionGroup')
+VTransitionGroup = require('./partials/velocity-transition-group')
 
 require './css/main.styl'
 
 App = React.createClass
   contextTypes: router: React.PropTypes.func
-  willEnter:->
-    console.log aurguments
+  willTransit:->
+    console.log 'a'
   render:->
     name = @context.router.getCurrentPath()
     <div>
-      <TransitionGroup transitionName="example" transitionAppear="true">
-        <Header />
-        <RouteHandler  key={name} componentWillEnter=@willEnter componentDidEnter=@willEnter />
-      </TransitionGroup>
+      <Header />
+      <VTransitionGroup  transitionName="slideover-forward">
+        <RouteHandler  key={name} />
+      </VTransitionGroup>
     </div>
+
+# <TransitionGroup transitionName="example">
+#   <RouteHandler  key={name} />        
+# </TransitionGroup>
 
 module.exports = App
