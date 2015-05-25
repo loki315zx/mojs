@@ -447,10 +447,19 @@
 
 	Tapable = __webpack_require__(69);
 
+	Router = __webpack_require__(5);
+
 	__webpack_require__(41);
 
 	Header = React.createClass({
 	  getInitialState: function() {
+	    Router.HistoryLocation.addChangeListener((function(_this) {
+	      return function(route) {
+	        return _this.setState({
+	          'page': route.path
+	        });
+	      };
+	    })(this));
 	    return {};
 	  },
 	  toggleMobileMenu: function() {
@@ -459,11 +468,19 @@
 	    });
 	  },
 	  render: function() {
-	    var btnClass, headerClass;
+	    var btnClass, headerClass, headerColor;
 	    headerClass = this.state.isShowMenu ? 'is-show-menu' : '';
 	    btnClass = this.state.isShowMenu ? 'is-open' : '';
+	    headerColor = (function() {
+	      switch (this.state.page) {
+	        case '/tutorials':
+	          return 'is-tuts';
+	        default:
+	          return '';
+	      }
+	    }).call(this);
 	    return React.createElement("div", {
-	      "className": "header " + headerClass
+	      "className": "header " + headerClass + " " + headerColor
 	    }, React.createElement(Headroom, null, React.createElement(Link, {
 	      "to": "app",
 	      "className": "header__logo-link"
@@ -27742,7 +27759,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(165)();
-	exports.push([module.id, ".link {\n  position: relative;\n  display: inline-block;\n}\n.link__underline {\n  content: '';\n  height: 0.0625rem;\n  width: 100%;\n  background: currentColor;\n  position: absolute;\n  left: 0;\n  bottom: -0.1875rem;\n  border-radius: inherit;\n  -webkit-transform: scaleX(0) translateZ(0);\n          transform: scaleX(0) translateZ(0);\n  -webkit-transition: -webkit-transform 0.1s ease-out;\n          transition: transform 0.1s ease-out;\n}\n.link:hover .link__underline {\n  -webkit-transform: scaleX(1) translateZ(0);\n          transform: scaleX(1) translateZ(0);\n}\n.link.active .link__underline {\n  -webkit-transform: scaleX(1) translateZ(0);\n          transform: scaleX(1) translateZ(0);\n}\n.link.button .link__underline {\n  bottom: 0;\n  opacity: 0.15;\n  width: 100%;\n  height: 100%;\n}\n", ""]);
+	exports.push([module.id, ".link {\n  position: relative;\n  display: inline-block;\n}\n.link__underline {\n  content: '';\n  height: 0.0625rem;\n  width: 100%;\n  background: currentColor;\n  position: absolute;\n  color: inherit;\n  left: 0;\n  bottom: -0.1875rem;\n  border-radius: inherit;\n  -webkit-transform: scaleX(0) translateZ(0);\n          transform: scaleX(0) translateZ(0);\n  -webkit-transition: -webkit-transform 0.1s ease-out;\n          transition: transform 0.1s ease-out;\n}\n.link:hover .link__underline {\n  -webkit-transform: scaleX(1) translateZ(0);\n          transform: scaleX(1) translateZ(0);\n}\n.link.active .link__underline {\n  -webkit-transform: scaleX(1) translateZ(0);\n          transform: scaleX(1) translateZ(0);\n}\n.link.button .link__underline {\n  bottom: 0;\n  opacity: 0.15;\n  width: 100%;\n  height: 100%;\n}\n", ""]);
 
 /***/ },
 /* 280 */,
@@ -27795,7 +27812,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(165)();
-	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(228)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  height: 125rem;\n  background-color: #0cc;\n}\n", ""]);
+	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(228)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  height: 125rem;\n  background-color: #222;\n}\n", ""]);
 
 /***/ }
 /******/ ]);

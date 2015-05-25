@@ -6,16 +6,23 @@ Button    = require './button'
 UniteLink = require './unite-link'
 Headroom  = require 'react-headroom'
 Tapable   = require 'react-tappable'
+Router    = require 'react-router'
 require '../css/partials/header.styl'
 
 # <Link to="app" className="header__link">main</Link>
 Header = React.createClass
-  getInitialState:-> {}
+  getInitialState:->
+    Router.HistoryLocation.addChangeListener (route)=> @setState 'page': route.path
+    {}
   toggleMobileMenu:-> @setState isShowMenu: !@state.isShowMenu
   render:->
     headerClass = if @state.isShowMenu then 'is-show-menu' else ''
     btnClass    = if @state.isShowMenu then 'is-open'      else ''
-    <div className="header #{headerClass}">  
+    headerColor = switch @state.page
+      when '/tutorials' then 'is-tuts'
+      else ''
+
+    <div className="header #{headerClass} #{headerColor}">  
       <Headroom>
         <Link to="app" className="header__logo-link">
           <Icon className="header__logo" path="mojs-loop" />

@@ -1,7 +1,6 @@
-React  = require('react/addons');
-Router = require('react-router');
-ReactTransitionGroup = React.addons.TransitionGroup;
-mojs     = require('mo-js');
+React  = require('react/addons')
+ReactTransitionGroup = React.addons.TransitionGroup
+mojs   = require('mo-js')
  
 TransitionGroupChild = React.createClass
   getInitialState:-> { duration: 500 }
