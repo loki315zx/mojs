@@ -21,6 +21,16 @@ TransitionGroupChild = React.createClass
     node.style['position'] = 'absolute'
     node.style['width']    = '100%'
     node.style['top']      = 0
+    # tween = new mojs.Tween
+    # timeline = new mojs.Timeline
+    #   duration:   @state.duration
+    #   onComplete: done
+    #   onUpdate:(p)->
+    #     p = mojs.easing.cubic.inout(p)
+    #     transform = "translateX(#{100*(p)}%) translateZ(0)"
+    #     mojs.h.setPrefixedStyle(node, 'transform', transform)
+    #     # node.style.opacity = mojs.easing.cubic.out 1-p
+    # tween.add(timeline); tween.start()
     setTimeout (done), @state.duration
   render:-> React.Children.only this.props.children
  
