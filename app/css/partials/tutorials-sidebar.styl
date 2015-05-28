@@ -1,10 +1,46 @@
 @import '../imports.styl'
+@import '../blocks/shapes.styl'
 
+cl-semi-orange = rgba(c-orange, .5)
 {el = '.tutorials-sidebar'}
   position          relative
   text-align        left
   width             17.5*gs
+  font-size         16*PX
+  letter-spacing    PX
   &__header
     color           c-orange
-    font-size       16*PX
-    letter-spacing  PX
+    margin-bottom   .5*gs
+  &__content
+    border-right    PX solid cl-semi-orange
+    padding-bottom  gs
+    &:after
+      content       ''
+      position      absolute
+      right         0
+      bottom      - PX
+      height        PX
+      width         55%
+      background    cl-semi-orange
+  &__link
+    color           c-white
+    text-decoration none
+  &__section
+    padding-bottom  3.5*gs
+    {el}__link
+      margin-top    1.5*gs
+      width         100%
+  &__social-networks
+    margin-left     3.5*gs
+    margin-top      4.5*gs
+  .shapes
+    position        absolute
+    bottom          0
+    bottom        - .6*gs
+  .link
+    &__underline
+      background    c-orange
+      top           .9*gs
+      left        - 2*gs
+      circle        4*PX
+    
