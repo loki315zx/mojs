@@ -11,7 +11,7 @@ module.exports = React.createClass render: ()->
       <div className="tutorials-sidebar__section">
         <div className="tutorials-sidebar__header"> Basics </div>
         <UniteLink link="getting-started" className="tutorials-sidebar__link"> Getting Started </UniteLink>
-        <UniteLink link="/" className="tutorials-sidebar__link"> APIs overview   </UniteLink>
+        <UniteLink link="motion-path"     className="tutorials-sidebar__link"> APIs overview   </UniteLink>
         <UniteLink link="/" className="tutorials-sidebar__link"> Transit         </UniteLink>
         <UniteLink link="/" className="tutorials-sidebar__link"> Swirl           </UniteLink>
         <UniteLink link="/" className="tutorials-sidebar__link"> Motion Path     </UniteLink>

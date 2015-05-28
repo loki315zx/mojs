@@ -16,7 +16,11 @@ TransitionGroupChild = React.createClass
         mojs.h.setPrefixedStyle(node, 'transform', transform)
     tween.add(timeline); tween.start()
   componentWillLeave: (done)->
-    node = this.getDOMNode(); node.style['z-index'] = 0
+    node = this.getDOMNode()
+    node.style['z-index']  = 0
+    node.style['position'] = 'absolute'
+    node.style['width']    = '100%'
+    node.style['top']      = 0
     setTimeout (done), @state.duration
   render:-> React.Children.only this.props.children
  
