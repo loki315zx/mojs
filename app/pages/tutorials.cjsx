@@ -19,7 +19,7 @@ module.exports = React.createClass
     <div className="page tutorials-page">
       <div className="tutorials-page__sidebar"> <Sidebar /> </div>
       <div className="tutorials-page__content">
-        <TransitionGroup>
+        <TransitionGroup isFade={true}>
           <RouteHandler  key={name} />
         </TransitionGroup>
       </div>
