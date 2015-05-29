@@ -10,11 +10,11 @@ TransitionGroupChild = React.createClass
       duration:   @state.duration
       onStart:->  node.style['z-index'] = 1
       onComplete: done
-      onUpdate:(p)->
+      onUpdate:(p)=>
         p = mojs.easing.cubic.inout(p)
         transform = "translateX(#{100*(1-p)}%) translateZ(0)"
         mojs.h.setPrefixedStyle(node, 'transform', transform)
-        node.style.opacity = mojs.easing.cubic.out p
+        @props.isFade and (node.style.opacity = mojs.easing.cubic.out p)
     tween.add(timeline); tween.start()
   componentWillLeave: (done)->
     node = this.getDOMNode()
