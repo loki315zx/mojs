@@ -7,7 +7,7 @@ Link        = Router.Link
 Icon        = require '../partials/icon'
 MotionDemo  = require '../pages/motion-demo/motion-demo.cjsx'
 ApiDemo     = require '../partials/api-demo'
-SocialNetworks = require '../partials/social-networks'
+SocialNetworksAbout = require '../partials/social-networks-about'
 
 require '../css/pages/main-page'
 
@@ -111,14 +111,7 @@ Main = React.createClass
         </div>
       </div>
 
-      <div className="social-networks-about">
-        <div className="social-networks-about__icons">
-          <SocialNetworks />
-        </div>
-        <div className="social-networks-about__text">
-          <a className="social-networks-about__link" href="https://twitter.com/legomushroom">@legomushroom</a> 2015 MIT
-        </div>
-      </div>
+      <SocialNetworksAbout />
 
       </div> {# content end }
     </div>

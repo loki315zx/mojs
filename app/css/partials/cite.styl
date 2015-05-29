@@ -1,0 +1,32 @@
+@import '../imports.styl'
+
+{el = '.cite'}
+  position        relative
+  padding         PX 0 PX 3*gs
+  border-left     2*PX solid c-orange
+  font-size       16*PX
+  line-height     3*gs
+  text-align      justify
+  max-width       56*gs
+  margin-bottom   5*gs
+  // display         inline-block
+  &__inner
+    margin-top     - gs + PX
+    margin-bottom  - gs + PX
+  // &__text
+  //   max-width     56*gs
+  &__author
+    font-family   Verdana
+    font-style    italic
+    position      absolute
+    right         0
+    &:before
+      content '- '
+  &__shapes
+    position      absolute
+    left        - 6*gs
+    top           50%
+    margin-top  - gs
+    transform     rotate(90deg)
+    // transform-origin 50% 50%
+    

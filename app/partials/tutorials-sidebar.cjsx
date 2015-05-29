@@ -1,8 +1,9 @@
 React  = require 'react'
 Router = require 'react-router'
 { Route, RouteHandler, Link } = Router
-UniteLink = require './unite-link'
+UniteLink      = require './unite-link'
 SocialNetworks = require './social-networks'
+ORXLine        = require './orx-line'
 
 require '../css/partials/tutorials-sidebar'
 module.exports = React.createClass render: ()->
@@ -41,7 +42,7 @@ module.exports = React.createClass render: ()->
         <UniteLink link="/" className="tutorials-sidebar__link"> Easing          </UniteLink>
       </div>
 
-      <div className="shapes"></div>
+      <ORXLine />
 
     </div>
     <SocialNetworks className="tutorials-sidebar__social-networks" />
