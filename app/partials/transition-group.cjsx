@@ -19,8 +19,11 @@ TransitionGroupChild = React.createClass
     node = this.getDOMNode()
     node.style['z-index']  = 0
     node.style['position'] = 'absolute'
-    node.style['width']    = '100%'
     node.style['top']      = 0
+
+    # node.style['width']    = '800px'
+    # node.style['left']     = '103px'
+
     # tween = new mojs.Tween
     # timeline = new mojs.Timeline
     #   duration:   @state.duration

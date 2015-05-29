@@ -17,5 +17,4 @@ App = React.createClass
       </TransitionGroup>
     </div>
 
-
 module.exports = App
