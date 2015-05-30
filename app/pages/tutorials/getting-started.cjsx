@@ -2,10 +2,11 @@ React  = require 'react'
 Router = require 'react-router'
 { Route, RouteHandler, Link } = Router
 
-PostImage   = require '../../partials/post-image'
-Cite        = require '../../partials/cite'
-ORXLine     = require '../../partials/orx-line'
-CodeSample  = require '../../partials/code-sample'
+PostImage     = require '../../partials/post-image'
+Cite          = require '../../partials/cite'
+ORXLine       = require '../../partials/orx-line'
+CodeSample    = require '../../partials/code-sample'
+HeftyContent  = require '../../partials/hefty-content'
 DisqusComments      = require '../../partials/disqus-comments'
 SocialNetworksAbout = require '../../partials/social-networks-about'
 require '../../css/pages/tutorials-page'
@@ -49,10 +50,12 @@ Tutorials = React.createClass
 
       <p className="post__paragraph">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</p>
 
-      <PostImage
-        src="https://d13yacurqjgara.cloudfront.net/users/555872/screenshots/2074566/preloader.gif"
-        description="Image1: mutual interface"
-        title="mutual interface image" />
+      <HeftyContent>
+        <PostImage
+          src="https://d13yacurqjgara.cloudfront.net/users/555872/screenshots/2074566/preloader.gif"
+          description="Image1: mutual interface"
+          title="mutual interface image" />
+      </HeftyContent>
 
       <p className="post__paragraph">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</p>
 
