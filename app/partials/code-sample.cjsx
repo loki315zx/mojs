@@ -1,7 +1,8 @@
-React       = require 'react'
-{PrismCode} = require 'react-prism'
-Tappable    = require 'react-tappable'
-mojs        = require 'mo-js'
+React         = require 'react'
+{PrismCode}   = require 'react-prism'
+Tappable      = require 'react-tappable'
+mojs          = require 'mo-js'
+HeftyContent  = require './hefty-content'
 
 require '../css/partials/code-sample.styl'
 
@@ -41,12 +42,15 @@ module.exports = React.createClass
                     </PrismCode>
                   </pre>
       itemButtons.push <Tappable className="code-sample__button #{showClass}" onTap=@["_show#{key}"] >{key}</Tappable>
-    <div className="code-sample">
-      <div className="code-sample__syntax" id="js-syntax">
-        <div className="code-sample__buttons">{itemButtons}</div>
-        {items}
+
+    <HeftyContent>
+      <div className="code-sample">
+        <div className="code-sample__syntax" id="js-syntax">
+          <div className="code-sample__buttons">{itemButtons}</div>
+          {items}
+        </div>
+        <div className="code-sample__pen">
+          <p data-height="345" data-theme-id="15571" data-slug-hash="#{@props.pen}" data-default-tab="result" data-user="sol0mka" className='codepen'>See the Pen <a href='http://codepen.io/sol0mka/pen/8312611e3618e83d4103390afc2c8bef/'>8312611e3618e83d4103390afc2c8bef</a> by LegoMushroom (<a href='http://codepen.io/sol0mka'>@sol0mka</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+        </div>
       </div>
-      <div className="code-sample__pen">
-        <p data-height="345" data-theme-id="15571" data-slug-hash="#{@props.pen}" data-default-tab="result" data-user="sol0mka" className='codepen'>See the Pen <a href='http://codepen.io/sol0mka/pen/8312611e3618e83d4103390afc2c8bef/'>8312611e3618e83d4103390afc2c8bef</a> by LegoMushroom (<a href='http://codepen.io/sol0mka'>@sol0mka</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-      </div>
-    </div>
+    </HeftyContent>

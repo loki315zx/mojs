@@ -26,26 +26,22 @@ Tutorials = React.createClass
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
         { js: """var burst = new Burst({
               shape:   'circle',
-              stroke: [ 'deeppink',
-                           'cyan',
-                           'orange' ],
+              stroke: [ 'deeppink', 'cyan', 'orange' ],
               x: '50%',   y: '50%'
           });
           """
         }
         { es6: """var burst = new Burst({
               shape:   'circle',
-              stroke: [ 'deeppink',
-                           'cyan',
-                           'orange' ],
+              stroke: [ 'deeppink', 'cyan', 'orange' ],
               x: '50%',   y: '50%'
           });
           """
         }
         { cs: """ burst = new Burst
-                      shape:   'circle'
-                      stroke: [ 'deeppink', 'cyan', 'orange' ]
-                      x: '50%',   y: '50%'
+                    shape:   'circle'
+                    stroke: [ 'deeppink', 'cyan', 'orange' ]
+                    x: '50%',   y: '50%'
                 \b
               """
         }
