@@ -1,17 +1,21 @@
-code//[class*="language-"]
+code
   display         block
   font-family     inherit
   line-height     1.4
   letter-spacing  2*PX
+  
 pre
   font inherit
+  span
+    white-space pre
 .language-markup
   .tag
     > .punctuation
       color white
     > .tag
       color c-orange
-.language-javascript
+.language-javascript,
+.language-coffeescript
   .token
     &.class-name
       color c-blue

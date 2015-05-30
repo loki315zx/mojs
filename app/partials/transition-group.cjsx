@@ -5,7 +5,7 @@ mojs   = require('mo-js')
 TransitionGroupChild = React.createClass
   getInitialState:-> { duration: 400 }
   componentWillEnter: (done)->
-    node = this.getDOMNode(); tween = new mojs.Tween
+    node = @getDOMNode(); tween = new mojs.Tween
     timeline = new mojs.Timeline
       duration:   @state.duration
       onStart:->  node.style['z-index'] = 1
