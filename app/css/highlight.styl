@@ -23,3 +23,36 @@ pre
     &.number
       // color #00C5E9
       color c-blue
+
+
+
+pre.line-numbers
+  position        relative
+  padding-left    3.5*gs
+  counter-reset   linenumber
+  margin          0
+  & > code
+    position      relative
+
+.line-numbers-rows
+  position          absolute
+  pointer-events    none
+  top               0
+  bottom            0
+  left             -3.8*gs
+  text-align        center
+  width             4*gs
+  font-size         100%
+  letter-spacing   -1px
+  user-select       none
+  > span
+    pointer-events    none
+    display           block
+    counter-increment linenumber
+    &:before
+      content         counter(linenumber)
+      display         block
+      padding-right   0.3em
+      text-align      right
+      
+

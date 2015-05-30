@@ -1,0 +1,26 @@
+@import '../imports.styl'
+
+{el = '.code-sample'}
+  &__syntax
+    border                  2*PX solid c-purple-2
+    border-bottom           0
+    border-top-left-radius  BRADIUS
+    border-top-right-radius BRADIUS
+  &__code
+    padding-top     2*gs
+    padding-bottom  2.5*gs
+    padding-left    2.5*gs
+    background      rgba(c-purple, .6)
+    font-size       15*PX
+    // hl()
+    .line-numbers-rows
+      padding-top     2*gs
+      padding-bottom  2*gs
+      font-size       14*PX
+      line-height     1.5
+      background      c-purple-2
+      > span
+        opacity       .5
+        margin-right  1.2*gs
+  &__pen
+    margin-left  - PX

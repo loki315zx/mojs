@@ -57,7 +57,7 @@ module.exports = React.createClass
             <Tapable className="code-block__body" id="js-burst-container" onTap=@runBurst>
               <pre>
                 <PrismCode className="language-markup">
-                  {"""\n\n\n\n\n"""}
+                  {"""\n\n\n\n\n\n"""}
                 </PrismCode>
               </pre>
             </Tapable>

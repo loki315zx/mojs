@@ -13,7 +13,7 @@ module.exports = React.createClass
     if @context.router.getCurrentPath() is '/tutorials'
       setTimeout =>
         @context.router.transitionTo('/tutorials/getting-started')
-      , 250
+      , 150
   render: ()->
     name = @context.router.getCurrentPath()
     <div className="page tutorials-page">

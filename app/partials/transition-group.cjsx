@@ -3,7 +3,7 @@ ReactTransitionGroup = React.addons.TransitionGroup
 mojs   = require('mo-js')
  
 TransitionGroupChild = React.createClass
-  getInitialState:-> { duration: 500 }
+  getInitialState:-> { duration: 400 }
   componentWillEnter: (done)->
     node = this.getDOMNode(); tween = new mojs.Tween
     timeline = new mojs.Timeline
