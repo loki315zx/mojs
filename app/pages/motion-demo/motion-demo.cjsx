@@ -25,9 +25,7 @@ MotionDemoComponent = React.createClass
           it.demo.init()
         , 100
 
-  launchDemo:->
-    @it.demo.run()
-    @setState isDemoLaunched: true
+  launchDemo:-> @demo.run(); @setState isDemoLaunched: true
 
 
 module.exports = MotionDemoComponent
