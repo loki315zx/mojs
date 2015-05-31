@@ -12,7 +12,6 @@ module.exports = React.createClass
   _getScrollY:->
     if window.pageYOffset? then window.pageYOffset else document.scrollTop
   _getPosition:->
-    console.log 'get position'
     node = @getDOMNode().childNodes[0]; rect = node.getBoundingClientRect()
     scrollY = @_getScrollY(); @wHeight = window.innerHeight
     @top = scrollY + rect.top; @bottom = scrollY + rect.bottom
@@ -26,8 +25,14 @@ module.exports = React.createClass
     requestAnimationFrame(@_loop)
 
   render:->
-    addClass = if !@state.isShow then 'visibility-hidden-g' else ''
-    <Resizable className="#{@props.className or ''} #{addClass}" onResize=@_getPosition>
+    visibility = if !@state.isShow then 'hidden' else 'visible'
+    style =
+      opacity:    if !@state.isShow then 0 else 1
+      visibility: if @props.isVisibilityToggle then visibility else null
+    <Resizable  className="#{@props.className or ''}"
+                style=style
+                onResize=@_getPosition>
+
         {@props.children}
     </Resizable>
 

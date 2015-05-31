@@ -43,7 +43,7 @@ module.exports = React.createClass
                   </pre>
       itemButtons.push <Tappable className="code-sample__button #{showClass}" onTap=@["_show#{key}"] >{key}</Tappable>
 
-    <HeftyContent>
+    <HeftyContent isVisibilityToggle={true}>
       <div className="code-sample">
         <div className="code-sample__syntax" id="js-syntax">
           <div className="code-sample__buttons">{itemButtons}</div>
