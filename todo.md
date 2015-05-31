@@ -1,6 +1,5 @@
 # todo
 
-- add pages transition
-- sketch tutorials page
+- sketch tutorials page responsive
 - fix features copy
 - fix motion lettering
