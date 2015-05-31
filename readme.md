@@ -1,6 +1,4 @@
-# mo · js website repo
-
-mojs: https://github.com/legomushroom/mojs
+# mo · js website branch
 
 The MIT License (MIT)
 
