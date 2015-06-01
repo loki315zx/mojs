@@ -13,11 +13,13 @@
   nw        0
   &.is-show-menu
     {el}__link
-      transform   rotateY(0)
+      transform   rotateY(0) translateZ(0)
       transition  all .3s ease-out
+    {el}__links-inner
       for i in 1..5
         &:nth-of-type({i})
-          transition-delay (i*.07)s
+          {el}__link
+            transition-delay (i*.07)s
     {el}__links
       opacity     1
       top         55*PX

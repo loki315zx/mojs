@@ -14,7 +14,15 @@ Header = React.createClass
   getInitialState:->
     Router.HistoryLocation.addChangeListener (route)=> @setState 'page': route.path
     {}
-  toggleMobileMenu:-> @setState isShowMenu: !@state.isShowMenu
+  _toggleMobileMenu:-> @setState isShowMenu: !@state.isShowMenu
+  _onTap:(e)->
+    isLink = e.target.classList.contains('link')
+    isLinkParent = e.target.parentNode.classList.contains('link')
+    setTimeout =>
+      @_toggleMobileMenu() if isLink or isLinkParent
+    , 100
+    e
+
   render:->
     headerClass = if @state.isShowMenu then 'is-show-menu' else ''
     btnClass    = if @state.isShowMenu then 'is-open'      else ''
@@ -22,7 +30,7 @@ Header = React.createClass
       when '/tutorials' then 'is-tuts'
       else ''
 
-    <div className="header #{headerClass} #{headerColor}">  
+    <Tapable className="header #{headerClass} #{headerColor}" onTap=@_onTap>  
       <Headroom>
         <Link to="app" className="header__logo-link">
           <Icon className="header__logo" path="mojs-loop" />
@@ -51,12 +59,12 @@ Header = React.createClass
               className="header__link button--orange"> Download </UniteLink>
           </div>
         </div>
-        <Tapable className="sandwich-menu header__sandwich-menu #{btnClass}" onTap=@toggleMobileMenu>
+        <Tapable className="sandwich-menu header__sandwich-menu #{btnClass}" onTap=@_toggleMobileMenu>
           <div className="sandwich-menu__bg"></div>
           <div className="sandwich-menu__line sandwich-menu__line--top"></div>
           <div className="sandwich-menu__line sandwich-menu__line--bottom"></div>
         </Tapable>
       </Headroom>
-    </div>
+    </Tapable>
 
 module.exports = Header
