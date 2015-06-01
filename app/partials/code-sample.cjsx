@@ -46,7 +46,7 @@ module.exports = React.createClass
     <div className="code-sample">
       <div className="code-sample__syntax" id="js-syntax">
         <div className="code-sample__buttons">{itemButtons}</div>
-        {items}
+        <div className="code-sample__codes">{items}</div>
       </div>
       <div className="code-sample__pen">
         <HeftyContent isVisibilityToggle={true}>

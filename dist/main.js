@@ -1264,7 +1264,9 @@
 	      "id": "js-syntax"
 	    }, React.createElement("div", {
 	      "className": "code-sample__buttons"
-	    }, itemButtons), items), React.createElement("div", {
+	    }, itemButtons), React.createElement("div", {
+	      "className": "code-sample__codes"
+	    }, items)), React.createElement("div", {
 	      "className": "code-sample__pen"
 	    }, React.createElement(HeftyContent, {
 	      "isVisibilityToggle": true
@@ -4301,7 +4303,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(230)();
-	exports.push([module.id, ".code-sample__syntax {\n  border: 0.125rem solid #4e214d;\n  border-bottom: 0;\n  border-top-left-radius: 0.25rem;\n  border-top-right-radius: 0.25rem;\n  position: relative;\n  height: 12.125rem;\n}\n.code-sample__syntax .line-numbers {\n  display: none;\n}\n.code-sample__syntax .line-numbers.is-show {\n  display: block;\n}\n.code-sample__buttons {\n  position: absolute;\n  z-index: 1;\n  right: 0;\n}\n.code-sample__button {\n  text-align: center;\n  line-height: 1.875rem;\n  float: left;\n  cursor: pointer;\n  color: rgba(255,255,255,0.2);\n  height: 1.875rem;\n  width: 3.125rem;\n  font-size: 0.875rem;\n}\n.code-sample__button:hover,\n.code-sample__button.is-show {\n  background: #4e214d;\n  color: inherit;\n}\n.code-sample__button.is-show {\n  cursor: default;\n}\n.code-sample__code {\n  padding-top: 1.25rem;\n  padding-bottom: 1.5625rem;\n  padding-left: 1.5625rem;\n  background: rgba(58,8,57,0.6);\n  font-size: 0.9375rem;\n}\n.code-sample__code .line-numbers-rows {\n  padding-top: 1.25rem;\n  padding-bottom: 1.25rem;\n  font-size: 0.875rem;\n  line-height: 1.5;\n  background: #4e214d;\n}\n.code-sample__code .line-numbers-rows > span {\n  opacity: 0.5;\n  margin-right: 0.75rem;\n}\n.code-sample__pen {\n  margin-left: -0.0625rem;\n  height: 20.625rem;\n}\n", ""]);
+	exports.push([module.id, ".code-sample__syntax {\n  border: 0.125rem solid #4e214d;\n  border-bottom: 0;\n  border-top-left-radius: 0.25rem;\n  border-top-right-radius: 0.25rem;\n  position: relative;\n  height: 12.125rem;\n}\n.code-sample__syntax .line-numbers {\n  display: none;\n}\n.code-sample__syntax .line-numbers.is-show {\n  display: block;\n}\n.code-sample__buttons {\n  position: absolute;\n  z-index: 1;\n  right: 0;\n}\n@media all and (max-width: 640px) {\n  .code-sample__buttons {\n    width: 100%;\n    padding-left: 2.3125rem;\n  }\n}\n.code-sample__button {\n  text-align: center;\n  line-height: 1.875rem;\n  float: left;\n  cursor: pointer;\n  color: rgba(255,255,255,0.2);\n  height: 1.875rem;\n  width: 3.125rem;\n  font-size: 0.875rem;\n  z-index: 2;\n}\n.code-sample__button:hover,\n.code-sample__button.is-show {\n  background: #4e214d;\n  color: inherit;\n}\n.code-sample__button.is-show {\n  cursor: default;\n}\n@media all and (max-width: 640px) {\n  .code-sample__button {\n    width: 33.333333333333336%;\n  }\n}\n.code-sample__code {\n  padding-top: 1.25rem;\n  padding-bottom: 1.5625rem;\n  padding-left: 1.5625rem;\n  background: rgba(58,8,57,0.6);\n  font-size: 0.9375rem;\n}\n@media all and (max-width: 640px) {\n  .code-sample__code {\n    padding-top: 2.8125rem;\n  }\n}\n.code-sample__code .line-numbers-rows {\n  padding-top: 1.25rem;\n  padding-bottom: 1.25rem;\n  font-size: 0.875rem;\n  line-height: 1.5;\n  background: #4e214d;\n}\n@media all and (max-width: 640px) {\n  .code-sample__code .line-numbers-rows {\n    padding-top: 2.8125rem;\n  }\n}\n.code-sample__code .line-numbers-rows > span {\n  opacity: 0.5;\n  margin-right: 0.75rem;\n}\n.code-sample__codes {\n  overflow-x: auto;\n  z-index: 1;\n}\n.code-sample__pen {\n  margin-left: -0.0625rem;\n  height: 20.625rem;\n}\n", ""]);
 
 /***/ },
 /* 78 */
