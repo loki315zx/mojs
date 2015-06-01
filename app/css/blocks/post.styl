@@ -12,24 +12,43 @@
     opacity         .5
     margin-top      .8*gs
   &__paragraph
-    line-height     30*PX
+    line-height     1.9
     text-align      justify
     & + {el}__paragraph
-      margin-top    2*gs
+      margin-top    1*gs
+    +mobile()
+      line-height   1.5
+      text-align    left
   &__orx-line
     margin          3.5*gs 0 3*gs
+    +mobile()
+      margin        1.5*gs 0 1*gs
   &__last-orx-line
     margin-top      9*gs
     margin-bottom   0
     max-width       40*gs
     fly()
+    +mobile()
+      margin-top     5*gs
   &__social-networks-about
     margin          9.5*gs auto 0
+    +mobile()
+      margin        6.5*gs auto 0
   &__comments
     margin-top      11*gs
+    +mobile()
+      margin-top    7*gs
   .post-image
     margin          5*gs auto
+    +mobile()
+      margin        3*gs auto
   .cite
     margin          5*gs auto 8*gs
+    +mobile()
+      margin        3*gs 0 6*gs
+      line-height   1.5
   .code-sample
     margin          3.5*gs 0
+    +mobile()
+      margin        2.5*gs 0 3.5*gs
+    
