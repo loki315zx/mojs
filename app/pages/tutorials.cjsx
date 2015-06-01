@@ -4,20 +4,30 @@ Router = require 'react-router'
 Sidebar         = require '../partials/tutorials-sidebar'
 TransitionGroup = require '../partials/transition-group'
 require '../css/pages/tutorials-page'
+Sticky          = require 'react-sticky'
+Tappable        = require 'react-tappable'
 
 # transition = null
 module.exports = React.createClass
   contextTypes: router: React.PropTypes.func
-  # statics:      willTransitionTo:(trans)-> transition = trans
+  getInitialState:-> {isSidebarOpen: false}
+  _toggleSidebar:-> @setState isSidebarOpen: !@state.isSidebarOpen
+
   componentDidMount:->
     if @context.router.getCurrentPath() is '/tutorials'
       setTimeout =>
         @context.router.transitionTo('/tutorials/getting-started')
       , 150
   render: ()->
+    sidebarClass = if @state.isSidebarOpen then 'is-open' else ''
     name = @context.router.getCurrentPath()
     <div className="page tutorials-page">
-      <div className="tutorials-page__sidebar"> <Sidebar /> </div>
+      <Sticky className="tutorials-page__sticky-sidebar">
+        <div className="tutorials-page__sidebar #{sidebarClass}">
+          <Tappable className="tutorials-sidebar__expand-btn" onTap=@_toggleSidebar></Tappable>
+          <Sidebar />
+        </div>
+      </Sticky>
       <div className="tutorials-page__content">
         <TransitionGroup isFade={true}>
           <RouteHandler  key={name} />

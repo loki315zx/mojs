@@ -8,6 +8,8 @@ cl-semi-orange = rgba(c-orange, .5)
   width             17.5*gs
   font-size         16*PX
   letter-spacing    PX
+  height            100%
+  // overflow-y        auto
   &__header
     color           c-orange
     margin-bottom   .5*gs
@@ -25,6 +27,14 @@ cl-semi-orange = rgba(c-orange, .5)
     margin-left     3.5*gs
     margin-top      4.5*gs
     transform       scale(.85)
+  &__expand-btn
+    background      white
+    position        absolute
+    right          -2*gs
+    background      c-orange
+    cursor          pointer
+    circle          4*gs
+      
   .orx-line
     position        relative
     top             .6*gs

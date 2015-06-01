@@ -31,16 +31,28 @@ sidebarWidth = 20
   &__sidebar
     width         sidebarWidth*gs
     float         left
-    min-height    100%
+    position      absolute
+    left          2.5*gs
+    // position      fixed
+    // height    100%
     @media all and (max-width: 1150px)
       width       (sidebarWidth + 1)*gs
     @media all and (max-width: 1100px)
-      position      absolute
-      z-index       10
-      left          0
-      padding-left  3.5*gs
-      background    rgba(c-purple, .9)
+      position        absolute
+      z-index         10
+      left            .5*gs
+      padding-left    3.5*gs
+      background      rgba(c-purple, .9)
+      padding-top     5*gs
+      padding-bottom  5*gs
       transform     translateX(-100%)
+      &.is-open
+        transform   translateX(0)
+  .sticky
+    position    fixed
+    bottom      0
+    z-index     10
+    overflow-y  auto
   .tutorials-sidebar
     fly()
   .post

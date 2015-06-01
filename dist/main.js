@@ -338,7 +338,7 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Link, React, Route, RouteHandler, Router, Sidebar, TransitionGroup;
+	var Link, React, Route, RouteHandler, Router, Sidebar, Sticky, Tappable, TransitionGroup;
 
 	React = __webpack_require__(7);
 
@@ -352,9 +352,23 @@
 
 	__webpack_require__(28);
 
+	Sticky = __webpack_require__(335);
+
+	Tappable = __webpack_require__(104);
+
 	module.exports = React.createClass({
 	  contextTypes: {
 	    router: React.PropTypes.func
+	  },
+	  getInitialState: function() {
+	    return {
+	      isSidebarOpen: false
+	    };
+	  },
+	  _toggleSidebar: function() {
+	    return this.setState({
+	      isSidebarOpen: !this.state.isSidebarOpen
+	    });
 	  },
 	  componentDidMount: function() {
 	    if (this.context.router.getCurrentPath() === '/tutorials') {
@@ -366,13 +380,19 @@
 	    }
 	  },
 	  render: function() {
-	    var name;
+	    var name, sidebarClass;
+	    sidebarClass = this.state.isSidebarOpen ? 'is-open' : '';
 	    name = this.context.router.getCurrentPath();
 	    return React.createElement("div", {
 	      "className": "page tutorials-page"
+	    }, React.createElement(Sticky, {
+	      "className": "tutorials-page__sticky-sidebar"
 	    }, React.createElement("div", {
-	      "className": "tutorials-page__sidebar"
-	    }, " ", React.createElement(Sidebar, null), " "), React.createElement("div", {
+	      "className": "tutorials-page__sidebar " + sidebarClass
+	    }, React.createElement(Tappable, {
+	      "className": "tutorials-sidebar__expand-btn",
+	      "onTap": this._toggleSidebar
+	    }), React.createElement(Sidebar, null))), React.createElement("div", {
 	      "className": "tutorials-page__content"
 	    }, React.createElement(TransitionGroup, {
 	      "isFade": true
@@ -1012,7 +1032,7 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Link, ORXLine, React, Route, RouteHandler, Router, SocialNetworks, UniteLink;
+	var Link, ORXLine, React, Route, RouteHandler, Router, SocialNetworks, Sticky, UniteLink;
 
 	React = __webpack_require__(7);
 
@@ -1026,10 +1046,13 @@
 
 	ORXLine = __webpack_require__(19);
 
+	Sticky = __webpack_require__(335);
+
 	__webpack_require__(67);
 
 	module.exports = React.createClass({
 	  render: function() {
+	    this;
 	    return React.createElement("div", {
 	      "className": "tutorials-sidebar"
 	    }, React.createElement("div", {
@@ -1644,7 +1667,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(230)();
-	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(297)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  padding-left: 4.6875rem;\n  padding-top: 11.5625rem;\n  padding-bottom: 8.75rem;\n  overflow: hidden;\n  width: 100%;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page {\n    padding-left: 2.1875rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page {\n    padding-left: 0;\n  }\n}\n@media all and (max-width: 900px) {\n  .tutorials-page {\n    padding-left: 2.5rem;\n    padding-right: 2.5rem;\n  }\n}\n@media all and (max-width: 640px) {\n  .tutorials-page {\n    padding-left: 1.25rem;\n    padding-right: 1.25rem;\n    padding-top: 5.625rem;\n    padding-bottom: 3.125rem;\n  }\n}\n.tutorials-page__content {\n  position: relative;\n  margin-left: 12.5rem;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page__content {\n    margin-left: 10.625rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page__content {\n    margin-left: 0;\n  }\n}\n.tutorials-page__sidebar {\n  width: 12.5rem;\n  float: left;\n  min-height: 100%;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page__sidebar {\n    width: 13.125rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page__sidebar {\n    position: absolute;\n    z-index: 10;\n    left: 0;\n    padding-left: 2.1875rem;\n    background: rgba(58,8,57,0.9);\n    -webkit-transform: translateX(-100%);\n        -ms-transform: translateX(-100%);\n            transform: translateX(-100%);\n  }\n}\n.tutorials-page .tutorials-sidebar {\n  margin-left: auto;\n  margin-right: auto;\n}\n.tutorials-page .post {\n  max-width: 50rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n", ""]);
+	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(297)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  padding-left: 4.6875rem;\n  padding-top: 11.5625rem;\n  padding-bottom: 8.75rem;\n  overflow: hidden;\n  width: 100%;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page {\n    padding-left: 2.1875rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page {\n    padding-left: 0;\n  }\n}\n@media all and (max-width: 900px) {\n  .tutorials-page {\n    padding-left: 2.5rem;\n    padding-right: 2.5rem;\n  }\n}\n@media all and (max-width: 640px) {\n  .tutorials-page {\n    padding-left: 1.25rem;\n    padding-right: 1.25rem;\n    padding-top: 5.625rem;\n    padding-bottom: 3.125rem;\n  }\n}\n.tutorials-page__content {\n  position: relative;\n  margin-left: 12.5rem;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page__content {\n    margin-left: 10.625rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page__content {\n    margin-left: 0;\n  }\n}\n.tutorials-page__sidebar {\n  width: 12.5rem;\n  float: left;\n  position: absolute;\n  left: 1.5625rem;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page__sidebar {\n    width: 13.125rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page__sidebar {\n    position: absolute;\n    z-index: 10;\n    left: 0.3125rem;\n    padding-left: 2.1875rem;\n    background: rgba(58,8,57,0.9);\n    padding-top: 3.125rem;\n    padding-bottom: 3.125rem;\n    -webkit-transform: translateX(-100%);\n        -ms-transform: translateX(-100%);\n            transform: translateX(-100%);\n  }\n  .tutorials-page__sidebar.is-open {\n    -webkit-transform: translateX(0);\n        -ms-transform: translateX(0);\n            transform: translateX(0);\n  }\n}\n.tutorials-page .sticky {\n  position: fixed;\n  bottom: 0;\n  z-index: 10;\n  overflow-y: auto;\n}\n.tutorials-page .tutorials-sidebar {\n  margin-left: auto;\n  margin-right: auto;\n}\n.tutorials-page .post {\n  max-width: 50rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n", ""]);
 
 /***/ },
 /* 30 */
@@ -4001,7 +4024,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(230)();
-	exports.push([module.id, ".shapes {\n  width: 4rem;\n  height: 0.875rem;\n  background: url("+__webpack_require__(299)+");\n}\n.tutorials-sidebar {\n  position: relative;\n  text-align: left;\n  width: 10.9375rem;\n  font-size: 1rem;\n  letter-spacing: 0.0625rem;\n}\n.tutorials-sidebar__header {\n  color: #f64040;\n  margin-bottom: 0.3125rem;\n}\n.tutorials-sidebar__content {\n  border-right: 0.0625rem solid rgba(246,64,64,0.5);\n}\n.tutorials-sidebar__link {\n  color: #f1e2e2;\n  text-decoration: none;\n}\n.tutorials-sidebar__section {\n  padding-bottom: 2.1875rem;\n}\n.tutorials-sidebar__section .tutorials-sidebar__link {\n  margin-top: 0.9375rem;\n  width: 100%;\n}\n.tutorials-sidebar__social-networks {\n  margin-left: 2.1875rem;\n  margin-top: 2.8125rem;\n  -webkit-transform: scale(0.85);\n      -ms-transform: scale(0.85);\n          transform: scale(0.85);\n}\n.tutorials-sidebar .orx-line {\n  position: relative;\n  top: 0.375rem;\n}\n.tutorials-sidebar .link__underline {\n  background: #f64040;\n  top: 0.5625rem;\n  left: -1.25rem;\n  border-radius: 50%;\n  width: 0.25rem;\n  height: 0.25rem;\n}\n", ""]);
+	exports.push([module.id, ".shapes {\n  width: 4rem;\n  height: 0.875rem;\n  background: url("+__webpack_require__(299)+");\n}\n.tutorials-sidebar {\n  position: relative;\n  text-align: left;\n  width: 10.9375rem;\n  font-size: 1rem;\n  letter-spacing: 0.0625rem;\n  height: 100%;\n}\n.tutorials-sidebar__header {\n  color: #f64040;\n  margin-bottom: 0.3125rem;\n}\n.tutorials-sidebar__content {\n  border-right: 0.0625rem solid rgba(246,64,64,0.5);\n}\n.tutorials-sidebar__link {\n  color: #f1e2e2;\n  text-decoration: none;\n}\n.tutorials-sidebar__section {\n  padding-bottom: 2.1875rem;\n}\n.tutorials-sidebar__section .tutorials-sidebar__link {\n  margin-top: 0.9375rem;\n  width: 100%;\n}\n.tutorials-sidebar__social-networks {\n  margin-left: 2.1875rem;\n  margin-top: 2.8125rem;\n  -webkit-transform: scale(0.85);\n      -ms-transform: scale(0.85);\n          transform: scale(0.85);\n}\n.tutorials-sidebar__expand-btn {\n  background: #fff;\n  position: absolute;\n  right: -1.25rem;\n  background: #f64040;\n  cursor: pointer;\n  border-radius: 50%;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.tutorials-sidebar .orx-line {\n  position: relative;\n  top: 0.375rem;\n}\n.tutorials-sidebar .link__underline {\n  background: #f64040;\n  top: 0.5625rem;\n  left: -1.25rem;\n  border-radius: 50%;\n  width: 0.25rem;\n  height: 0.25rem;\n}\n", ""]);
 
 /***/ },
 /* 69 */
@@ -33370,6 +33393,95 @@
 	module.exports = toArray;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(143)))
+
+/***/ },
+/* 335 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(336);
+
+
+/***/ },
+/* 336 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(7);
+
+	var Sticky = React.createClass({
+
+	  getDefaultProps: function() {
+	    return {
+	      type: React.DOM.div,
+	      stickyClass: 'sticky',
+	      stickyStyle: {
+	        position: 'fixed',
+	        top: 0,
+	        left: 0,
+	        right: 0
+	      },
+	      onStickyStateChange: function () {}
+	    };
+	  },
+
+	  getInitialState: function() {
+	    return {
+	      style: {}
+	    };
+	  },
+
+	  reset: function() {
+	    var html = document.documentElement;
+	    var body = document.body;
+	    var windowOffset = window.pageYOffset || (html.clientHeight ? html : body).scrollTop;
+
+	    this.elementOffset = this.getDOMNode().getBoundingClientRect().top + windowOffset;
+	  },
+
+	  handleEvent: function() {
+	    var wasSticky = this.state.isSticky;
+	    var isSticky = window.pageYOffset > this.elementOffset;
+	    var nextState = { isSticky: isSticky };
+	    if (isSticky) {
+	      nextState.style = this.props.stickyStyle;
+	      nextState.className = this.props.stickyClass;
+	    } else {
+	      nextState.style = {};
+	      nextState.className = '';
+	    }
+	    this.setState(nextState);
+	    if (isSticky !== wasSticky) {
+	      this.props.onStickyStateChange(isSticky);
+	    }
+	  },
+
+	  componentDidMount: function() {
+	    this.reset();
+	    window.addEventListener('load', this.handleEvent);
+	    window.addEventListener('scroll', this.handleEvent);
+	    window.addEventListener('resize', this.handleEvent);
+	  },
+
+	  componentWillUnmount: function() {
+	    window.removeEventListener('load', this.handleEvent);
+	    window.removeEventListener('scroll', this.handleEvent);
+	    window.removeEventListener('resize', this.handleEvent);
+	  },
+
+	  shouldComponentUpdate: function() {
+	    return this.state.isSticky !== this.lastState.isSticky;
+	  },
+
+	  render: function() {
+	    this.lastState = this.state;
+	    return this.props.type({
+	      style: this.state.style,
+	      className: this.state.className
+	    }, this.props.children);
+	  }
+	});
+
+	module.exports = Sticky;
+
 
 /***/ }
 /******/ ]);
