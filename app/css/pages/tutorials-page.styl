@@ -24,34 +24,41 @@ sidebarWidth = 20
   &__content
     position      relative
     margin-left   sidebarWidth*gs
-    @media all and (max-width: 1150px)
+    @media all and (max-width: 1170px)
       margin-left (sidebarWidth - 3)*gs
-    @media all and (max-width: 1100px)
+    @media all and (max-width: 1120px)
       margin-left  0
   &__sidebar
     width         sidebarWidth*gs
-    float         left
     position      absolute
-    left          2.5*gs
-    // position      fixed
-    // height    100%
-    @media all and (max-width: 1150px)
+    left          6%
+    @media all and (max-width: 1170px)
       width       (sidebarWidth + 1)*gs
-    @media all and (max-width: 1100px)
-      position        absolute
-      z-index         10
-      left            .5*gs
+      left        3%
+    @media all and (max-width: 1120px)
+      left            0*gs
       padding-left    3.5*gs
-      background      rgba(c-purple, .9)
+      background      rgba(c-purple, .95)
       padding-top     5*gs
       padding-bottom  5*gs
-      transform     translateX(-100%)
+      z-index         10
+      // box-shadow      gs 5*gs 0 rgba(0,0,0,.2)
+      transition      transform .3s ease-out
+      // transform       translateX(-100%)
+      &:after
+        content       ''
+        position      absolute
+        right       - gs
+        top           5.5*gs
+        bottom        0
+        width         gs
+        background    rgba(0,0,0,.2)
       &.is-open
         transform   translateX(0)
   .sticky
-    position    fixed
-    bottom      0
     z-index     10
+    bottom      0
+    // height      100%
     overflow-y  auto
   .tutorials-sidebar
     fly()

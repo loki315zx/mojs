@@ -24,7 +24,7 @@ module.exports = React.createClass
     <div className="page tutorials-page">
       <Sticky className="tutorials-page__sticky-sidebar">
         <div className="tutorials-page__sidebar #{sidebarClass}">
-          <Tappable className="tutorials-sidebar__expand-btn" onTap=@_toggleSidebar></Tappable>
+          {#<Tappable className="tutorials-sidebar__expand-btn" onTap=@_toggleSidebar></Tappable>}
           <Sidebar />
         </div>
       </Sticky>
