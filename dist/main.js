@@ -381,15 +381,20 @@
 	  },
 	  render: function() {
 	    var name, sidebarClass;
-	    sidebarClass = this.state.isSidebarOpen ? 'is-open' : '';
+	    sidebarClass = this.state.isSidebarOpen ? 'is-sidebar-open' : '';
 	    name = this.context.router.getCurrentPath();
 	    return React.createElement("div", {
-	      "className": "page tutorials-page"
+	      "className": "page tutorials-page " + sidebarClass
 	    }, React.createElement(Sticky, {
 	      "className": "tutorials-page__sticky-sidebar"
 	    }, React.createElement("div", {
-	      "className": "tutorials-page__sidebar " + sidebarClass
-	    }, React.createElement(Sidebar, null))), React.createElement("div", {
+	      "className": "tutorials-page__sidebar"
+	    }, React.createElement(Tappable, {
+	      "className": "tutorials-page__expand-btn",
+	      "onTap": this._toggleSidebar
+	    }), React.createElement("div", {
+	      "className": "tutorials-page__sidebar-scroll"
+	    }, React.createElement(Sidebar, null)))), React.createElement("div", {
 	      "className": "tutorials-page__content"
 	    }, React.createElement(TransitionGroup, {
 	      "isFade": true
@@ -1249,6 +1254,9 @@
 	    this._loadPen();
 	    return this.componentDidUpdate();
 	  },
+	  shouldComponentUpdate: function(nextProps, nextState) {
+	    return this.state.show !== nextState.show;
+	  },
 	  componentDidUpdate: function() {
 	    var activeEl, node, syntax, timeline, tween;
 	    node = this.getDOMNode();
@@ -1664,7 +1672,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(230)();
-	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(297)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  padding-left: 4.6875rem;\n  padding-top: 11.5625rem;\n  padding-bottom: 8.75rem;\n  overflow: hidden;\n  width: 100%;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page {\n    padding-left: 2.1875rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page {\n    padding-left: 0;\n  }\n}\n@media all and (max-width: 900px) {\n  .tutorials-page {\n    padding-left: 2.5rem;\n    padding-right: 2.5rem;\n  }\n}\n@media all and (max-width: 640px) {\n  .tutorials-page {\n    padding-left: 1.25rem;\n    padding-right: 1.25rem;\n    padding-top: 5.625rem;\n    padding-bottom: 3.125rem;\n  }\n}\n.tutorials-page__content {\n  position: relative;\n  margin-left: 12.5rem;\n}\n@media all and (max-width: 1170px) {\n  .tutorials-page__content {\n    margin-left: 10.625rem;\n  }\n}\n@media all and (max-width: 1120px) {\n  .tutorials-page__content {\n    margin-left: 0;\n  }\n}\n.tutorials-page__sidebar {\n  width: 12.5rem;\n  position: absolute;\n  left: 6%;\n}\n@media all and (max-width: 1170px) {\n  .tutorials-page__sidebar {\n    width: 13.125rem;\n    left: 3%;\n  }\n}\n@media all and (max-width: 1120px) {\n  .tutorials-page__sidebar {\n    left: 0rem;\n    padding-left: 2.1875rem;\n    background: rgba(58,8,57,0.95);\n    padding-top: 3.125rem;\n    padding-bottom: 3.125rem;\n    z-index: 10;\n    -webkit-transition: -webkit-transform 0.3s ease-out;\n            transition: transform 0.3s ease-out;\n  }\n  .tutorials-page__sidebar:after {\n    content: '';\n    position: absolute;\n    right: -0.625rem;\n    top: 3.4375rem;\n    bottom: 0;\n    width: 0.625rem;\n    background: rgba(0,0,0,0.2);\n  }\n  .tutorials-page__sidebar.is-open {\n    -webkit-transform: translateX(0);\n        -ms-transform: translateX(0);\n            transform: translateX(0);\n  }\n}\n.tutorials-page .sticky {\n  z-index: 10;\n  bottom: 0;\n  overflow-y: auto;\n}\n.tutorials-page .tutorials-sidebar {\n  margin-left: auto;\n  margin-right: auto;\n}\n.tutorials-page .post {\n  max-width: 50rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n", ""]);
+	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(297)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  padding-left: 4.6875rem;\n  padding-top: 11.5625rem;\n  padding-bottom: 8.75rem;\n  overflow: hidden;\n  width: 100%;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page {\n    padding-left: 2.1875rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page {\n    padding-left: 0;\n  }\n}\n@media all and (max-width: 900px) {\n  .tutorials-page {\n    padding-left: 2.5rem;\n    padding-right: 2.5rem;\n  }\n}\n@media all and (max-width: 640px) {\n  .tutorials-page {\n    padding-left: 1.25rem;\n    padding-right: 1.25rem;\n    padding-top: 5.625rem;\n    padding-bottom: 3.125rem;\n  }\n}\n.tutorials-page.is-sidebar-open .tutorials-page__sidebar {\n  -webkit-transform: translateX(0) translateZ(0);\n          transform: translateX(0) translateZ(0);\n}\n.tutorials-page.is-sidebar-open .tutorials-page__sidebar:before {\n  opacity: 1;\n}\n.tutorials-page__content {\n  position: relative;\n  margin-left: 12.5rem;\n}\n@media all and (max-width: 1170px) {\n  .tutorials-page__content {\n    margin-left: 10.625rem;\n  }\n}\n@media all and (max-width: 1120px) {\n  .tutorials-page__content {\n    margin-left: 0;\n  }\n}\n.tutorials-page__sidebar-scroll {\n  height: 100%;\n  overflow-y: auto;\n  position: absolute;\n  top: 0;\n  padding-bottom: 2.5rem;\n}\n.sticky .tutorials-page__sidebar-scroll {\n  padding-top: 1.25rem;\n}\n.tutorials-page__sidebar {\n  width: 12.5rem;\n  position: absolute;\n  left: 6%;\n  height: 100%;\n}\n@media all and (max-width: 1170px) {\n  .tutorials-page__sidebar {\n    width: 13.125rem;\n    left: 3%;\n  }\n}\n@media all and (max-width: 1120px) {\n  .tutorials-page__sidebar {\n    left: 0rem;\n    padding-left: 2.1875rem;\n    background: rgba(58,8,57,0.95);\n    padding-bottom: 3.125rem;\n    z-index: 10;\n    -webkit-transition: -webkit-transform 0.3s ease-out;\n            transition: transform 0.3s ease-out;\n    -webkit-transform: translateX(-100%) translateZ(0);\n            transform: translateX(-100%) translateZ(0);\n  }\n  .tutorials-page__sidebar:before {\n    content: '';\n    position: absolute;\n    top: 2.5rem;\n    right: -0.625rem;\n    height: 100%;\n    width: 0.625rem;\n    opacity: 0;\n    -webkit-transition: opacity 0.3s ease-out;\n            transition: opacity 0.3s ease-out;\n    background: rgba(0,0,0,0.2);\n  }\n}\n.tutorials-page__expand-btn {\n  position: fixed;\n  top: 0.875rem;\n  right: -1.25rem;\n  z-index: 1;\n  cursor: pointer;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0);\n  border-radius: 50%;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.tutorials-page__expand-btn:before,\n.tutorials-page__expand-btn:after {\n  content: '';\n  position: absolute;\n  border-radius: 50%;\n  width: 100%;\n  height: 100%;\n}\n.tutorials-page__expand-btn:after {\n  background: #f64040;\n}\n.tutorials-page__expand-btn:before {\n  background: rgba(0,0,0,0.2);\n  left: 0.375rem;\n  top: 0.3125rem;\n}\n.tutorials-page__expand-btn:active:after {\n  -webkit-transform: translate3d(0.125rem, 0.125rem, 0);\n          transform: translate3d(0.125rem, 0.125rem, 0);\n}\n.tutorials-page__expand-btn:active:before {\n  -webkit-transform: translate3d(-0.125rem, -0.125rem, 0);\n          transform: translate3d(-0.125rem, -0.125rem, 0);\n}\n.tutorials-page .sticky {\n  z-index: 10;\n  bottom: 0;\n}\n.tutorials-page .tutorials-sidebar {\n  margin-left: auto;\n  margin-right: auto;\n}\n.tutorials-page .post {\n  max-width: 50rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n", ""]);
 
 /***/ },
 /* 30 */
@@ -4021,7 +4029,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(230)();
-	exports.push([module.id, ".shapes {\n  width: 4rem;\n  height: 0.875rem;\n  background: url("+__webpack_require__(299)+");\n}\n.tutorials-sidebar {\n  position: relative;\n  text-align: left;\n  width: 10.9375rem;\n  font-size: 1rem;\n  letter-spacing: 0.0625rem;\n  height: 100%;\n}\n.tutorials-sidebar__header {\n  color: #f64040;\n  margin-bottom: 0.3125rem;\n}\n.tutorials-sidebar__content {\n  border-right: 0.0625rem solid rgba(246,64,64,0.5);\n}\n.tutorials-sidebar__link {\n  color: #f1e2e2;\n  text-decoration: none;\n}\n.tutorials-sidebar__section {\n  padding-bottom: 2.1875rem;\n}\n.tutorials-sidebar__section .tutorials-sidebar__link {\n  margin-top: 0.9375rem;\n  width: 100%;\n}\n.tutorials-sidebar__social-networks {\n  margin-left: 2.1875rem;\n  margin-top: 2.8125rem;\n  -webkit-transform: scale(0.85);\n      -ms-transform: scale(0.85);\n          transform: scale(0.85);\n}\n.tutorials-sidebar__expand-btn {\n  background: #fff;\n  position: absolute;\n  right: -1.25rem;\n  background: #f64040;\n  cursor: pointer;\n  border-radius: 50%;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.tutorials-sidebar .orx-line {\n  position: relative;\n  top: 0.375rem;\n}\n.tutorials-sidebar .link__underline {\n  background: #f64040;\n  top: 0.5625rem;\n  left: -1.25rem;\n  border-radius: 50%;\n  width: 0.25rem;\n  height: 0.25rem;\n}\n", ""]);
+	exports.push([module.id, ".shapes {\n  width: 4rem;\n  height: 0.875rem;\n  background: url("+__webpack_require__(299)+");\n}\n.tutorials-sidebar {\n  position: relative;\n  text-align: left;\n  width: 10.9375rem;\n  font-size: 1rem;\n  letter-spacing: 0.0625rem;\n  height: 100%;\n}\n.tutorials-sidebar__header {\n  color: #f64040;\n  margin-bottom: 0.3125rem;\n}\n.tutorials-sidebar__content {\n  border-right: 0.0625rem solid rgba(246,64,64,0.5);\n}\n.tutorials-sidebar__link {\n  color: #f1e2e2;\n  text-decoration: none;\n}\n.tutorials-sidebar__section {\n  padding-bottom: 2.1875rem;\n}\n.tutorials-sidebar__section .tutorials-sidebar__link {\n  margin-top: 0.9375rem;\n  width: 100%;\n}\n.tutorials-sidebar__social-networks {\n  margin-left: 2.1875rem;\n  margin-top: 2.8125rem;\n  -webkit-transform: scale(0.85);\n      -ms-transform: scale(0.85);\n          transform: scale(0.85);\n}\n.tutorials-sidebar .orx-line {\n  position: relative;\n  top: 0.375rem;\n}\n.tutorials-sidebar .link__underline {\n  background: #f64040;\n  top: 0.5625rem;\n  left: -1.25rem;\n  border-radius: 50%;\n  width: 0.25rem;\n  height: 0.25rem;\n}\n", ""]);
 
 /***/ },
 /* 69 */

@@ -21,6 +21,11 @@ sidebarWidth = 20
     padding-right 2*gs
     padding-top   9*gs
     padding-bottom 5*gs
+  &.is-sidebar-open
+    {el}__sidebar
+      transform   translateX(0) translateZ(0)
+      &:before
+        opacity   1
   &__content
     position      relative
     margin-left   sidebarWidth*gs
@@ -28,10 +33,22 @@ sidebarWidth = 20
       margin-left (sidebarWidth - 3)*gs
     @media all and (max-width: 1120px)
       margin-left  0
+  &__sidebar-scroll
+    height          100%
+    overflow-y      auto
+    position        absolute
+    top             0
+    padding-bottom  4*gs
+    .sticky &
+      padding-top     2*gs
+    // bottom        0
+    // left          0
+    // right         0
   &__sidebar
     width         sidebarWidth*gs
     position      absolute
     left          6%
+    height        100%
     @media all and (max-width: 1170px)
       width       (sidebarWidth + 1)*gs
       left        3%
@@ -39,27 +56,58 @@ sidebarWidth = 20
       left            0*gs
       padding-left    3.5*gs
       background      rgba(c-purple, .95)
-      padding-top     5*gs
+      // padding-top     5*gs
       padding-bottom  5*gs
       z-index         10
       // box-shadow      gs 5*gs 0 rgba(0,0,0,.2)
       transition      transform .3s ease-out
-      // transform       translateX(-100%)
-      &:after
+      transform       translateX(-100%) translateZ(0)
+      &:before
         content       ''
         position      absolute
+        top           4*gs
         right       - gs
-        top           5.5*gs
-        bottom        0
+        height        100%
         width         gs
+        opacity       0
+        transition    opacity .3s ease-out
         background    rgba(0,0,0,.2)
-      &.is-open
-        transform   translateX(0)
+      // &:after
+      //   content       ''
+      //   width         100%
+      //   height        4*gs
+      //   background    inherit
+      //   position      absolute
+      //   left          0
+      //   bottom       -4*gs
+      //   // hl()
+  &__expand-btn
+    position        fixed
+    top             1.4*gs
+    right          -2*gs
+    z-index         1
+    cursor          pointer
+    transform       translateZ(0)
+    circle          4*gs
+    &:before,
+    &:after
+      content       ''
+      position      absolute
+      circle 100%
+    &:after
+      background    c-orange
+    &:before
+      background    rgba(0,0,0,.2)
+      left          .6*gs
+      top           .5*gs
+    &:active
+      &:after
+        transform     translate3d(2*PX, 2*PX, 0)
+      &:before
+        transform     translate3d(-2*PX, -2*PX, 0)
   .sticky
     z-index     10
     bottom      0
-    // height      100%
-    overflow-y  auto
   .tutorials-sidebar
     fly()
   .post

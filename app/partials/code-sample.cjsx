@@ -20,6 +20,7 @@ module.exports = React.createClass
 
   getInitialState:-> { show: 'js' }
   componentDidMount:-> @_loadPen(); @componentDidUpdate()
+  shouldComponentUpdate:(nextProps, nextState)-> @state.show isnt nextState.show
   componentDidUpdate:->
     node = @getDOMNode()
     activeEl = node.querySelector '.line-numbers.is-show'

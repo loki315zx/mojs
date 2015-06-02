@@ -18,14 +18,17 @@ module.exports = React.createClass
       setTimeout =>
         @context.router.transitionTo('/tutorials/getting-started')
       , 150
+
   render: ()->
-    sidebarClass = if @state.isSidebarOpen then 'is-open' else ''
+    sidebarClass = if @state.isSidebarOpen then 'is-sidebar-open' else ''
     name = @context.router.getCurrentPath()
-    <div className="page tutorials-page">
+    <div className="page tutorials-page #{sidebarClass}">
       <Sticky className="tutorials-page__sticky-sidebar">
-        <div className="tutorials-page__sidebar #{sidebarClass}">
-          {#<Tappable className="tutorials-sidebar__expand-btn" onTap=@_toggleSidebar></Tappable>}
-          <Sidebar />
+        <div className="tutorials-page__sidebar">
+          <Tappable className="tutorials-page__expand-btn" onTap=@_toggleSidebar></Tappable>
+          <div className="tutorials-page__sidebar-scroll">
+            <Sidebar />
+          </div>
         </div>
       </Sticky>
       <div className="tutorials-page__content">
