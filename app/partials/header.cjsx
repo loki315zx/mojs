@@ -23,15 +23,15 @@ Header = React.createClass
     , 100
     e
 
+  _onPin:-> console.log 'pin'
+  _onUnpin:-> console.log 'unpin'
+
   render:->
     headerClass = if @state.isShowMenu then 'is-show-menu' else ''
     btnClass    = if @state.isShowMenu then 'is-open'      else ''
-    headerColor = switch @state.page
-      when '/tutorials' then 'is-tuts'
-      else ''
 
-    <Tapable className="header #{headerClass} #{headerColor}" onTap=@_onTap>  
-      <Headroom>
+    <Tapable className="header #{headerClass}" onTap=@_onTap>  
+      <Headroom onPin=@_onPin onUnpin=@_onUnpin>
         <Link to="app" className="header__logo-link">
           <Icon className="header__logo" path="mojs-loop" />
         </Link>

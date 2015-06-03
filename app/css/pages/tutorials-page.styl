@@ -34,13 +34,10 @@ sidebarWidth = 20
     @media all and (max-width: 1120px)
       margin-left  0
   &__sidebar-scroll
-    height          100%
-    overflow-y      auto
-    position        absolute
-    top             0
-    padding-bottom  4*gs
-    .sticky &
-      padding-top     2*gs
+    height        100%
+    overflow-y    auto
+    position      absolute
+    top           0
     // bottom        0
     // left          0
     // right         0
@@ -48,7 +45,9 @@ sidebarWidth = 20
     width         sidebarWidth*gs
     position      absolute
     left          6%
-    height        100%
+    height        120%
+    z-index       headerLayer + 1
+    // padding-bottom 4*gs
     @media all and (max-width: 1170px)
       width       (sidebarWidth + 1)*gs
       left        3%
@@ -56,9 +55,8 @@ sidebarWidth = 20
       left            0*gs
       padding-left    3.5*gs
       background      rgba(c-purple, .95)
-      // padding-top     5*gs
+      padding-top     5*gs
       padding-bottom  5*gs
-      z-index         10
       // box-shadow      gs 5*gs 0 rgba(0,0,0,.2)
       transition      transform .3s ease-out
       transform       translateX(-100%) translateZ(0)
@@ -72,18 +70,18 @@ sidebarWidth = 20
         opacity       0
         transition    opacity .3s ease-out
         background    rgba(0,0,0,.2)
-      // &:after
-      //   content       ''
-      //   width         100%
-      //   height        4*gs
-      //   background    inherit
-      //   position      absolute
-      //   left          0
-      //   bottom       -4*gs
-      //   // hl()
+      &:after
+        content       ''
+        width         100%
+        height        4*gs
+        background    inherit
+        position      absolute
+        left          0
+        bottom       -4*gs
+        // hl()
   &__expand-btn
-    position        fixed
-    top             1.4*gs
+    position        absolute
+    top             2.5*gs
     right          -2*gs
     z-index         1
     cursor          pointer
@@ -106,8 +104,8 @@ sidebarWidth = 20
       &:before
         transform     translate3d(-2*PX, -2*PX, 0)
   .sticky
-    z-index     10
     bottom      0
+    z-index     21
   .tutorials-sidebar
     fly()
   .post
