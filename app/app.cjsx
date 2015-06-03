@@ -7,6 +7,7 @@ require './css/main.styl'
 
 App = React.createClass
   contextTypes: router: React.PropTypes.func
+  getInitialState:-> {}
   render:->
     name = @context.router.getCurrentPath()
     name = '/tutorials' if name.match /tutorials/

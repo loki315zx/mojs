@@ -18,7 +18,6 @@ module.exports = React.createClass
       setTimeout =>
         @context.router.transitionTo('/tutorials/getting-started')
       , 150
-
   render: ()->
     sidebarClass = if @state.isSidebarOpen then 'is-sidebar-open' else ''
     name = @context.router.getCurrentPath()
