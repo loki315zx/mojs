@@ -26,6 +26,8 @@ sidebarWidth = 20
       transform   translateX(0) translateZ(0)
       &:before
         opacity   1
+    {el}__svg-arrow
+      transform   rotateY(180deg) translate3d(1*PX, 0, 0)
   &__content
     position      relative
     margin-left   sidebarWidth*gs
@@ -82,7 +84,7 @@ sidebarWidth = 20
   &__expand-btn
     position        absolute
     top             2.5*gs
-    right          -2*gs
+    right          -4*gs
     z-index         1
     cursor          pointer
     transform       translateZ(0)
@@ -92,15 +94,19 @@ sidebarWidth = 20
     &:after
       content       ''
       position      absolute
-      circle 100%
+      height        100%
+      width         60%
+      border-top-right-radius    2*gs
+      border-bottom-right-radius 2*gs
     &:after
       background    c-orange
     &:before
       background    rgba(0,0,0,.2)
-      left          .6*gs
+      left          .8*gs
       top           .5*gs
     &:active
-      &:after
+      &:after,
+      {el}__svg-arrow
         transform   translate3d(2*PX, 2*PX, 0)
       &:before
         transform   translate3d(-2*PX, -2*PX, 0)
@@ -111,6 +117,9 @@ sidebarWidth = 20
     z-index     21
   .tutorials-sidebar
     fly()
+  &__svg-arrow
+    position    absolute
+    z-index     2
   .post
     max-width     80*gs
     fly()
