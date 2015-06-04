@@ -31,7 +31,6 @@ module.exports = React.createClass
       count:      4
       fill:       'white'
       duration:   400
-      # onUpdate:(p)-> node.style.opacity = .5 + mojs.easing.elastic.in p
       childOptions: radius: 4:0
 
   render: ()->

@@ -13,8 +13,8 @@ App = React.createClass
     name = '/tutorials' if name.match /tutorials/
     <div>
       <Header />
-      <TransitionGroup>
-        <RouteHandler  key={name} />
+      <TransitionGroup className="pages-wrapper" component="div">
+        <RouteHandler key={name} />
       </TransitionGroup>
     </div>
 
