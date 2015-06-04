@@ -18,9 +18,9 @@ Header = React.createClass
   _onTap:(e)->
     isLink = e.target.classList.contains('link')
     isLinkParent = e.target.parentNode.classList.contains('link')
-    # setTimeout =>
-    #   @_toggleMobileMenu() if isLink or isLinkParent
-    # , 100
+    setTimeout =>
+      @_toggleMobileMenu() if isLink or isLinkParent
+    , 100
     e
 
   render:->

@@ -37,12 +37,12 @@ module.exports = React.createClass
       lang = if key is 'cs' then 'coffeescript' else 'javascript'
       id   = "js-#{@props.pen}-#{key}"
       showClass = if @state.show is key then 'is-show' else ''
-      items.push  <pre className="line-numbers #{showClass}" id="#{id}" style={opacity:0}>
+      items.push  <pre className="line-numbers #{showClass}" id="#{id}" style={opacity:0} key={i}>
                     <PrismCode className="language-#{lang} code-sample__code">
                       { value }
                     </PrismCode>
                   </pre>
-      itemButtons.push <Tappable className="code-sample__button #{showClass}" onTap=@["_show#{key}"] >{key}</Tappable>
+      itemButtons.push <Tappable className="code-sample__button #{showClass}" onTap=@["_show#{key}"] key={i}>{key}</Tappable>
 
     <div className="code-sample">
       <div className="code-sample__syntax" id="js-syntax">
