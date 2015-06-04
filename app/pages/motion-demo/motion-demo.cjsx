@@ -23,7 +23,7 @@ MotionDemoComponent = React.createClass
         setTimeout ->
           it.demo = new MotionDemo
           it.demo.init()
-        , 100
+        , 1000
 
   launchDemo:-> @demo.run(); @setState isDemoLaunched: true
 

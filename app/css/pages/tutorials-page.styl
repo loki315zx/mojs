@@ -36,13 +36,13 @@ sidebarWidth = 20
     @media all and (max-width: 1120px)
       margin-left  0
   &__sidebar-scroll
-    height        100%
-    overflow-y    auto
-    position      absolute
-    top           0
-    padding-bottom 4*gs
-    // .sticky &
-    //   padding-top   4*gs
+    height          100%
+    overflow-y      auto
+    position        absolute
+    top             0
+    left            0
+    padding-bottom  4*gs
+    padding-left    3.5*gs
   &__sidebar
     width         sidebarWidth*gs
     position      absolute
@@ -50,7 +50,7 @@ sidebarWidth = 20
     height        100%
     z-index       headerLayer + 1
     // padding-bottom 4*gs
-    @media all and (max-width: 1170px)
+    @media all and (max-width: 1200px)
       width       (sidebarWidth + 1)*gs
       left        3%
     @media all and (max-width: 1120px)

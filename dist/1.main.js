@@ -1,30 +1,30 @@
 webpackJsonp([1],{
 
-/***/ 82:
+/***/ 62:
 /***/ function(module, exports, __webpack_require__) {
 
 	var Ball_1, Ball_2, Ball_3, Ball_4, Ball_5, Ball_6, Ball_7, Howl, Main, mojs,
 	  indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-	mojs = __webpack_require__(35);
+	mojs = __webpack_require__(24);
 
-	Howl = __webpack_require__(233).Howl;
+	Howl = __webpack_require__(232).Howl;
 
 	mojs.isDebug = false;
 
-	Ball_1 = __webpack_require__(147);
+	Ball_1 = __webpack_require__(146);
 
-	Ball_2 = __webpack_require__(148);
+	Ball_2 = __webpack_require__(147);
 
-	Ball_3 = __webpack_require__(149);
+	Ball_3 = __webpack_require__(148);
 
-	Ball_4 = __webpack_require__(150);
+	Ball_4 = __webpack_require__(149);
 
-	Ball_5 = __webpack_require__(151);
+	Ball_5 = __webpack_require__(150);
 
-	Ball_6 = __webpack_require__(152);
+	Ball_6 = __webpack_require__(151);
 
-	Ball_7 = __webpack_require__(153);
+	Ball_7 = __webpack_require__(152);
 
 	Main = (function() {
 	  Main.prototype.CYAN = '#11CDC5';
@@ -228,7 +228,7 @@ webpackJsonp([1],{
 	  Main.prototype.createSounds = function() {
 	    var audio, ext;
 	    ext = this.isOpera() ? 'wav' : 'mp3';
-	    audio = __webpack_require__(145)("./bells-1-half." + ext);
+	    audio = __webpack_require__(133)("./bells-1-half." + ext);
 	    return this.bells1 = new Howl({
 	      urls: [audio]
 	    });
@@ -269,12 +269,12 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 145:
+/***/ 133:
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./bells-1-half.mp3": 237,
-		"./bells-1-half.wav": 238
+		"./bells-1-half.mp3": 235,
+		"./bells-1-half.wav": 236
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -287,12 +287,12 @@ webpackJsonp([1],{
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 145;
+	webpackContext.id = 133;
 
 
 /***/ },
 
-/***/ 147:
+/***/ 146:
 /***/ function(module, exports, __webpack_require__) {
 
 	var FirstBall;
@@ -633,12 +633,12 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 148:
+/***/ 147:
 /***/ function(module, exports, __webpack_require__) {
 
 	var FirstBall, mojs;
 
-	mojs = __webpack_require__(35);
+	mojs = __webpack_require__(24);
 
 	FirstBall = (function() {
 	  function FirstBall(o) {
@@ -790,12 +790,12 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 149:
+/***/ 148:
 /***/ function(module, exports, __webpack_require__) {
 
 	var FirstBall, mojs;
 
-	mojs = __webpack_require__(35);
+	mojs = __webpack_require__(24);
 
 	FirstBall = (function() {
 	  function FirstBall(o) {
@@ -971,12 +971,12 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 150:
+/***/ 149:
 /***/ function(module, exports, __webpack_require__) {
 
 	var FirstBall, mojs;
 
-	mojs = __webpack_require__(35);
+	mojs = __webpack_require__(24);
 
 	FirstBall = (function() {
 	  function FirstBall(o) {
@@ -1130,12 +1130,12 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 151:
+/***/ 150:
 /***/ function(module, exports, __webpack_require__) {
 
 	var FirstBall, mojs;
 
-	mojs = __webpack_require__(35);
+	mojs = __webpack_require__(24);
 
 	FirstBall = (function() {
 	  function FirstBall(o) {
@@ -1300,12 +1300,12 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 152:
+/***/ 151:
 /***/ function(module, exports, __webpack_require__) {
 
 	var FirstBall, mojs;
 
-	mojs = __webpack_require__(35);
+	mojs = __webpack_require__(24);
 
 	FirstBall = (function() {
 	  function FirstBall(o) {
@@ -1476,7 +1476,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 153:
+/***/ 152:
 /***/ function(module, exports, __webpack_require__) {
 
 	var Ball;
@@ -1629,7 +1629,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 233:
+/***/ 232:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -2989,14 +2989,14 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 237:
+/***/ 235:
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "bells-1-half-e45b50c2940f8d172fd23f0bbb052aaf.mp3"
 
 /***/ },
 
-/***/ 238:
+/***/ 236:
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "bells-1-half-e11514483e57cf209b142f9d19811557.wav"
