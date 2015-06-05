@@ -4,12 +4,10 @@ Router = require 'react-router'
 UniteLink      = require './unite-link'
 SocialNetworks = require './social-networks'
 ORXLine        = require './orx-line'
-Sticky         = require 'react-sticky'
 
 require '../css/partials/tutorials-sidebar'
 module.exports = React.createClass
   render: ()->
-    @
     <div className="tutorials-sidebar">
       <div className="tutorials-sidebar__content">
         <div className="tutorials-sidebar__section">

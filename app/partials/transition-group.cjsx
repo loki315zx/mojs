@@ -13,7 +13,8 @@ TransitionGroupChild = React.createClass
         onStart:->
           node.style['z-index'] = 1
           node.style.opacity    = 1
-        onComplete: done
+        onComplete:->
+          mojs.h.setPrefixedStyle(node, 'transform', 'none'); done()
         onUpdate:(p)=>
           p = mojs.easing.cubic.inout(p)
           transform = "translateX(#{100*(1-p)}%) translateZ(0)"
