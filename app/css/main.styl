@@ -22,6 +22,14 @@ html, body
 .touchable
   &:active
     transform   translate(0, 2*PX)
+    &:after
+      transform   translate(0, -2*PX)
+  &:after
+    content     ''
+    position    absolute
+    opacity     .5
+    nw          -20%
+    rect        140%
   
 // CLEARFIX
 .cf:after,
