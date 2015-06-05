@@ -5,6 +5,7 @@ Sidebar         = require '../partials/tutorials-sidebar'
 TransitionGroup = require '../partials/transition-group'
 require '../css/pages/tutorials-page'
 Sticky          = require '../vendor/react-sticky'
+Physics         = require('impulse')
 # Sticky          = require 'react-sticky'
 Tappable        = require 'react-tappable'
 mojs            = require 'mo-js'
@@ -16,11 +17,37 @@ module.exports = React.createClass
   _toggleSidebar:-> @setState isSidebarOpen: !@state.isSidebarOpen
 
   componentDidMount:->
-    if @context.router.getCurrentPath() is '/tutorials'
-      setTimeout =>
-        @context.router.transitionTo('/tutorials/getting-started')
-      , 150
+    @_redirect(); @_showBurst(); @_addImpulse()
 
+  _addImpulse:->
+    node       = @getDOMNode()
+    sidebarBtn = node.querySelector '#js-expand-btn'
+    sidebar    = node.querySelector '#js-sidebar'
+    isOpen     = false
+    this.sidebarWidth = sidebar.offsetWidth
+    boundary = new Physics.Boundary
+      left: -this.sidebarWidth, right: 0, top: 0, bottom: 0
+
+    @impulseMenu = new Physics(sidebar)
+      .style 'translateX', (x, y)-> return "#{x}px"
+
+    drag = @impulseMenu.drag
+      handle: sidebar, boundary: boundary, direction: 'horizontal'
+
+    it = @
+    end = ->
+      if it.impulseMenu.direction('left') then it._showSidebar()
+      else it._hideSidebar()
+    drag.on('end', end)
+
+  _showSidebar:->
+    @impulseMenu.spring(tension: 1000, damping: 100)
+      .to(-this.sidebarWidth, 0).start()
+  _hideSidebar:->
+    @impulseMenu.spring(tension: 1000, damping: 100).to(0, 0).start()
+
+
+  _showBurst:->
     node = @getDOMNode().querySelector '#js-expand-btn'
     @burst = new mojs.Burst
       parent:     node
@@ -34,12 +61,18 @@ module.exports = React.createClass
       duration:   400
       childOptions: radius: 4:0
 
+  _redirect:->
+    if @context.router.getCurrentPath() is '/tutorials'
+      setTimeout =>
+        @context.router.transitionTo('/tutorials/getting-started')
+      , 150
+
   render: ()->
     sidebarClass = if @state.isSidebarOpen then 'is-sidebar-open' else ''
     name = @context.router.getCurrentPath()
     <div className="page tutorials-page #{sidebarClass}">
       <Sticky className="tutorials-page__sticky-sidebar">
-        <div className="tutorials-page__sidebar">
+        <div className="tutorials-page__sidebar" id="js-sidebar">
           <Tappable className="tutorials-page__expand-btn" id="js-expand-btn" onTap=@_toggleSidebar >
             <svg  width="20px" height="40px" viewBox="0 0 20 40" className="tutorials-page__expand-btn-svg"
                   className="tutorials-page__svg-arrow"
