@@ -1,7 +1,7 @@
 @import '../imports'
 @import '../blocks/motion-lettering'
 
-sidebarWidth = 20
+sidebarWidth = 21
 {el = '.tutorials-page'}
   // height        200*gs
   padding-left    7.5*gs
@@ -23,17 +23,27 @@ sidebarWidth = 20
     padding-bottom 5*gs
   &.is-sidebar-open
     {el}__sidebar
+      left        6%
       &:before
         opacity   1
+    {el}__expand-btn
+      &:before
+        opacity 1
     {el}__svg-arrow
       transform   rotateY(180deg) translate3d(1*PX, 0, 0)
+    {el}__content
+      margin-left   sidebarWidth*gs
+      @media all and (max-width: 1120px)
+        margin-left 0
+    {el}__sidebar
+      left          6%
+      @media all and (max-width: 1200px)
+        left        3%
+      @media all and (max-width: 1120px)
+        left        0
   &__content
-    position      relative
-    margin-left   sidebarWidth*gs
-    @media all and (max-width: 1170px)
-      margin-left (sidebarWidth - 3)*gs
-    @media all and (max-width: 1120px)
-      margin-left  0
+    position        relative
+    transition      margin .3s ease-out
   &__sidebar-scroll
     height          100%
     overflow-y      auto
@@ -45,13 +55,10 @@ sidebarWidth = 20
   &__sidebar
     width         sidebarWidth*gs
     position      absolute
-    left          6%
+    left          0
     height        100%
     z-index       headerLayer + 1
     // padding-bottom 4*gs
-    @media all and (max-width: 1200px)
-      width       (sidebarWidth + 1)*gs
-      left        3%
     @media all and (max-width: 1120px)
       left            0*gs
       padding-left    3.5*gs
@@ -87,7 +94,7 @@ sidebarWidth = 20
     z-index         1
     cursor          pointer
     transform       translateZ(0)
-    display         none
+    // display         none
     circle          4*gs
     &:before,
     &:after
@@ -103,14 +110,15 @@ sidebarWidth = 20
       background    rgba(0,0,0,.2)
       left          .8*gs
       top           .5*gs
+      opacity       0
     &:active
       &:after,
       {el}__svg-arrow
         transform   translate3d(2*PX, 2*PX, 0)
       &:before
         transform   translate3d(-2*PX, -2*PX, 0)
-    @media all and (max-width: 1120px)
-      display     block
+    // @media all and (max-width: 1120px)
+    //   display     block
   .sticky
     bottom      0
     z-index     21
