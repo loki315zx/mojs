@@ -13,39 +13,36 @@ mojs            = require 'mo-js'
 # transition = null
 module.exports = React.createClass
   contextTypes: router: React.PropTypes.func
-  getInitialState:-> {isSidebarOpen: false}
-  _toggleSidebar:-> @setState isSidebarOpen: !@state.isSidebarOpen
-
-  componentDidMount:->
-    @_redirect(); @_showBurst(); @_addImpulse()
+  getInitialState:->   { isSidebarOpen: false }
+  _toggleSidebar:->    @setState isSidebarOpen: !@state.isSidebarOpen
+  componentDidMount:-> @_redirect(); @_showBurst(); @_addImpulse()
+  componentDidUpdate:->
+    if @state.isSidebarOpen then @_showSidebar() else @_hideSidebar()
 
   _addImpulse:->
     node       = @getDOMNode()
     sidebarBtn = node.querySelector '#js-expand-btn'
     sidebar    = node.querySelector '#js-sidebar'
-    isOpen     = false
     this.sidebarWidth = sidebar.offsetWidth
     boundary = new Physics.Boundary
       left: -this.sidebarWidth, right: 0, top: 0, bottom: 0
 
     @impulseMenu = new Physics(sidebar)
       .style 'translateX', (x, y)-> return "#{x}px"
+      .position(-this.sidebarWidth)
 
     drag = @impulseMenu.drag
       handle: sidebar, boundary: boundary, direction: 'horizontal'
 
     it = @
-    end = ->
-      if it.impulseMenu.direction('left') then it._showSidebar()
-      else it._hideSidebar()
-    drag.on('end', end)
+    drag.on 'end', ->
+      return if !@moved()
+      it.setState isSidebarOpen: !it.impulseMenu.direction('left')
 
-  _showSidebar:->
+  _showSidebar:-> @impulseMenu.spring(tension: 1000, damping: 100).to(0, 0).start()
+  _hideSidebar:->
     @impulseMenu.spring(tension: 1000, damping: 100)
       .to(-this.sidebarWidth, 0).start()
-  _hideSidebar:->
-    @impulseMenu.spring(tension: 1000, damping: 100).to(0, 0).start()
-
 
   _showBurst:->
     node = @getDOMNode().querySelector '#js-expand-btn'
