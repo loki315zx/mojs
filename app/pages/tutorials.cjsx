@@ -9,40 +9,54 @@ Physics         = require('impulse')
 # Sticky          = require 'react-sticky'
 Tappable        = require 'react-tappable'
 mojs            = require 'mo-js'
+Hammer          = require 'react-hammerjs'
 
 # transition = null
 module.exports = React.createClass
   contextTypes: router: React.PropTypes.func
-  getInitialState:->   { isSidebarOpen: false }
-  _toggleSidebar:->    @setState isSidebarOpen: !@state.isSidebarOpen
-  componentDidMount:-> @_redirect(); @_showBurst(); @_addImpulse()
+  getInitialState:-> { isSidebarOpen: window.innerWidth > 1120 }
+  componentDidMount:->
+    @_redirect(); @_showBurst(); @_addImpulse()
+    window.addEventListener 'resize', @_checkSidebarStatus
+  componentWillUnmount:-> @_unbindResize()
   componentDidUpdate:->
     if @state.isSidebarOpen then @_showSidebar() else @_hideSidebar()
+  _checkSidebarStatus:->
+    return @_unbindResize() if @isSidebarChanged
+    isOpen = window.innerWidth > 1120
+    @setState isSidebarOpen: isOpen if isOpen isnt @state.isSidebarOpen
+    
+  _unbindResize:->
+    window.removeEventListener 'resize', @_checkSidebarStatus
+  _toggleSidebar:->
+    @isSidebarChanged = true
+    @setState isSidebarOpen: !@state.isSidebarOpen
 
   _addImpulse:->
     node       = @getDOMNode()
     sidebarBtn = node.querySelector '#js-expand-btn'
     sidebar    = node.querySelector '#js-sidebar'
-    this.sidebarWidth = sidebar.offsetWidth
+    @sidebarWidth = sidebar.offsetWidth
     boundary = new Physics.Boundary
-      left: -this.sidebarWidth, right: 0, top: 0, bottom: 0
-
+      left: -@sidebarWidth, right: 0, top: 0, bottom: 0
     @impulseMenu = new Physics(sidebar)
       .style 'translateX', (x, y)-> return "#{x}px"
-      .position(-this.sidebarWidth)
+    !@state.isSidebarOpen and @impulseMenu.position(-@sidebarWidth)
 
-    drag = @impulseMenu.drag
-      handle: sidebar, boundary: boundary, direction: 'horizontal'
 
-    it = @
-    drag.on 'end', ->
-      return if !@moved()
-      it.setState isSidebarOpen: !it.impulseMenu.direction('left')
-
-  _showSidebar:-> @impulseMenu.spring(tension: 1000, damping: 100).to(0, 0).start()
+  _showSidebar:->
+    @impulseMenu.spring(tension: 1000, damping: 100).to(0, 0).start()
   _hideSidebar:->
     @impulseMenu.spring(tension: 1000, damping: 100)
       .to(-this.sidebarWidth, 0).start()
+  _onSidebarPan:(e)->
+    if !e.isFinal
+      @impulseMenu.position mojs.h.clamp e.deltaX, -@sidebarWidth, 0
+    else
+      if e.deltaX < -(@sidebarWidth/3)
+        @setState isSidebarOpen: false
+      else @setState isSidebarOpen: true
+      console.log e.deltaX
 
   _showBurst:->
     node = @getDOMNode().querySelector '#js-expand-btn'
@@ -64,12 +78,12 @@ module.exports = React.createClass
         @context.router.transitionTo('/tutorials/getting-started')
       , 150
 
-  render: ()->
+  render:()->
     sidebarClass = if @state.isSidebarOpen then 'is-sidebar-open' else ''
     name = @context.router.getCurrentPath()
     <div className="page tutorials-page #{sidebarClass}">
       <Sticky className="tutorials-page__sticky-sidebar">
-        <div className="tutorials-page__sidebar" id="js-sidebar">
+        <Hammer className="tutorials-page__sidebar" id="js-sidebar" onPan=@_onSidebarPan>
           <Tappable className="tutorials-page__expand-btn" id="js-expand-btn" onTap=@_toggleSidebar >
             <svg  width="20px" height="40px" viewBox="0 0 20 40" className="tutorials-page__expand-btn-svg"
                   className="tutorials-page__svg-arrow"
@@ -79,7 +93,7 @@ module.exports = React.createClass
           <div className="tutorials-page__sidebar-scroll">
             <Sidebar />
           </div>
-        </div>
+        </Hammer>
       </Sticky>
       <div className="tutorials-page__content">
         <TransitionGroup isFade={true}>
