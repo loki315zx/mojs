@@ -43,7 +43,6 @@ module.exports = React.createClass
       .style 'translateX', (x, y)-> return "#{x}px"
     !@state.isSidebarOpen and @impulseMenu.position(-@sidebarWidth)
 
-
   _showSidebar:->
     @impulseMenu.spring(tension: 1000, damping: 100).to(0, 0).start()
   _hideSidebar:->
@@ -52,11 +51,7 @@ module.exports = React.createClass
   _onSidebarPan:(e)->
     if !e.isFinal
       @impulseMenu.position mojs.h.clamp e.deltaX, -@sidebarWidth, 0
-    else
-      if e.deltaX < -(@sidebarWidth/3)
-        @setState isSidebarOpen: false
-      else @setState isSidebarOpen: true
-      console.log e.deltaX
+    else @setState isSidebarOpen: !(e.deltaX < -(@sidebarWidth/3))
 
   _showBurst:->
     node = @getDOMNode().querySelector '#js-expand-btn'
@@ -84,12 +79,12 @@ module.exports = React.createClass
     <div className="page tutorials-page #{sidebarClass}">
       <Sticky className="tutorials-page__sticky-sidebar">
         <Hammer className="tutorials-page__sidebar" id="js-sidebar" onPan=@_onSidebarPan>
-          <Tappable className="tutorials-page__expand-btn" id="js-expand-btn" onTap=@_toggleSidebar >
+          <Hammer className="tutorials-page__expand-btn" id="js-expand-btn" onTap=@_toggleSidebar >
             <svg  width="20px" height="40px" viewBox="0 0 20 40" className="tutorials-page__expand-btn-svg"
                   className="tutorials-page__svg-arrow"
                   dangerouslySetInnerHTML={{__html: '<path d="M7,14 L13,20 L7,26" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-miterlimit="200" stroke-linejoin="round" fill="none"></path>'}}>
             </svg>
-          </Tappable>
+          </Hammer>
           <div className="tutorials-page__sidebar-scroll">
             <Sidebar />
           </div>
