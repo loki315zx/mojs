@@ -34,7 +34,7 @@ Main = React.createClass
                 <div className="feature__image"></div>
                 <div className="feature__header">Retina Ready</div>
                 <div className="feature__text">
-                  Screen density independent effects responding to the modern web call.
+                  Screen density independent effects as response to the modern web call.
                 </div>
               </div>
             </div>

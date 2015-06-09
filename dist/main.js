@@ -258,7 +258,7 @@
 	      "className": "feature__header"
 	    }, "Retina Ready"), React.createElement("div", {
 	      "className": "feature__text"
-	    }, "Screen density independent effects responding to the modern web call."))), React.createElement("div", {
+	    }, "Screen density independent effects as response to the modern web call."))), React.createElement("div", {
 	      "className": "grid-bit grid-bit--4-12"
 	    }, React.createElement("div", {
 	      "className": "feature feature--simple"
