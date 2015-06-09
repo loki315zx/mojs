@@ -1,6 +1,6 @@
 # todo
 
 - fix burst timing
-- fix sidebar scrol on ios
+- add inactive links
 - fix features copy
 - fix motion lettering

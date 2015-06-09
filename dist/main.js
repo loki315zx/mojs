@@ -353,7 +353,7 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Hammer, Link, Physics, React, Route, RouteHandler, Router, Sidebar, Sticky, Tappable, TransitionGroup, mojs;
+	var Cookies, Hammer, Link, Physics, React, Route, RouteHandler, Router, Sidebar, Sticky, Tappable, TransitionGroup, mojs;
 
 	React = __webpack_require__(7);
 
@@ -376,6 +376,8 @@
 	mojs = __webpack_require__(33);
 
 	Hammer = __webpack_require__(364);
+
+	Cookies = __webpack_require__(368);
 
 	module.exports = React.createClass({
 	  contextTypes: {
@@ -424,17 +426,11 @@
 	    });
 	  },
 	  _addImpulse: function() {
-	    var boundary, node, sidebar, sidebarBtn;
+	    var node, sidebar, sidebarBtn;
 	    node = this.getDOMNode();
 	    sidebarBtn = node.querySelector('#js-expand-btn');
 	    sidebar = node.querySelector('#js-sidebar');
 	    this.sidebarWidth = sidebar.offsetWidth;
-	    boundary = new Physics.Boundary({
-	      left: -this.sidebarWidth,
-	      right: 0,
-	      top: 0,
-	      bottom: 0
-	    });
 	    this.impulseMenu = new Physics(sidebar).style('translateX', function(x, y) {
 	      return x + "px";
 	    });
@@ -457,12 +453,16 @@
 	      return this.impulseMenu.position(mojs.h.clamp(e.deltaX, -this.sidebarWidth, 0));
 	    } else {
 	      return this.setState({
-	        isSidebarOpen: !(e.deltaX < -(this.sidebarWidth / 3))
+	        isSidebarOpen: !(e.deltaX < -(this.sidebarWidth / 5))
 	      });
 	    }
 	  },
 	  _showBurst: function() {
 	    var node;
+	    if (Cookies('mojs-tutorials-burst')) {
+	      return;
+	    }
+	    Cookies('mojs-tutorials-burst', true);
 	    node = this.getDOMNode().querySelector('#js-expand-btn');
 	    return this.burst = new mojs.Burst({
 	      parent: node,
@@ -473,9 +473,13 @@
 	      },
 	      degree: 160,
 	      angle: 10,
-	      delay: 2000,
+	      delay: 1000,
 	      count: 4,
-	      fill: 'white',
+	      stroke: 'white',
+	      strokeWidth: {
+	        4: 0
+	      },
+	      type: 'line',
 	      duration: 400,
 	      childOptions: {
 	        radius: {
@@ -1189,10 +1193,7 @@
 	      this.burst = new mojs.Burst({
 	        parent: document.querySelector('#js-burst-container'),
 	        shape: 'circle',
-	        stroke: ['deeppink', 'cyan', 'orange'],
-	        strokeWidth: {
-	          2: 0
-	        },
+	        fill: ['deeppink', 'cyan', 'orange'],
 	        x: '50%',
 	        y: '50%',
 	        isRunLess: true
@@ -1217,9 +1218,9 @@
 	      "className": "code-block__body"
 	    }, React.createElement("pre", null, React.createElement(PrismCode, {
 	      "className": "language-javascript api-demo__code api-demo__code--normal"
-	    }, "var burst = new Burst({\n    shape:      'circle',\n    stroke:     [ 'deeppink', 'cyan', 'orange' ],\n    x: '50%',   y: '50%'\n});"), React.createElement(PrismCode, {
+	    }, "var burst = new Burst({\n    shape:      'circle',\n    fill:         [ 'deeppink', 'cyan', 'orange' ],\n    x: '50%',   y: '50%'\n});"), React.createElement(PrismCode, {
 	      "className": "language-javascript api-demo__code api-demo__code--mobile"
-	    }, "var burst = new Burst({\n    shape:   'circle',\n    stroke: [ 'deeppink',\n                 'cyan',\n                 'orange' ],\n    x: '50%',   y: '50%'\n});"))))), React.createElement("div", {
+	    }, "var burst = new Burst({\n    shape:   'circle',\n    fill:      [ 'deeppink',\n                 'cyan',\n                 'orange' ],\n    x: '50%',   y: '50%'\n});"))))), React.createElement("div", {
 	      "className": "grid-bit grid-bit--4-12"
 	    }, React.createElement("div", {
 	      "className": "code-block api-demo__result"
@@ -1923,7 +1924,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(247)();
-	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(320)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  padding-left: 4.6875rem;\n  padding-top: 11.5625rem;\n  padding-bottom: 8.75rem;\n  width: 100%;\n}\n@media all and (max-width: 1150px) {\n  .tutorials-page {\n    padding-left: 2.1875rem;\n  }\n}\n@media all and (max-width: 1100px) {\n  .tutorials-page {\n    padding-left: 0;\n  }\n}\n@media all and (max-width: 900px) {\n  .tutorials-page {\n    padding-left: 2.5rem;\n    padding-right: 2.5rem;\n  }\n}\n@media all and (max-width: 640px) {\n  .tutorials-page {\n    padding-left: 1.25rem;\n    padding-right: 1.25rem;\n    padding-top: 5.625rem;\n    padding-bottom: 3.125rem;\n  }\n}\n.tutorials-page.is-sidebar-open .tutorials-page__sidebar {\n  left: 6%;\n}\n.tutorials-page.is-sidebar-open .tutorials-page__sidebar:before {\n  opacity: 1;\n}\n.tutorials-page.is-sidebar-open .tutorials-page__expand-btn:before {\n  opacity: 1;\n}\n.tutorials-page.is-sidebar-open .tutorials-page__svg-arrow {\n  -webkit-transform: rotateY(180deg) translate3d(0.0625rem, 0, 0);\n          transform: rotateY(180deg) translate3d(0.0625rem, 0, 0);\n}\n.tutorials-page.is-sidebar-open .tutorials-page__content {\n  margin-left: 13.125rem;\n}\n@media all and (max-width: 1120px) {\n  .tutorials-page.is-sidebar-open .tutorials-page__content {\n    margin-left: 0;\n  }\n}\n.tutorials-page.is-sidebar-open .tutorials-page__sidebar {\n  left: 6%;\n}\n@media all and (max-width: 1200px) {\n  .tutorials-page.is-sidebar-open .tutorials-page__sidebar {\n    left: 3%;\n  }\n}\n@media all and (max-width: 1120px) {\n  .tutorials-page.is-sidebar-open .tutorials-page__sidebar {\n    left: 0;\n  }\n}\n.tutorials-page__content {\n  position: relative;\n  -webkit-transition: margin 0.3s ease-out;\n          transition: margin 0.3s ease-out;\n}\n.tutorials-page__sidebar-scroll {\n  height: 100%;\n  overflow-y: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding-bottom: 2.5rem;\n  padding-left: 2.1875rem;\n}\n.tutorials-page__sidebar {\n  width: 13.125rem;\n  position: absolute;\n  left: 0;\n  height: 100%;\n  z-index: 21;\n}\n@media all and (max-width: 1120px) {\n  .tutorials-page__sidebar {\n    left: 0rem;\n    padding-left: 2.1875rem;\n    background: rgba(58,8,57,0.95);\n    padding-top: 3.125rem;\n    padding-bottom: 3.125rem;\n    -webkit-transform: translateX(-100%);\n        -ms-transform: translateX(-100%);\n            transform: translateX(-100%);\n  }\n  .tutorials-page__sidebar:before {\n    content: '';\n    position: absolute;\n    top: 2.5rem;\n    right: -0.625rem;\n    height: 100%;\n    width: 0.625rem;\n    opacity: 0;\n    -webkit-transition: opacity 0.3s ease-out;\n            transition: opacity 0.3s ease-out;\n    background: rgba(0,0,0,0.2);\n  }\n  .tutorials-page__sidebar:after {\n    content: '';\n    width: 100%;\n    height: 2.5rem;\n    background: inherit;\n    position: absolute;\n    left: 0;\n    bottom: -2.5rem;\n  }\n}\n.tutorials-page__expand-btn {\n  position: absolute;\n  top: 1.5625rem;\n  right: -2.5rem;\n  z-index: 1;\n  cursor: pointer;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0);\n  border-radius: 50%;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.tutorials-page__expand-btn:before,\n.tutorials-page__expand-btn:after {\n  content: '';\n  position: absolute;\n  height: 100%;\n  width: 60%;\n  border-top-right-radius: 1.25rem;\n  border-bottom-right-radius: 1.25rem;\n}\n.tutorials-page__expand-btn:after {\n  background: #f64040;\n}\n.tutorials-page__expand-btn:before {\n  background: rgba(0,0,0,0.2);\n  left: 0.5rem;\n  top: 0.3125rem;\n  opacity: 0;\n}\n.tutorials-page__expand-btn:active:after,\n.tutorials-page__expand-btn:active .tutorials-page__svg-arrow {\n  -webkit-transform: translate3d(0.125rem, 0.125rem, 0);\n          transform: translate3d(0.125rem, 0.125rem, 0);\n}\n.tutorials-page__expand-btn:active:before {\n  -webkit-transform: translate3d(-0.125rem, -0.125rem, 0);\n          transform: translate3d(-0.125rem, -0.125rem, 0);\n}\n.tutorials-page .sticky {\n  bottom: 0;\n  z-index: 21;\n}\n.tutorials-page .tutorials-sidebar {\n  margin-left: auto;\n  margin-right: auto;\n}\n.tutorials-page__svg-arrow {\n  position: absolute;\n  z-index: 2;\n}\n.tutorials-page .post {\n  max-width: 50rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n", ""]);
+	exports.push([module.id, ".motion-lettering {\n  width: 24.8125rem;\n  height: 17.25rem;\n  background: url("+__webpack_require__(320)+") no-repeat center center;\n  background-size: 100% auto;\n  opacity: 1;\n}\n@media all and (max-width: 640px) {\n  .motion-lettering {\n    width: 12.9025rem;\n    height: 8.97rem;\n  }\n}\n.tutorials-page {\n  padding-top: 11.5625rem;\n  padding-bottom: 8.75rem;\n}\n@media all and (max-width: 900px) {\n  .tutorials-page {\n    padding-left: 2.5rem;\n    padding-right: 2.5rem;\n  }\n}\n@media all and (max-width: 640px) {\n  .tutorials-page {\n    padding-left: 1.25rem;\n    padding-right: 1.25rem;\n    padding-top: 5.625rem;\n    padding-bottom: 3.125rem;\n  }\n}\n.tutorials-page.is-sidebar-open .tutorials-page__sidebar {\n  left: 2%;\n}\n@media all and (max-width: 1300px) {\n  .tutorials-page.is-sidebar-open .tutorials-page__sidebar {\n    left: 1%;\n  }\n}\n@media all and (max-width: 1200px) {\n  .tutorials-page.is-sidebar-open .tutorials-page__sidebar {\n    left: 0;\n  }\n}\n.tutorials-page.is-sidebar-open .tutorials-page__sidebar:before {\n  opacity: 1;\n}\n.tutorials-page.is-sidebar-open .tutorials-page__expand-btn:before {\n  opacity: 1;\n}\n.tutorials-page.is-sidebar-open .tutorials-page__svg-arrow {\n  -webkit-transform: rotateY(180deg) translate3d(0.0625rem, 0, 0);\n          transform: rotateY(180deg) translate3d(0.0625rem, 0, 0);\n}\n.tutorials-page.is-sidebar-open .tutorials-page__content {\n  margin-left: 13.125rem;\n}\n@media all and (max-width: 1080px) {\n  .tutorials-page.is-sidebar-open .tutorials-page__content {\n    margin-left: 0;\n  }\n}\n.tutorials-page__content {\n  position: relative;\n  -webkit-transition: margin 0.3s ease-out;\n          transition: margin 0.3s ease-out;\n}\n.tutorials-page__sidebar-scroll {\n  height: 100%;\n  overflow-y: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding-bottom: 2.5rem;\n  padding-left: 2.1875rem;\n}\n.tutorials-page__sidebar {\n  width: 13.125rem;\n  position: absolute;\n  left: 0;\n  height: 100%;\n  z-index: 21;\n}\n@media all and (max-width: 1120px) {\n  .tutorials-page__sidebar {\n    left: 0;\n    padding-left: 2.1875rem;\n    background: rgba(58,8,57,0.95);\n    padding-top: 3.125rem;\n    padding-bottom: 3.125rem;\n    -webkit-transform: translateX(-100%);\n        -ms-transform: translateX(-100%);\n            transform: translateX(-100%);\n  }\n  .tutorials-page__sidebar:before {\n    content: '';\n    position: absolute;\n    top: 2.5rem;\n    right: -0.625rem;\n    height: 100%;\n    width: 0.625rem;\n    opacity: 0;\n    -webkit-transition: opacity 0.3s ease-out;\n            transition: opacity 0.3s ease-out;\n    background: rgba(0,0,0,0.2);\n  }\n  .tutorials-page__sidebar:after {\n    content: '';\n    width: 100%;\n    height: 2.5rem;\n    background: inherit;\n    position: absolute;\n    left: 0;\n    bottom: -2.5rem;\n  }\n}\n.tutorials-page__expand-btn {\n  position: absolute;\n  top: 1.5625rem;\n  right: -2.5rem;\n  z-index: 1;\n  cursor: pointer;\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0);\n  border-radius: 50%;\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.tutorials-page__expand-btn:before,\n.tutorials-page__expand-btn:after {\n  content: '';\n  position: absolute;\n  height: 100%;\n  width: 60%;\n  border-top-right-radius: 1.25rem;\n  border-bottom-right-radius: 1.25rem;\n}\n.tutorials-page__expand-btn:after {\n  background: #f64040;\n}\n.tutorials-page__expand-btn:before {\n  background: rgba(0,0,0,0.2);\n  left: 0.5rem;\n  top: 0.3125rem;\n  opacity: 0;\n}\n.tutorials-page__expand-btn:active:after,\n.tutorials-page__expand-btn:active .tutorials-page__svg-arrow {\n  -webkit-transform: translate3d(0.125rem, 0.125rem, 0);\n          transform: translate3d(0.125rem, 0.125rem, 0);\n}\n.tutorials-page__expand-btn:active:before {\n  -webkit-transform: translate3d(-0.125rem, -0.125rem, 0);\n          transform: translate3d(-0.125rem, -0.125rem, 0);\n}\n.tutorials-page .sticky {\n  bottom: 0;\n  z-index: 21;\n}\n.tutorials-page .tutorials-sidebar {\n  margin-left: auto;\n  margin-right: auto;\n}\n.tutorials-page__svg-arrow {\n  position: absolute;\n  z-index: 2;\n}\n.tutorials-page .post {\n  max-width: 50rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n", ""]);
 
 /***/ },
 /* 31 */
@@ -38538,6 +38539,173 @@
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ },
+/* 367 */,
+/* 368 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*
+	 * Cookies.js - 1.2.1
+	 * https://github.com/ScottHamper/Cookies
+	 *
+	 * This is free and unencumbered software released into the public domain.
+	 */
+	(function (global, undefined) {
+	    'use strict';
+
+	    var factory = function (window) {
+	        if (typeof window.document !== 'object') {
+	            throw new Error('Cookies.js requires a `window` with a `document` object');
+	        }
+
+	        var Cookies = function (key, value, options) {
+	            return arguments.length === 1 ?
+	                Cookies.get(key) : Cookies.set(key, value, options);
+	        };
+
+	        // Allows for setter injection in unit tests
+	        Cookies._document = window.document;
+
+	        // Used to ensure cookie keys do not collide with
+	        // built-in `Object` properties
+	        Cookies._cacheKeyPrefix = 'cookey.'; // Hurr hurr, :)
+	        
+	        Cookies._maxExpireDate = new Date('Fri, 31 Dec 9999 23:59:59 UTC');
+
+	        Cookies.defaults = {
+	            path: '/',
+	            secure: false
+	        };
+
+	        Cookies.get = function (key) {
+	            if (Cookies._cachedDocumentCookie !== Cookies._document.cookie) {
+	                Cookies._renewCache();
+	            }
+
+	            return Cookies._cache[Cookies._cacheKeyPrefix + key];
+	        };
+
+	        Cookies.set = function (key, value, options) {
+	            options = Cookies._getExtendedOptions(options);
+	            options.expires = Cookies._getExpiresDate(value === undefined ? -1 : options.expires);
+
+	            Cookies._document.cookie = Cookies._generateCookieString(key, value, options);
+
+	            return Cookies;
+	        };
+
+	        Cookies.expire = function (key, options) {
+	            return Cookies.set(key, undefined, options);
+	        };
+
+	        Cookies._getExtendedOptions = function (options) {
+	            return {
+	                path: options && options.path || Cookies.defaults.path,
+	                domain: options && options.domain || Cookies.defaults.domain,
+	                expires: options && options.expires || Cookies.defaults.expires,
+	                secure: options && options.secure !== undefined ?  options.secure : Cookies.defaults.secure
+	            };
+	        };
+
+	        Cookies._isValidDate = function (date) {
+	            return Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime());
+	        };
+
+	        Cookies._getExpiresDate = function (expires, now) {
+	            now = now || new Date();
+
+	            if (typeof expires === 'number') {
+	                expires = expires === Infinity ?
+	                    Cookies._maxExpireDate : new Date(now.getTime() + expires * 1000);
+	            } else if (typeof expires === 'string') {
+	                expires = new Date(expires);
+	            }
+
+	            if (expires && !Cookies._isValidDate(expires)) {
+	                throw new Error('`expires` parameter cannot be converted to a valid Date instance');
+	            }
+
+	            return expires;
+	        };
+
+	        Cookies._generateCookieString = function (key, value, options) {
+	            key = key.replace(/[^#$&+\^`|]/g, encodeURIComponent);
+	            key = key.replace(/\(/g, '%28').replace(/\)/g, '%29');
+	            value = (value + '').replace(/[^!#$&-+\--:<-\[\]-~]/g, encodeURIComponent);
+	            options = options || {};
+
+	            var cookieString = key + '=' + value;
+	            cookieString += options.path ? ';path=' + options.path : '';
+	            cookieString += options.domain ? ';domain=' + options.domain : '';
+	            cookieString += options.expires ? ';expires=' + options.expires.toUTCString() : '';
+	            cookieString += options.secure ? ';secure' : '';
+
+	            return cookieString;
+	        };
+
+	        Cookies._getCacheFromString = function (documentCookie) {
+	            var cookieCache = {};
+	            var cookiesArray = documentCookie ? documentCookie.split('; ') : [];
+
+	            for (var i = 0; i < cookiesArray.length; i++) {
+	                var cookieKvp = Cookies._getKeyValuePairFromCookieString(cookiesArray[i]);
+
+	                if (cookieCache[Cookies._cacheKeyPrefix + cookieKvp.key] === undefined) {
+	                    cookieCache[Cookies._cacheKeyPrefix + cookieKvp.key] = cookieKvp.value;
+	                }
+	            }
+
+	            return cookieCache;
+	        };
+
+	        Cookies._getKeyValuePairFromCookieString = function (cookieString) {
+	            // "=" is a valid character in a cookie value according to RFC6265, so cannot `split('=')`
+	            var separatorIndex = cookieString.indexOf('=');
+
+	            // IE omits the "=" when the cookie value is an empty string
+	            separatorIndex = separatorIndex < 0 ? cookieString.length : separatorIndex;
+
+	            return {
+	                key: decodeURIComponent(cookieString.substr(0, separatorIndex)),
+	                value: decodeURIComponent(cookieString.substr(separatorIndex + 1))
+	            };
+	        };
+
+	        Cookies._renewCache = function () {
+	            Cookies._cache = Cookies._getCacheFromString(Cookies._document.cookie);
+	            Cookies._cachedDocumentCookie = Cookies._document.cookie;
+	        };
+
+	        Cookies._areEnabled = function () {
+	            var testKey = 'cookies.js';
+	            var areEnabled = Cookies.set(testKey, 1).get(testKey) === '1';
+	            Cookies.expire(testKey);
+	            return areEnabled;
+	        };
+
+	        Cookies.enabled = Cookies._areEnabled();
+
+	        return Cookies;
+	    };
+
+	    var cookiesExport = typeof global.document === 'object' ? factory(global) : factory;
+
+	    // AMD support
+	    if (true) {
+	        !(__WEBPACK_AMD_DEFINE_RESULT__ = function () { return cookiesExport; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    // CommonJS/Node.js support
+	    } else if (typeof exports === 'object') {
+	        // Support Node.js specific `module.exports` (which can be a function)
+	        if (typeof module === 'object' && typeof module.exports === 'object') {
+	            exports = module.exports = cookiesExport;
+	        }
+	        // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
+	        exports.Cookies = cookiesExport;
+	    } else {
+	        global.Cookies = cookiesExport;
+	    }
+	})(typeof window === 'undefined' ? this : window);
 
 /***/ }
 /******/ ]);

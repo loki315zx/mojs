@@ -4,15 +4,8 @@
 sidebarWidth = 21
 {el = '.tutorials-page'}
   // height        200*gs
-  padding-left    7.5*gs
   padding-top     18.5*gs
   padding-bottom  14*gs
-  // overflow-x      hidden
-  width           100%
-  @media all and (max-width: 1150px)
-    padding-left  3.5*gs
-  @media all and (max-width: 1100px)
-    padding-left  0
   @media all and (max-width: 900px)
     padding-left  4*gs
     padding-right 4*gs
@@ -23,7 +16,11 @@ sidebarWidth = 21
     padding-bottom 5*gs
   &.is-sidebar-open
     {el}__sidebar
-      left        6%
+      left          2%
+      @media all and (max-width: 1300px)
+        left        1%
+      @media all and (max-width: 1200px)
+        left        0
       &:before
         opacity   1
     {el}__expand-btn
@@ -33,14 +30,8 @@ sidebarWidth = 21
       transform   rotateY(180deg) translate3d(1*PX, 0, 0)
     {el}__content
       margin-left   sidebarWidth*gs
-      @media all and (max-width: 1120px)
+      @media all and (max-width: 1080px)
         margin-left 0
-    {el}__sidebar
-      left          6%
-      @media all and (max-width: 1200px)
-        left        3%
-      @media all and (max-width: 1120px)
-        left        0
   &__content
     position        relative
     transition      margin .3s ease-out
@@ -60,13 +51,11 @@ sidebarWidth = 21
     z-index       headerLayer + 1
     // padding-bottom 4*gs
     @media all and (max-width: 1120px)
-      left            0*gs
+      left            0
       padding-left    3.5*gs
       background      rgba(c-purple, .95)
       padding-top     5*gs
       padding-bottom  5*gs
-      // box-shadow      gs 5*gs 0 rgba(0,0,0,.2)
-      // transition      transform .3s ease-out
       transform       translateX(-100%)
       &:before
         content       ''

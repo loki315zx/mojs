@@ -12,8 +12,7 @@ module.exports = React.createClass
       @burst = new mojs.Burst
         parent:       document.querySelector('#js-burst-container')
         shape:        'circle'
-        stroke:       ['deeppink', 'cyan', 'orange']
-        strokeWidth:  2:0
+        fill:         ['deeppink', 'cyan', 'orange']
         x: '50%',     y: '50%'
         isRunLess:    true
     @burst.run()
@@ -32,7 +31,7 @@ module.exports = React.createClass
                 <PrismCode className="language-javascript api-demo__code api-demo__code--normal">
                   { """var burst = new Burst({
                         shape:      'circle',
-                        stroke:     [ 'deeppink', 'cyan', 'orange' ],
+                        fill:         [ 'deeppink', 'cyan', 'orange' ],
                         x: '50%',   y: '50%'
                     });
                     """}
@@ -40,7 +39,7 @@ module.exports = React.createClass
                 <PrismCode className="language-javascript api-demo__code api-demo__code--mobile">
                   { """var burst = new Burst({
                         shape:   'circle',
-                        stroke: [ 'deeppink',
+                        fill:      [ 'deeppink',
                                      'cyan',
                                      'orange' ],
                         x: '50%',   y: '50%'

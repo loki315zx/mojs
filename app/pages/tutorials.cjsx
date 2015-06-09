@@ -10,6 +10,7 @@ Physics         = require('impulse')
 Tappable        = require 'react-tappable'
 mojs            = require 'mo-js'
 Hammer          = require 'react-hammerjs'
+Cookies         = require 'cookies-js'
 
 # transition = null
 module.exports = React.createClass
@@ -37,8 +38,6 @@ module.exports = React.createClass
     sidebarBtn = node.querySelector '#js-expand-btn'
     sidebar    = node.querySelector '#js-sidebar'
     @sidebarWidth = sidebar.offsetWidth
-    boundary = new Physics.Boundary
-      left: -@sidebarWidth, right: 0, top: 0, bottom: 0
     @impulseMenu = new Physics(sidebar)
       .style 'translateX', (x, y)-> return "#{x}px"
     !@state.isSidebarOpen and @impulseMenu.position(-@sidebarWidth)
@@ -46,14 +45,16 @@ module.exports = React.createClass
   _showSidebar:->
     @impulseMenu.spring(tension: 1000, damping: 100).to(0, 0).start()
   _hideSidebar:->
-    @impulseMenu.spring(tension: 1000, damping: 100)
-      .to(-this.sidebarWidth, 0).start()
+    @impulseMenu.spring(tension: 1000, damping: 100).to(-@sidebarWidth, 0).start()
   _onSidebarPan:(e)->
     if !e.isFinal
       @impulseMenu.position mojs.h.clamp e.deltaX, -@sidebarWidth, 0
-    else @setState isSidebarOpen: !(e.deltaX < -(@sidebarWidth/3))
+    else @setState isSidebarOpen: !(e.deltaX < -(@sidebarWidth/5))
 
   _showBurst:->
+    return if Cookies('mojs-tutorials-burst')
+    Cookies('mojs-tutorials-burst', true)
+
     node = @getDOMNode().querySelector '#js-expand-btn'
     @burst = new mojs.Burst
       parent:     node
@@ -61,9 +62,11 @@ module.exports = React.createClass
       radius:     30: 70
       degree:     160
       angle:      10
-      delay:      2000
+      delay:      1000
       count:      4
-      fill:       'white'
+      stroke:     'white'
+      strokeWidth: 4: 0
+      type:       'line'
       duration:   400
       childOptions: radius: 4:0
 

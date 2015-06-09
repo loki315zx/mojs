@@ -31,6 +31,7 @@
   "main": "",
   "dependencies": {
     "classlist-polyfill": "^1.0.0",
+    "cookies-js": "^1.2.1",
     "fastclick": "^1.0.6",
     "hammerjs": "^2.0.4",
     "howler": "^1.1.26",
