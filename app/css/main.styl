@@ -30,6 +30,12 @@ html, body
     opacity     .5
     nw          -20%
     rect        140%
+  &.is-disabled
+    opacity     .2
+    &:active
+      transform   none
+    &:after
+      transform   none
   
 // CLEARFIX
 .cf:after,

@@ -9,13 +9,21 @@ module.exports = React.createClass
   render:->
     btnClass = if @props.type is 'button' then 'button' else ''
     classAttr = "link touchable #{@props.className} #{btnClass}"
-    if @props.link.match /https?/
-      <a href="#{@props.link}" className="#{classAttr}">
+    classAttr += if @props.isDisabled then ' is-disabled' else ''
+
+    if @props.isDisabled
+      <span href="#{@props.link}" className="#{classAttr}">
         { @props.children }
-        <div className="link__underline"></div>
-      </a>
+        <span className="link__underline"></span>
+      </span>
     else
-      <Link to="#{@props.link}" className="#{classAttr}">
-        { @props.children }
-        <div className="link__underline"></div>
-      </Link>
+      if @props.link.match /https?/
+        <a href="#{@props.link}" className="#{classAttr}">
+          { @props.children }
+          <span className="link__underline"></span>
+        </a>
+      else
+        <Link to="#{@props.link}" className="#{classAttr}">
+          { @props.children }
+          <span className="link__underline"></span>
+        </Link>

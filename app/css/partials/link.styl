@@ -17,16 +17,18 @@
     transition    transform .1s ease-out
   &:hover
     {el}__underline
-      transform scaleX(1) translateZ(0)
+      transform   scaleX(1) translateZ(0)
   &.active
     {el}__underline
       transform   scaleX(1) translateZ(0)
   &.button
     {el}__underline
-      bottom    0
-      opacity   .15
-      rect      100%
-      // display none
-  //   &:hover
-  //     &:after
-  //       transform scaleX(.58)
+      bottom      0
+      opacity     .15
+      rect        100%
+  &.is-disabled
+    cursor        default
+    {el}__underline
+      display     none
+
+
