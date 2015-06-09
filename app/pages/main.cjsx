@@ -24,21 +24,27 @@ Main = React.createClass
               <div className="feature feature--fast">
                 <div className="feature__image"></div>
                 <div className="feature__header">Fast</div>
-                <div className="feature__text">Advanced performace optimizations for the sake of  silky smooth animations.</div>
+                <div className="feature__text">
+                  Silky smooth animations for the staggering user's experience.
+                </div>
               </div>
             </div>
             <div className="grid-bit grid-bit--4-12">
               <div className="feature feature--retina">
                 <div className="feature__image"></div>
                 <div className="feature__header">Retina Ready</div>
-                <div className="feature__text">Your effects look good at any device, no metter what pixel density it has.</div>
+                <div className="feature__text">
+                  Screen density independent effects responding to the modern web call.
+                </div>
               </div>
             </div>
             <div className="grid-bit grid-bit--4-12">
               <div className="feature feature--simple">
                 <div className="feature__image"></div>
                 <div className="feature__header">Simple</div>
-                <div className="feature__text">Simple declarative API for any coding skills level. any coding skills level.</div>
+                <div className="feature__text">
+                  Simple declarative API to master your motion project with ease.
+                </div>
               </div>
             </div>
           </div>
@@ -48,21 +54,27 @@ Main = React.createClass
               <div className="feature feature--modular">
                 <div className="feature__image"></div>
                 <div className="feature__header">Modular</div>
-                <div className="feature__text">Build your own bundle and get what is needed only, with no file size overhead.</div>
+                <div className="feature__text">
+                  Specific bundle for the current project's needs. Bye bye file size overheads.
+                </div>
               </div>
             </div>
             <div className="grid-bit grid-bit--4-12">
               <div className="feature feature--robust">
                 <div className="feature__image"></div>
                 <div className="feature__header">Robust</div>
-                <div className="feature__text">1000+ unit tests and ci techniques help us to build the tool you can rely on.</div>
+                <div className="feature__text">
+                  1000+ unit tests and ci techniques carve & backstrap the reliable tool.
+                </div>
               </div>
             </div>
             <div className="grid-bit grid-bit--4-12">
               <div className="feature feature--open-sourced">
                 <div className="feature__image"></div>
                 <div className="feature__header">Open Sourced</div>
-                <div className="feature__text">Growing community allows to evolve fast and ship frequently.</div>
+                <div className="feature__text">
+                  Great growing community refines the tool fast and ships frequently.
+                </div>
               </div>
             </div>
           </div>

@@ -46,7 +46,7 @@ var Sticky = React.createClass({
       // otherwise call self recursively thru requestAnimationFrame
       //   and return immediately
       return (this.stickyCheckCnt > 31) ? this.stopLoop() : this.requestFrame();
-    }
+    } else { this.stickyCheckCnt = 0; }
 
     var isSticky = pageY > this.elementOffset,
         nextState = { isSticky: isSticky };

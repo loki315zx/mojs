@@ -248,7 +248,7 @@
 	      "className": "feature__header"
 	    }, "Fast"), React.createElement("div", {
 	      "className": "feature__text"
-	    }, "Advanced performace optimizations for the sake of  silky smooth animations."))), React.createElement("div", {
+	    }, "Silky smooth animations for the staggering user\'s experience."))), React.createElement("div", {
 	      "className": "grid-bit grid-bit--4-12"
 	    }, React.createElement("div", {
 	      "className": "feature feature--retina"
@@ -258,7 +258,7 @@
 	      "className": "feature__header"
 	    }, "Retina Ready"), React.createElement("div", {
 	      "className": "feature__text"
-	    }, "Your effects look good at any device, no metter what pixel density it has."))), React.createElement("div", {
+	    }, "Screen density independent effects responding to the modern web call."))), React.createElement("div", {
 	      "className": "grid-bit grid-bit--4-12"
 	    }, React.createElement("div", {
 	      "className": "feature feature--simple"
@@ -268,7 +268,7 @@
 	      "className": "feature__header"
 	    }, "Simple"), React.createElement("div", {
 	      "className": "feature__text"
-	    }, "Simple declarative API for any coding skills level. any coding skills level.")))), React.createElement("div", {
+	    }, "Simple declarative API to master your motion project with ease.")))), React.createElement("div", {
 	      "className": "[ main-page__features-row main-page__features-row--2 ] grid-row"
 	    }, React.createElement("div", {
 	      "className": "grid-bit grid-bit--4-12"
@@ -280,7 +280,7 @@
 	      "className": "feature__header"
 	    }, "Modular"), React.createElement("div", {
 	      "className": "feature__text"
-	    }, "Build your own bundle and get what is needed only, with no file size overhead."))), React.createElement("div", {
+	    }, "Specific bundle for the current project\'s needs. Bye bye file size overheads."))), React.createElement("div", {
 	      "className": "grid-bit grid-bit--4-12"
 	    }, React.createElement("div", {
 	      "className": "feature feature--robust"
@@ -290,7 +290,7 @@
 	      "className": "feature__header"
 	    }, "Robust"), React.createElement("div", {
 	      "className": "feature__text"
-	    }, "1000+ unit tests and ci techniques help us to build the tool you can rely on."))), React.createElement("div", {
+	    }, "1000+ unit tests and ci techniques carve \& backstrap the reliable tool."))), React.createElement("div", {
 	      "className": "grid-bit grid-bit--4-12"
 	    }, React.createElement("div", {
 	      "className": "feature feature--open-sourced"
@@ -300,7 +300,7 @@
 	      "className": "feature__header"
 	    }, "Open Sourced"), React.createElement("div", {
 	      "className": "feature__text"
-	    }, "Growing community allows to evolve fast and ship frequently."))))), React.createElement("div", {
+	    }, "Great growing community refines the tool fast and ships frequently."))))), React.createElement("div", {
 	      "className": "main-page__quick-start code-block"
 	    }, React.createElement("div", {
 	      "className": "code-block__header"
@@ -944,7 +944,7 @@
 	      // otherwise call self recursively thru requestAnimationFrame
 	      //   and return immediately
 	      return (this.stickyCheckCnt > 31) ? this.stopLoop() : this.requestFrame();
-	    }
+	    } else { this.stickyCheckCnt = 0; }
 
 	    var isSticky = pageY > this.elementOffset,
 	        nextState = { isSticky: isSticky };
