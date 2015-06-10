@@ -59,26 +59,37 @@ module.exports = React.createClass
 
       <p>The full list is:</p>
 
-      <ul>
-        <li>linear</li>
-        <li>ease: in/out/inout</li>
-        <li>quad: in/out/inout</li>
-        <li>cubic: in/out/inout</li>
-        <li>quart: in/out/inout</li>
-        <li>quint: in/out/inout</li>
-        <li>sin: in/out/inout</li>
-        <li>expo: in/out/inout</li>
-        <li>circ: in/out/inout</li>
-        <li>back: in/out/inout</li>
-        <li>elastic: in/out/inout</li>
-        <li>bounce: in/out/inout</li>
-      </ul>
+      <div className="grid grid--sliced">
+
+        <div className="grid-bit grid-bit--6-12">
+          <ul>
+            <li>linear</li>
+            <li>ease: in/out/inout</li>
+            <li>quad: in/out/inout</li>
+            <li>cubic: in/out/inout</li>
+            <li>quart: in/out/inout</li>
+            <li>quint: in/out/inout</li>
+          </ul>
+        </div>
+
+        <div className="grid-bit grid-bit--6-12">
+          <ul>
+            <li>sin: in/out/inout</li>
+            <li>expo: in/out/inout</li>
+            <li>circ: in/out/inout</li>
+            <li>back: in/out/inout</li>
+            <li>elastic: in/out/inout</li>
+            <li>bounce: in/out/inout</li>
+          </ul>
+        </div>
+
+      </div>
 
       <p>
         If you have ever used easing functions in other libraries the list 
         should seem familiar for you. You can pass them around to modules as 
-        strings with easing's name delimited by . or directly as functions, 
-        that are available on mojs.easing object:
+        strings with easing's name delimited by <em>.</em> or directly as functions, 
+        that are available on <em>mojs.easing</em> object:
       </p>
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
