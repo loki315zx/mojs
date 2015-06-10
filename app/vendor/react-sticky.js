@@ -8,9 +8,9 @@ var Sticky = React.createClass({
       stickyClass: 'sticky',
       stickyStyle: {
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0
+        // top: 0,
+        // left: 0,
+        // right: 0
       },
       onStickyStateChange: function () {}
     };
@@ -18,8 +18,8 @@ var Sticky = React.createClass({
 
   getInitialState: function() {
     return {
-      events: ['load', 'scroll', 'resize'],
-      style: {}
+      events:     ['load', 'scroll', 'resize'],
+      style:      {}
     };
   },
 
@@ -105,7 +105,7 @@ var Sticky = React.createClass({
   render: function() {
     return this.props.type({
       style: this.state.style,
-      className: this.state.className
+      className: this.state.className + ' react-sticky'
     }, this.props.children);
   }
 });

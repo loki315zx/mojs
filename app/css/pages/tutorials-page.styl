@@ -15,12 +15,13 @@ sidebarWidth = 21
     padding-top   9*gs
     padding-bottom 5*gs
   &.is-sidebar-open
-    {el}__sidebar
+    .react-sticky
       left          2%
       @media all and (max-width: 1300px)
         left        1%
       @media all and (max-width: 1200px)
         left        0
+    {el}__sidebar
       &:before
         opacity   1
     {el}__expand-btn
@@ -108,15 +109,18 @@ sidebarWidth = 21
         transform   translate3d(-2*PX, -2*PX, 0)
     // @media all and (max-width: 1120px)
     //   display     block
+  .react-sticky
+    position        absolute
+    min-height      100%
   .sticky
-    bottom      0
-    z-index     21
+    bottom          0
+    z-index         21
   .tutorials-sidebar
     fly()
   &__svg-arrow
-    position    absolute
-    z-index     2
+    position        absolute
+    z-index         2
   .post
-    max-width     80*gs
+    max-width       80*gs
     fly()
  
