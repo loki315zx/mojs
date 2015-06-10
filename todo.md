@@ -1,4 +1,3 @@
 # todo
 
-- fix features copy
-- fix motion lettering
+- write easing tutorial

@@ -2,6 +2,7 @@
 
 {el = '.post'}
   color             c-white
+  line-height       1.9
   &__header
     color           c-orange
     font-size       24*PX
@@ -11,14 +12,31 @@
     font-size       16*PX
     opacity         .5
     margin-top      .8*gs
-  &__paragraph
-    line-height     1.9
-    text-align      justify
-    & + {el}__paragraph
+  p
+    // text-align      justify
+    & + p
       margin-top    1*gs
     +mobile()
       line-height   1.5
       text-align    left
+  ul
+    margin          4*gs auto
+    max-width       50*gs
+  li
+    list-style      none
+    position        relative
+    &:before
+      content       '•'
+      position      absolute
+      color         c-orange
+      left         -2*gs
+    & + li
+      margin-top    gs
+  h2
+    color           c-orange
+    margin          5*gs 0
+    font-weight     normal
+
   &__orx-line
     margin          3.5*gs 0 3*gs
     +mobile()

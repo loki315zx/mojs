@@ -15,6 +15,7 @@ cl-semi-orange = rgba(c-orange, .5)
     margin-bottom   .5*gs
   &__content
     border-right    PX solid cl-semi-orange
+    padding-right   2*gs
     padding-top     .8*gs
   &__link
     color           c-white
@@ -22,7 +23,9 @@ cl-semi-orange = rgba(c-orange, .5)
   &__section
     padding-bottom  3.5*gs
     {el}__link
-      margin-top    1.5*gs
+      // margin-top    1.5*gs
+      margin-top    1*gs
+      line-height   1.5
       width         100%
   &__social-networks
     margin-left     3.5*gs
@@ -34,7 +37,8 @@ cl-semi-orange = rgba(c-orange, .5)
   .link
     &__underline
       background    c-orange
-      top           .9*gs
-      left        - 2*gs
+      top           50%
+      margin-top   -2*PX
+      left         -2*gs
       circle        4*PX
     

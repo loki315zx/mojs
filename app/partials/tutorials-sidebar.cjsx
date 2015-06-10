@@ -12,8 +12,9 @@ module.exports = React.createClass
       <div className="tutorials-sidebar__content">
         <div className="tutorials-sidebar__section">
           <div className="tutorials-sidebar__header"> Basics </div>
-          <UniteLink link="getting-started" className="tutorials-sidebar__link"> Getting Started </UniteLink>
-          <UniteLink link="motion-path"     className="tutorials-sidebar__link"> APIs overview   </UniteLink>
+          <UniteLink link="getting-started" isDisabled="true" className="tutorials-sidebar__link"> Getting Started </UniteLink>
+          <UniteLink link="easing-1" className="tutorials-sidebar__link"> Easing functions / Property curves </UniteLink>
+          <UniteLink link="motion-path" isDisabled="true" className="tutorials-sidebar__link"> APIs overview   </UniteLink>
           <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Transit         </UniteLink>
           <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Swirl           </UniteLink>
           <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Motion Path     </UniteLink>

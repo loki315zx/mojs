@@ -34,7 +34,7 @@ Main = React.createClass
                 <div className="feature__image"></div>
                 <div className="feature__header">Retina Ready</div>
                 <div className="feature__text">
-                  Screen density independent effects as response to the modern web call.
+                  Screen density independent effects as a response to the modern web call.
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@ Main = React.createClass
                 <div className="feature__image"></div>
                 <div className="feature__header">Simple</div>
                 <div className="feature__text">
-                  Simple declarative API to master your motion project with ease.
+                  Simple declarative APIs to master your motion project with ease.
                 </div>
               </div>
             </div>
@@ -55,7 +55,7 @@ Main = React.createClass
                 <div className="feature__image"></div>
                 <div className="feature__header">Modular</div>
                 <div className="feature__text">
-                  Specific bundle for the current project's needs. Bye bye file size overheads.
+                  Specific bundle for the current project's needs. Bye bye large file size overheads.
                 </div>
               </div>
             </div>
