@@ -6,7 +6,7 @@ Easing plays the crucial role in sense  of animation giving to it the right fill
 
 > Using a term like nonlinear science is like referring to the bulk of zoology as the study of non-elephant animals.
 > 
-> \- Stanislaw Ulam
+> - Stanislaw Ulam
 
 Animation with equal interim spacing(read with linear easing) can envoke in our brain nothing then suspicious or rum response. This is why so important to have the full control of the easing functions.
 
@@ -24,47 +24,43 @@ Firstly I will rake you sparingly thru the `common easing functions` as you prob
 
 The full list is:
 
-- linear
-- ease/in/out/inout
-- quad/in/out/inout
-- cubic/in/out/inout
-- quart/in/out/inout
-- quint/in/out/inout
-- sin/in/out/inout
-- expo/in/out/inout
-- circ/in/out/inout
-- back/in/out/inout
-- elastic/in/out/inout
-- bounce/in/out/inout
+- *linear*
+- *ease*: in/out/inout
+- *quad*: in/out/inout
+- *cubic*: in/out/inout
+- *quart*: in/out/inout
+- *quint*: in/out/inout
+- *sin*: in/out/inout
+- *expo*: in/out/inout
+- *circ*: in/out/inout
+- *back*: in/out/inout
+- *elastic*: in/out/inout
+- *bounce*: in/out/inout
 
 
 If you have ever used easing functions in other libraries the list should seem familiar for you. You can pass them around to modules as `strings` with easing's name delimited by `.` or directly as `functions`, that are available on `mojs.easing` object:
 
+``` javascript
 var tween = new Tween({
-
   easing: ‘cubic.in’, // ‘cubic.inout’,
-
   onUpdate: function (p) {
-
       // p is the current progress
-
   }
-
 });
+```
 
 or
 
+``` javascript
 var tween = new Tween({
-
   easing:  mojs.easing.cubic.in,
-
   onUpdate: function (p) {
-
       // p is the current progress
-
   }
-
 });
+```
+
+
 
 or even
 
@@ -80,75 +76,30 @@ So if we want to tweak one of the predefined easing, we can do it by generating 
 
   [gif]
 
+``` javascript
 var tween = new Tween({
-
   easing:  mojs.easing.bezier(0.555, -0.330, 0.075, 1.395),
-
   onUpdate: function (p) {
-
       // p is the current progress
-
   }
-
 });
+```
 
-Needless to say that you can also pass to modules the string with coordinates `"bezier(0.555, -0.330, 0.075, 1.395)”` and it will be auto generated for you.
+It is worth mentioning that you can also pass to modules the array with coordinates like `[0.555, -0.330, 0.075, 1.395]` and it will be auto generated for you.
 
-### > check on it
-
+``` javascript
 var tween = new Tween({
-
-  easing:  'bezier(0.555, -0.330, 0.075, 1.395)',
-
+  easing:  [0.555, -0.330, 0.075, 1.395],
   onUpdate: function (p) {
-
       // p is the current progress
-
   }
-
 });
+```
 
 This would work exactly the same as for the previous example.
-
-
 
 ## Spring easing
 
 ## Path easing
 
 Path easing uses `SVG path commands` to give you the full power of vector editor over you easing function. It can be also used as `property curve` if you are familiar with Adobe After Effects, this concept is probably know for you as [animation curves](https://vimeo.com/68022971). This type of easing not only gives you precise timing function but also changes the way you treat your code. It may seem odd first, but stay with me, I promise this will be the most comprehensive timing function you ever used in the web before.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
