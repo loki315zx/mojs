@@ -35,7 +35,7 @@ But what if we eventually want to change the weight of our object so it will hav
 
 ![Screen Shot 2015-06-11 at 11.38.35](/Users/mac/Desktop/Screen Shot 2015-06-11 at 11.38.35.png)
 
-Now we will copy the ` SVG path commands ` to our code, generating the custom easing function from it:
+Now we will copy the ` SVG path commands ` to our code, generating the custom easing function from it (bouncyEasing in the code below):
 
 ``` javascript
 var square = document.querySelector('#js-square'),
@@ -51,9 +51,27 @@ var tween = new Tween({
 
 Yay! Now our square fills much more lighter!
 
-Now you can see how the comprehensiveness of your easing function is limited by your imagination only. Hooray hooray ` mo·js `!
+You can see how the comprehensiveness of your easing function is now limited by your imagination only. Hooray hooray ` mo·js `!
 
-We won’t stop here, right? We are building a eye catching motion instead of just common one, so lets add the [secondary action](https://www.youtube.com/watch?v=MjBHWw1TbP4) to add more information about the environment that our object moves in. I’m thinking about the simplest one - a ` shadow ` , are you? But firstly we need to 
+We won’t stop here, right? We are building an eye catching motion instead of just common one, so lets add the [secondary action](https://www.youtube.com/watch?v=MjBHWw1TbP4) to convey more information about the environment that our object moves in. I’m thinking about the simplest one - a ` shadow ` , are you? But firstly we need to contemplate show shadow work in our world. Presuming the source of light hangs right above the object - obviously our shadow will became harder accumulated when our square moves closer to the ground:
+
+![Screen Shot 2015-06-11 at 12.57.21](/Users/mac/Desktop/Screen Shot 2015-06-11 at 12.57.21.png)
+
+From the flip side, it gets lighter and much more diffused covering larger area when it moves further from the ground line and closer to the source of light:
+
+![Screen Shot 2015-06-11 at 13.01.13](/Users/mac/Desktop/Screen Shot 2015-06-11 at 13.01.13.png)
+
+Apparently the same bounce easing we made earlier will work great here of shadow’s opacity — it starts from 0 growing to 1 on the first “touch” of the ground, then becomes a bit lighter on bounces and ends up on value of 1. Hopefully you can easily read easing function’s graph already If you don’t yet, don’t worry, it takes some time to get accustomed to it. 
+
+![Screen Shot 2015-06-11 at 13.16.14](/Users/mac/Desktop/Screen Shot 2015-06-11 at 13.16.14.png)
+
+
+
+
+
+
+
+
 
 
 
