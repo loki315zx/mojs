@@ -69,20 +69,40 @@ Apparently the same bounce easing we made earlier will work great here for shado
 
 ``` javascript
 var square = document.querySelector('#js-square'),
+    shadow = document.querySelector('#js-shadow'),
     bouncyEasing = mojs.easing.path('M1,78.6407204 C1,78.6407204 73.1776505,65.8290405 84.125685,3 C99.25,89.6503906 156.230764,3 156.230764,3 C156.230764,3 165.107422,52.8183594 194.204742,3 C194.204742,3.00000001 199.835938,26.4492188 213.198989,3');
 
 var tween = new mojs.Tween({
   onUpdate: function (progress) {
     var bounceProgress = bouncyEasing(progress);
     square.style.transform = 'translateY(' + 100*bounceProgress + 'px)';
-    square.style.opacity   = bounceProgress;
+    shadow.style.opacity   = bounceProgress;
   }
 }).start();
 ```
 
-Ok cool. What about size? Would the bouncy easing work for scale too? Unfortunately no, but no worries we have billions of easing functions now. Lets jump back to vector editor and sketch the scale easing:
+Ok cool. What about the size? Would the bouncy easing work for scale too? Unfortunately no, but no worries we have billions of easing functions now. Lets jump back to vector editor and sketch the scale easing:
 
+![Screen Shot 2015-06-12 at 10.55.39](/Users/mac/Desktop/Screen Shot 2015-06-12 at 10.55.39.png)
 
+So the shadow ` scale ` value starts somewhere at ` 2 `, then shrinks to ` 1 ` when the object touches the ground line, and scales down when object bounces from the ground. 
+
+``` js
+var square = document.querySelector('#js-square'),
+    shadow = document.querySelector('#js-shadow'),
+    bouncyEasing = mojs.easing.path('M1,78.6407204 C1,78.6407204 73.1776505,65.8290405 84.125685,3 C99.25,89.6503906 156.230764,3 156.230764,3 C156.230764,3 165.107422,52.8183594 194.204742,3 C194.204742,3.00000001 199.835938,26.4492188 213.198989,3'),
+    shadowScaleEasing = mojs.easing.path('M0,0 C5.07689534,7.65150309 10.7347387,36.0266837 16.6678547,100 C16.6678547,101.794598 28.3767503,-15.0879941 44.1008572,100 C44.1008572,100.762447 52.2136908,43.5495229 63.0182497,100 C63.0182497,100.96434 68.5097621,70.750671 76.4643231,100 C76.4643231,100 80.5297451,83.4563406 85.8902733,100 C85.8902733,100.762447 88.2638161,90.3388595 92.132216,100 C92.132216,100.156767 94.1849839,95.5211648 96.918051,100 C96.918051,100.156767 98.7040751,98.0618441 100,100');
+
+var tween = new mojs.Tween({
+  onUpdate: function (progress) {
+    var bounceProgress = bouncyEasing(progress);
+    square.style.transform = 'translateY(' + 100*bounceProgress + 'px)';
+    shadow.style.opacity   = bounceProgress;
+  }
+}).start();
+```
+
+So you may have noticed that the graph doesn’t really look like easing graph anymore, and you are right! The easing starts from ` 0, 0 ` and ends up at ` 1, 1 ` but our ` scale graph ` starts at ` 0, 2 ` and ends at ` 1, 1 `. This is another type of graphs - ` property curves ` because they are describing how specific property acts during progress changes and not obligatory should start at ` 0, 0` and end at ` 1, 1 `.  If you are familiar with After Effects workflow, this types of graphs can be known as [animation curves](#). Thankfully  ` mo·js ` is capable to handle those too. As you can see this property curves are way more powerful then just an easing function, but it has it’s performance price, so don’t add a lot of them!
 
 
 

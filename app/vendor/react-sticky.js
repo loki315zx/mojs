@@ -5,12 +5,13 @@ var Sticky = React.createClass({
   getDefaultProps: function() {
     return {
       type: React.DOM.div,
+      className: '',
       stickyClass: 'sticky',
       stickyStyle: {
         position: 'fixed',
-        // top: 0,
-        // left: 0,
-        // right: 0
+        top: 0,
+        left: 0,
+        right: 0
       },
       onStickyStateChange: function () {}
     };
@@ -18,97 +19,85 @@ var Sticky = React.createClass({
 
   getInitialState: function() {
     return {
-      events:     ['load', 'scroll', 'resize'],
-      style:      {}
+      events: ['load', 'scroll', 'resize'],
+      style: {}
     };
   },
 
-  reset: function() {
+  scrollPosition: function() {
     var html = document.documentElement;
     var body = document.body;
-    var windowOffset = window.pageYOffset || (html.clientHeight ? html : body).scrollTop;
-
-    this.elementOffset = this.getDOMNode().getBoundingClientRect().top + windowOffset;
+    return window.pageYOffset || (html.clientHeight ? html : body).scrollTop;
   },
 
-  checkStickyState: function() {
-    var wasSticky = this.state.isSticky,
-        doc       = document.documentElement,
-        pageY     = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-    
-    // if current scroll position the same as previous one
-    if (pageY === this.previousPageYOffset) {
-      // lets increase the count of this "nothing to do" circumstance
-      this.stickyCheckCnt++;
-      // if it is already half a second with nothing changed (1000/16/2)
-      //   take a nap and wait on events that were binded in componentDidMount
-      //   method and return immediately
-      // otherwise call self recursively thru requestAnimationFrame
-      //   and return immediately
-      return (this.stickyCheckCnt > 31) ? this.stopLoop() : this.requestFrame();
-    } else { this.stickyCheckCnt = 0; }
+  distanceFromTop: function() {
+    return this.getDOMNode().getBoundingClientRect().top;
+  },
 
-    var isSticky = pageY > this.elementOffset,
-        nextState = { isSticky: isSticky };
-    if (isSticky) {
-      nextState.style = this.props.stickyStyle;
-      nextState.className = this.props.stickyClass;
-    } else {
-      nextState.style = {};
-      nextState.className = '';
+  initialize: function() {;
+    this.elementOffset = this.distanceFromTop() + this.scrollPosition();
+  },
+
+  handleTick: function() {
+    if (this.hasUnhandledEvent) {
+      var wasSticky = this.state.isSticky;
+      var isSticky = this.scrollPosition() > this.elementOffset;
+      if (isSticky !== wasSticky) {
+        var nextState = { isSticky: isSticky };
+        if (isSticky) {
+          nextState.style = this.props.stickyStyle;
+          nextState.className = this.props.className + ' ' + this.props.stickyClass;
+        } else {
+          nextState.style = {};
+          nextState.className = this.props.className;
+        }
+        this.setState(nextState);
+        this.props.onStickyStateChange(isSticky);
+      }
+      this.hasUnhandledEvent = false;
     }
-    this.setState(nextState);
-    if (isSticky !== wasSticky) {
-      this.props.onStickyStateChange(isSticky);
-    }
-    // save previous scrollPosition
-    this.previousPageYOffset = pageY;
-    // call itself recursively thru requestAnimationFrame
-    this.requestFrame();
+    this.tick();
+  },
+
+  handleEvent: function() {
+    this.hasUnhandledEvent = true;
   },
 
   componentDidMount: function() {
-    this.reset();
-    // see checkStickyState metod for this variable purpose
-    this.stickyCheckCnt = 0;
-    // start loop where we will checkStickyState
-    this.startLoop();
+    this.initialize();
     this.state.events.forEach(function(type) {
-      window.addEventListener(type, this.startLoop);
+      window.addEventListener(type, this.handleEvent);
     }, this);
+    this.tick();
   },
+
   componentWillUnmount: function() {
-    // stop loop where we are checking checkStickyState
-    this.stopLoop();
     this.state.events.forEach(function(type) {
-      window.removeEventListener(type, this.startLoop);
+      window.removeEventListener(type, this.handleEvent);
     }, this);
+    this.cancel();
   },
-  startLoop: function() {
-    // start the loop only if it isn't running yet
-    if (this.isLoopStarted) { return }; this.isLoopStarted = true;
-    this.requestFrame();
+
+  isModernBrowser: function() {
+    return requestAnimationFrame && cancelAnimationFrame;
   },
-  stopLoop: function() {
-    // stop the next frame from firing
-    // needs https://github.com/darius/requestAnimationFrame polyfill
-    // to work in legacy browsers
-    cancelAnimationFrame(this.requestID);
-    // reset flags, see checkStickyState method
-    // for this.stickyCheckCnt purpose
-    this.isLoopStarted = false; this.stickyCheckCnt = 0;
+
+  cancel: function() {
+    var cancel = this.isModernBrowser() ? cancelAnimationFrame : clearTimeout;
+    cancel(this.currentTick);
   },
-  requestFrame: function () {
-    // requst checkStickyState method thru requestAnimationFrame callback
-    this.requestID = requestAnimationFrame(this.checkStickyState);
+
+  tick: function () {
+    var next = this.isModernBrowser() ? requestAnimationFrame : setTimeout;
+    this.currentTick = next(this.handleTick, 1000 / 60);
   },
+
   render: function() {
     return this.props.type({
       style: this.state.style,
-      className: this.state.className + ' react-sticky'
+      className: this.state.className
     }, this.props.children);
   }
 });
 
 module.exports = Sticky;
-
