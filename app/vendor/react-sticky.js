@@ -13,38 +13,38 @@ var Sticky = React.createClass({
         left: 0,
         right: 0
       },
+      topOffset: 0,
       onStickyStateChange: function () {}
     };
   },
 
   getInitialState: function() {
     return {
-      events: ['load', 'scroll', 'resize'],
+      events: ['load', 'scroll', 'resize', 'touchmove', 'touchend'],
       style: {}
     };
   },
 
-  scrollPosition: function() {
-    var html = document.documentElement;
-    var body = document.body;
-    return window.pageYOffset || (html.clientHeight ? html : body).scrollTop;
-  },
-
-  distanceFromTop: function() {
+  top: function() {
     return this.getDOMNode().getBoundingClientRect().top;
   },
 
-  initialize: function() {;
-    this.elementOffset = this.distanceFromTop() + this.scrollPosition();
+  shouldBeSticky: function() {
+    var position = this.getDOMNode().style.position;
+    this.getDOMNode().style.position = 'relative';
+    var shouldBeSticky = this.top() <= -this.props.topOffset;
+    this.getDOMNode().style.position = position;
+    return shouldBeSticky;
   },
 
   handleTick: function() {
-    if (this.hasUnhandledEvent) {
-      var wasSticky = this.state.isSticky;
-      var isSticky = this.scrollPosition() > this.elementOffset;
-      if (isSticky !== wasSticky) {
-        var nextState = { isSticky: isSticky };
-        if (isSticky) {
+    console.log('tick');
+    if (this.hasUnhandledEvent || this.hasTouchEvent) {
+      var isSticky = this.state.isSticky;
+      var shouldBeSticky = this.shouldBeSticky();
+      if (isSticky !== shouldBeSticky) {
+        var nextState = { isSticky: shouldBeSticky };
+        if (shouldBeSticky) {
           nextState.style = this.props.stickyStyle;
           nextState.className = this.props.className + ' ' + this.props.stickyClass;
         } else {
@@ -52,19 +52,27 @@ var Sticky = React.createClass({
           nextState.className = this.props.className;
         }
         this.setState(nextState);
-        this.props.onStickyStateChange(isSticky);
+        this.props.onStickyStateChange(shouldBeSticky);
       }
       this.hasUnhandledEvent = false;
     }
     this.tick();
   },
 
-  handleEvent: function() {
-    this.hasUnhandledEvent = true;
+  handleEvent: function(event) {
+    switch (event.type) {
+      case 'touchmove':
+        this.hasTouchEvent = true;
+        break;
+      case 'touchend':
+        this.hasTouchEvent = false;
+        break;
+      default:
+        this.hasUnhandledEvent = true;
+    }
   },
 
   componentDidMount: function() {
-    this.initialize();
     this.state.events.forEach(function(type) {
       window.addEventListener(type, this.handleEvent);
     }, this);
