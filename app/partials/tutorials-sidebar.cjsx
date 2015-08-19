@@ -13,35 +13,36 @@ module.exports = React.createClass
         <div className="tutorials-sidebar__section">
           <div className="tutorials-sidebar__header"> Basics </div>
           <UniteLink link="getting-started" isDisabled="true" className="tutorials-sidebar__link"> Getting Started </UniteLink>
-          <UniteLink link="easing-1" className="tutorials-sidebar__link"> Easing functions / Property curves </UniteLink>
-          <UniteLink link="motion-path" isDisabled="true" className="tutorials-sidebar__link"> APIs overview   </UniteLink>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Transit         </UniteLink>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Swirl           </UniteLink>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Motion Path     </UniteLink>
+          <UniteLink link="motion-path" isDisabled="true" className="tutorials-sidebar__link">     APIs Overview   </UniteLink>
+          <UniteLink link="motion-path" isDisabled="true" className="tutorials-sidebar__link">     Change Log      </UniteLink>
+          <UniteLink link="motion-path" isDisabled="true" className="tutorials-sidebar__link">     Thank Yous!     </UniteLink>
+        </div>
+
+        <div className="tutorials-sidebar__section">
+          <div className="tutorials-sidebar__header"> Modules </div>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Motion Path      </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Transit          </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Swirl            </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Burst            </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Spriter          </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Stagger Wrapper  </UniteLink>
+        </div>
+
+        <div className="tutorials-sidebar__section">
+          <div className="tutorials-sidebar__header"> Easing </div>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Intro </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Base Easing Funcions </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Bezier Curves </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Springs </UniteLink>
+          <UniteLink link="easing-1" className="tutorials-sidebar__link"> Path Easing </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Mix </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Helpers </UniteLink>
         </div>
 
         <div className="tutorials-sidebar__section">
           <div className="tutorials-sidebar__header"> Tweening </div>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Easing          </UniteLink>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Timeline        </UniteLink>
           <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Tween           </UniteLink>
-        </div>
-
-        <div className="tutorials-sidebar__section">
-          <div className="tutorials-sidebar__header"> Transforms </div>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Goo             </UniteLink>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Thunder         </UniteLink>
-        </div>
-
-        <div className="tutorials-sidebar__section">
-          <div className="tutorials-sidebar__header"> Backgrounds </div>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Easing          </UniteLink>
           <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Timeline        </UniteLink>
-        </div>
-
-        <div className="tutorials-sidebar__section">
-          <div className="tutorials-sidebar__header"> Text </div>
-          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Easing          </UniteLink>
         </div>
 
         <ORXLine />

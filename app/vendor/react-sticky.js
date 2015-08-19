@@ -38,7 +38,6 @@ var Sticky = React.createClass({
   },
 
   handleTick: function() {
-    console.log('tick');
     if (this.hasUnhandledEvent || this.hasTouchEvent) {
       var isSticky = this.state.isSticky;
       var shouldBeSticky = this.shouldBeSticky();

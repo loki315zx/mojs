@@ -32,7 +32,11 @@ module.exports = React.createClass
 
   render:->
     items = []; itemButtons = []
-    for item, i in @props.children
+
+    childs = if @props.children instanceof Array then @props.children
+    else [@props.children]
+
+    for item, i in childs
       keys = Object.keys(item); key = keys[0]; value = item[key]
       lang = if key is 'cs' then 'coffeescript' else 'javascript'
       id   = "js-#{@props.pen}-#{key}"
