@@ -273,6 +273,40 @@ module.exports = React.createClass
         Anyways I will add more examples just to be sure you got it well.
       </p>
 
+      <h2>More property curves examples</h2>
+
+      <p>
+        Pretend you need to animate a character that is angry and arguing to somebody.
+        Meanwhile his hand is waving in the air to exaggerate his bad mood.
+        We can describe the hand angle property with path like this:
+      </p>
+
+      <PostImage
+        src="app/pages/tutorials/i/hand-wave.svg"
+        description="Fig.4 Hand waving in the air"
+        className="post-image--full-image-width">
+      </PostImage>
+
+      <p>
+        As you can see, the hand is in 0 position at the start, then rises steeply, 
+        then twitching up and down the rest of the progress with relatively small
+        angle delta:
+      </p>
+
+      <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
+        { js: """var square = document.querySelector('#js-square'),
+                      bouncyEasing = mojs.easing.path('M0,100 C2.45434624,97.8269293 16.3464551,108.82637 36.7536484,1.51862764 C57.1552734,140.170898 73.4575653,0 73.4575634,0.417637977 C84.8740234,87.625 91.391449,0 91.391449,0 C97.2792969,51.6884766 100,0 100,0');
+
+                  new Tween({
+                    onUpdate: function (progress) {
+                      var bounceProgress = bouncyEasing(progress);
+                      square.style.transform = 'translateY(' + 100*bounceProgress + 'px)';
+                    }
+                  }).start();
+          """
+        }
+      </CodeSample>
+
       <ORXLine className="post__last-orx-line" type="center" />
       <SocialNetworksAbout className="post__social-networks-about" />
       <DisqusComments />
