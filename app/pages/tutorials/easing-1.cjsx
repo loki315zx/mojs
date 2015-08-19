@@ -183,16 +183,95 @@ module.exports = React.createClass
 
       <p>
         If you are familiar with After Effects workflow and have ever worked 
-        with <a href="#">animation curves</a> this idea wont be new for you.
-        If you havn't no worries, it is easy but be attentive it will probably
+        with <a href="#">animation curves</a> this idea won't be entirely new for you.
+        If you havn't - no worries, it is pretty easy but be attentive it will probably
         change the way your are treating your animations!
       </p>
 
       <p>
-        It should start and end at 0,0 - 1,1
+        Let me try to describe the idea of property curves:
       </p>
 
+      <Cite author="Me">
+        With property curves we can specify(read draw) what value would a certain property
+        have on exact point in time with a SVG path.
+      </Cite>
 
+      <p>
+        Yes exactly. We can draw for instance, how a translate or scale(or any other really) 
+        propety will behaive on progress change.
+      </p>
+
+      <p>
+        Let me describe it more verbosely with code snippet and codepen.
+        Imagine our prevous rectangle is very heavy and not bouncy at all.
+        When it hits the ground, it stays still but causes earthquake.
+        That's what the quake graph will look like (Fig.3):
+      </p>
+
+      <PostImage
+        src="app/pages/tutorials/i/quake-easing.svg"
+        description="Fig.3 Quake property curve"
+        className="post-image--full-image-width">
+      </PostImage>
+
+      <p>
+       The <span className="highlight">X</span> axis represents progress of our animation.
+       The <span className="highlight">Y</span> axis is the change of our property in time, 
+       in this particulary example this is <span className="highlight">translateY</span> property.
+       As you can see, property curve's <span className="highlight">Y</span> value shouldn't 
+       obligatory start at <span className="highlight">0</span> and end 
+       at <span className="highlight">1</span>, it can take any value you want.
+       But the <span className="highlight">X</span> value must start 
+       at <span className="highlight">0</span> and end 
+       at <span className="highlight">1</span> because progress can't go 
+       beyond <span className="highlight">1</span> as it makes no sense at all.
+       Now lets jump to codepen to see how does work exactly:
+      </p>
+
+      <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
+        { js: """var square = document.querySelector('#js-square'),
+                      quakeEasing = mojs.easing.path(''),
+                      fallAmount = 100;
+
+                  var quakeTween = new mojs.Tween({
+                    onUpdate: function (progress) {
+                      var quakeProgress = quakeEasing(progress);
+                      // set translateY to the current translateY (fallAmount) 
+                      // + (quakeProgress * 20)
+                      square.style.transform = 'translateY(' + fallAmount + 20*quakeProgress + 'px)';
+                    },
+                  }).start();
+
+                  new mojs.Tween({
+                    onUpdate: function (progress) {
+                      var fallProgress = mojs.easing.cubic.out(progress);
+                      square.style.transform = 'translateY(' + fallAmount*fallProgress + 'px)';
+                    },
+                    onComplete: function () { quakeTween.start(); }
+                  }).start();
+          """
+        }
+      </CodeSample>
+
+      <p>
+        In codepen above, we have changed the bouncy easing 
+        to <span className="highlight">cubic.out</span> to express the gravity force
+        that was appied to the rectangle (line 13). After the first tween completes, 
+        we subsequently launch the second one (line 16) with the quake curve applied to the 
+        <span className="highlight">translateY</span> property (line 7).
+      </p>
+
+      <em>
+        <i>Note</i>: You probably want to organize these two tweens' time relation with a 
+        <span className="highlight">timeline</span>, thus it is 
+        possible with <span className="highlight">mo· js</span> but omitted here for clarity's sake.
+      </em>
+
+      <p>
+        I hope you had the <span className="highlight">Aha!</span> moment right now.
+        Anyways I will add more examples just to be sure you got it well.
+      </p>
 
       <ORXLine className="post__last-orx-line" type="center" />
       <SocialNetworksAbout className="post__social-networks-about" />
