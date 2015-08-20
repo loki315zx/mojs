@@ -1,8 +1,13 @@
 @import '../imports.styl'
 
 { el = '.easing-object-graph' }
+  text-align center
   clearfix()
   .easing-object,
   .easing-graph
     float left
+  &__inner
+    text-align  left /* hello ie */
+    text-align  initial
+    display     inline-block
     

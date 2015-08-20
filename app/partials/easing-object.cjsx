@@ -5,6 +5,7 @@ mojs          = require 'mo-js'
 require '../css/partials/easing-object.styl'
 
 module.exports = React.createClass
+  getInitialState:-> label: ''
   getDefaultProps:->
     easing:   (p)-> p
     duration: 2000
@@ -16,8 +17,9 @@ module.exports = React.createClass
       duration: @props.duration
       delay:    @props.delay
       onUpdate: (p)=>
+        return if !@props.onUpdate?
         easedP = @props.easing(p)
-        @props.onUpdate? { objEl, easedP, p }
+        @setState label: @props.onUpdate { objEl, easedP, p }
 
     @props.timeline?.add @_tween
 
@@ -28,5 +30,5 @@ module.exports = React.createClass
     bg = if @props.background? then @props.background else null
     <div className="easing-object" style={ backgroundColor: bg } >
       { @props.children }
-      <div className="easing-object__label">145 deg</div>
+      <div className="easing-object__label">{ @state.label }</div>
     </div>

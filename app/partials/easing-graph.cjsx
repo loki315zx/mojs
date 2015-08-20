@@ -44,15 +44,15 @@ module.exports = React.createClass
 
         <div ref="progress-line" className="easing-graph__line-wrapper">
           <div className="easing-graph-line">
-            <div ref="progress-label-top" className="easing-graph-line__label easing-graph-line__label--top">{ @state.progressLabel }</div>
-            <div ref="progress-label-bottom" className="easing-graph-line__label easing-graph-line__label--bottom">{ @state.progressLabel }</div>
+            <div className="easing-graph-line__label easing-graph-line__label--top">{ @state.progressLabel }</div>
+            <div className="easing-graph-line__label easing-graph-line__label--bottom">{ @state.progressLabel }</div>
           </div>
         </div>
 
         <div ref="custom-line" className="easing-graph__line-wrapper">
           <div className="easing-graph-line easing-graph-line--horizontal">
-            <div ref="custom-label-top" className="easing-graph-line__label easing-graph-line__label--top">{ @state.customLabel }</div>
-            <div ref="custom-label-bottom" className="easing-graph-line__label easing-graph-line__label--bottom">{ @state.customLabel }</div>
+            <div className="easing-graph-line__label easing-graph-line__label--top">{ @state.customLabel }</div>
+            <div className="easing-graph-line__label easing-graph-line__label--bottom">{ @state.customLabel }</div>
           </div>
         </div>
 

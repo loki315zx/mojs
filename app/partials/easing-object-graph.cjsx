@@ -25,21 +25,22 @@ module.exports = React.createClass
     , 100
 
     <div className="easing-object-graph">
-      <EasingObject
-        timeline  = {@_timeline}
-        easing    = {@_easing}
-        duration  = {@props.duration}
-        onUpdate  = {@props.onUpdate}>
-        {@props.children}
-      </EasingObject>
+      <div className="easing-object-graph__inner">
+        <EasingObject
+          timeline  = {@_timeline}
+          easing    = {@_easing}
+          duration  = {@props.duration}
+          onUpdate  = {@props.onUpdate}>
+          {@props.children}
+        </EasingObject>
 
-      <EasingGraph
-        easing    = {@_easing}
-        timeline  = {@_timeline}
-        label     = {@props.label}
-        duration  = {@props.duration}
-        delay     = {@props.delay}
-        path      = {@props.path}>
-      </EasingGraph>
-
+        <EasingGraph
+          easing    = {@_easing}
+          timeline  = {@_timeline}
+          label     = {@props.label}
+          duration  = {@props.duration}
+          delay     = {@props.delay}
+          path      = {@props.path}>
+        </EasingGraph>
+      </div>
     </div>
