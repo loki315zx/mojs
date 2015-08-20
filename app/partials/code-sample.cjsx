@@ -26,9 +26,8 @@ module.exports = React.createClass
     activeEl = node.querySelector '.line-numbers.is-show'
     syntax   = node.querySelector '#js-syntax'
     syntax.style.height = "#{activeEl.offsetHeight + 2}px"
-    tween    = new mojs.Tween
-    timeline = new mojs.Timeline onUpdate:(p)-> activeEl.style.opacity = p
-    tween.add(timeline); tween.start()
+    tween    = new mojs.Tween onUpdate:(p)-> activeEl.style.opacity = p
+    tween.start()
 
   render:->
     items = []; itemButtons = []
@@ -55,7 +54,7 @@ module.exports = React.createClass
       </div>
       <div className="code-sample__pen">
         { ### 
-        
+
           <HeftyContent isVisibilityToggle={true}>
             <p data-height="345" data-theme-id="15571" data-slug-hash="#{@props.pen}" data-default-tab="result" data-user="sol0mka" className='codepen'>See the Pen <a href='http://codepen.io/sol0mka/pen/8312611e3618e83d4103390afc2c8bef/'>8312611e3618e83d4103390afc2c8bef</a> by LegoMushroom (<a href='http://codepen.io/sol0mka'>@sol0mka</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
           </HeftyContent>

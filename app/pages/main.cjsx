@@ -100,7 +100,7 @@ Main = React.createClass
 
         <ApiDemo />
 
-      <MotionDemo />
+      { ### <MotionDemo /> ### }
       
       <div className="main-page__buttons [ grid grid--sliced1 grid--gutter-x6 ]">
         <div className="grid-bit grid-bit--4-12">

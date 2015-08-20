@@ -1,4 +1,5 @@
 @import '../imports.styl'
+@import '../blocks/easing-graph-line.styl'
 
 {el = '.easing-graph'}
   rect            320*PX
@@ -11,6 +12,15 @@
     rect          size*PX
     centerize     size
     background    rgba(c-purple, .98)
+    
+  &__small-label
+    font-size     6*PX
+    position      absolute
+    opacity       .5 
+    &--zero
+      ne          100%
+    &--one
+      sw          100%
     
   &__label
     font-size         6*PX
@@ -34,10 +44,29 @@
     background-color inherit
 
   &__graph
+    position        absolute
+    nw              0
     rect            100%
     svg
+      overflow      visible
       position      absolute
       rect          100%
     path
       stroke        white
       stroke-with   2*PX
+  
+  size = 6
+  &__point
+    circle          size*PX
+    margin-left     -(size/2)*PX + PX
+    margin-top      -(size/2)*PX - PX
+    background      c-orange
+    position        absolute
+    top             100%
+    z-index         2
+      
+  &__line-wrapper
+    height          100%
+    width           0
+  .easing-graph-line
+    position absolute
