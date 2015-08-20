@@ -5,6 +5,7 @@ module.exports = React.createClass
     <div id="disqus_thread" className="post__comments"></div>
 
   componentDidMount:->
+    return
     disqus_shortname = 'mo-js'
     dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

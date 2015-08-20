@@ -7,6 +7,7 @@ PostImage     = require '../../partials/post-image'
 Cite          = require '../../partials/cite'
 ORXLine       = require '../../partials/orx-line'
 CodeSample    = require '../../partials/code-sample'
+EasingGraph   = require '../../partials/easing-graph'
 HeftyContent  = require '../../partials/hefty-content'
 DisqusComments      = require '../../partials/disqus-comments'
 SocialNetworksAbout = require '../../partials/social-networks-about'
@@ -306,6 +307,8 @@ module.exports = React.createClass
           """
         }
       </CodeSample>
+
+      <EasingGraph label="angle"></EasingGraph>
 
       <ORXLine className="post__last-orx-line" type="center" />
       <SocialNetworksAbout className="post__social-networks-about" />

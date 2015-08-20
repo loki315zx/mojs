@@ -1,0 +1,43 @@
+@import '../imports.styl'
+
+{el = '.easing-graph'}
+  rect            320*PX
+  background      c-creamy-semi
+  border-radius   BRADIUS
+  position        relative
+  
+  size = 200
+  &__center
+    rect          size*PX
+    centerize     size
+    background    rgba(c-purple, .98)
+    
+  &__label
+    font-size         6*PX
+    letter-spacing    PX
+    background-color  inherit
+    position          absolute
+    padding           0 7*PX PX
+    &--progress
+      top             100%
+      left            50%
+      transform       translateX(-50%)
+    &--custom
+      nw              50%
+      transform       translate(-50%, -100%)
+  // wrapper to posit &--custom label
+  &__custom-label-wrapper
+    rect             0
+    position         absolute
+    top              50%
+    transform        rotate(-90deg)
+    background-color inherit
+
+  &__graph
+    rect            100%
+    svg
+      position      absolute
+      rect          100%
+    path
+      stroke        white
+      stroke-with   2*PX
