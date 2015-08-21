@@ -31,7 +31,7 @@ module.exports = React.createClass
           progressLabel: p.toFixed(2)
           customLabel:   easedP.toFixed(2)
 
-    @props.timeline?.add @_tween
+    @props.timeline?.add(@_tween); @props.onAdd?()
 
   _run:->  @_tween.run()
   _stop:-> @_tween.stop()

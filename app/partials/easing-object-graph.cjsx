@@ -9,29 +9,31 @@ mojs          = require 'mo-js'
 require '../css/partials/easing-object-graph.styl'
 
 module.exports = React.createClass
+  getInitialState:-> isTweensAdded: false, isShow: false
   getDefaultProps:->
     path:     'M 0,100 L 100, 0'
     duration: 2000
     delay:    1000
 
-  _start:-> @_timeline.start()
-  _stop:->  @_timeline.stop()
+  _start:-> @_isTweensAdded and @_timeline.start(); @_isShow = true
+  _stop:-> @_timeline.stop(); @_isShow = false
+  _onAdd:-> @_isTweensAdded = true; (@_isShow or !@_isShow?) and @_start()
 
   render:->
-    @_timeline = new mojs.Timeline repeat: 9999999999, onStart:-> console.log 'a'
-    @_easing   = mojs.easing.path @props.path, precompute: 2500, eps: .01
+    @_timeline ?= new mojs.Timeline repeat: 9999999999
+    @_easing   ?= mojs.easing.path @props.path, precompute: 2500, eps: .01
 
     <HeftyContent
       className="easing-object-graph"
-      onShow={ => console.log('show'); @_timeline.start() }
-      onHide={ => console.log('hide'); @_timeline.stop() }>
+      onShow={ => @_start() }
+      onHide={ => @_stop() }>
 
       <div className="easing-object-graph__inner">
         <EasingObject
           timeline  = {@_timeline}
           easing    = {@_easing}
           duration  = {@props.duration}
-          onUpdate  = {@props.onUpdate}>
+          onUpdate  = {@props.onUpdate} >
           {@props.children}
         </EasingObject>
 
@@ -41,7 +43,9 @@ module.exports = React.createClass
           label     = {@props.label}
           duration  = {@props.duration}
           delay     = {@props.delay}
-          path      = {@props.path}>
+          path      = {@props.path}
+          onAdd     = {@_onAdd} >
         </EasingGraph>
+
       </div>
     </HeftyContent>
