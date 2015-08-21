@@ -19,7 +19,12 @@ module.exports = React.createClass
     scrollY = @_getScrollY()
     isShow = if scrollY + @wHeight > @top - 100 and scrollY < @bottom + 100 then true
     else false
-    @state.isShow isnt isShow and @setState isShow: isShow
+    
+    if @state.isShow isnt isShow
+      @setState isShow: isShow
+      isShow and @props.onShow?()
+      isShow or  @props.onHide?()
+
   _loop:->
     return if @isStop; @_checkVisibility()
     requestAnimationFrame(@_loop)

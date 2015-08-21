@@ -1,5 +1,6 @@
 EasingGraph   = require './easing-graph'
 EasingObject  = require './easing-object'
+HeftyContent  = require './hefty-content'
 
 React         = require 'react'
 Tappable      = require 'react-tappable'
@@ -17,14 +18,14 @@ module.exports = React.createClass
   _stop:->  @_timeline.stop()
 
   render:->
-    @_timeline = new mojs.Timeline repeat: 999999999999
+    @_timeline = new mojs.Timeline repeat: 9999999999, onStart:-> console.log 'a'
     @_easing   = mojs.easing.path @props.path, precompute: 2500, eps: .01
 
-    setTimeout =>
-      @_timeline.start()
-    , 100
+    <HeftyContent
+      className="easing-object-graph"
+      onShow={ => console.log('show'); @_timeline.start() }
+      onHide={ => console.log('hide'); @_timeline.stop() }>
 
-    <div className="easing-object-graph">
       <div className="easing-object-graph__inner">
         <EasingObject
           timeline  = {@_timeline}
@@ -43,4 +44,4 @@ module.exports = React.createClass
           path      = {@props.path}>
         </EasingGraph>
       </div>
-    </div>
+    </HeftyContent>
