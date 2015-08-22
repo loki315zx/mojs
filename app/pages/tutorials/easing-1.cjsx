@@ -264,13 +264,13 @@ module.exports = React.createClass
       </p>
 
       <em>
-        <i>Note</i>: You probably want to organize these two tweens' time relation with a 
-        <span className="highlight">timeline</span>, thus it is 
-        possible with <span className="highlight">mo· js</span> but omitted here for clarity's sake.
+        <i>Note</i>: You probably want to add these tweens to a 
+        <span className="highlight">timeline</span> for better code organization, it is 
+        possible with <span className="highlight">mo· js</span> but was omitted here for clarity's sake.
       </em>
 
       <p>
-        I hope you had the <span className="highlight">Aha!</span> moment right now.
+        I hope you had the <span className="highlight">Aha!</span> moment right now. <br />
         Anyways I will add more examples just to be sure you got it well.
       </p>
 

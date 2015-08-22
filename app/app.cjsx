@@ -5,6 +5,8 @@ Header          = require './partials/header'
 TransitionGroup = require  './partials/transition-group'
 require './css/main.styl'
 
+mojs   = require('mo-js')
+
 App = React.createClass
   contextTypes: router: React.PropTypes.func
   getInitialState:-> {}

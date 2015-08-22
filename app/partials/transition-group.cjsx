@@ -3,13 +3,13 @@ ReactTransitionGroup = React.addons.TransitionGroup
 mojs   = require('mo-js')
  
 TransitionGroupChild = React.createClass
-  getInitialState:-> { duration: 400 }
+  getInitialState:-> { duration: 401 }
   componentWillEnter: (done)->
     node = @getDOMNode()
     node.style.opacity = 0
     setTimeout =>
       tween = new mojs.Tween
-        duration:   @state.duration
+        duration: @state.duration
         onStart:->
           node.style['z-index'] = 1
           node.style.opacity    = 1
@@ -20,7 +20,7 @@ TransitionGroupChild = React.createClass
           transform = "translateX(#{100*(1-p)}%) translateZ(0)"
           mojs.h.setPrefixedStyle(node, 'transform', transform)
           @props.isFade and (node.style.opacity = mojs.easing.cubic.out(p).toFixed(10))
-      tween.start()
+      tween.run()
     , 1
 
   componentWillLeave: (done)->
@@ -30,9 +30,9 @@ TransitionGroupChild = React.createClass
     node.style['left']     = "#{node.offsetLeft}px"
     node.style['top']      = 0
     node.style['z-index']  = 0
-    node.style['opacity']  = 0
     node.style['position'] = 'absolute'
     if @props.isFade
+      node.style['opacity']  = 0
       setTimeout =>
         tween = new mojs.Tween
           duration:   @state.duration
@@ -42,7 +42,7 @@ TransitionGroupChild = React.createClass
             transform = "translateX(#{100*(p)}%) translateZ(0)"
             mojs.h.setPrefixedStyle(node, 'transform', transform)
             node.style.opacity = mojs.easing.expo.in 1-p
-        tween.start()
+        tween.run()
       , 1
     else setTimeout (done), @state.duration
   render:-> React.Children.only this.props.children
