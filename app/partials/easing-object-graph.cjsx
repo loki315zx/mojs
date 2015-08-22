@@ -20,7 +20,7 @@ module.exports = React.createClass
 
   render:->
     @_timeline ?= new mojs.Timeline repeat: 9999999999
-    @_easing   ?= mojs.easing.path @props.path, precompute: 2500, eps: .01
+    @_easing   ?= mojs.easing.path @props.path, precompute: 2000, eps: .001
 
     <HeftyContent
       className="easing-object-graph"

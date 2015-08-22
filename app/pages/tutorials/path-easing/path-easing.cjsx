@@ -26,7 +26,7 @@ module.exports = React.createClass
       <p>
         Easing (or timing function) is the secret sauce ingredient that makes a good motion delightful. 
         Linear movement trudging unnatural and sloppy, 
-        this filling comes from our physical world experience - nothing moves linearly around us.
+        this felling comes from our physical world experience - nothing moves linearly around us.
       </p>
 
       <Cite author="Stanislaw Ulam">
@@ -38,7 +38,7 @@ module.exports = React.createClass
         Animation with equal interim spacing(read with linear easing) can 
         envoke in our brain nothing than suspicious/rum response. 
         It just feels plastic and unnatural. As a part of self protection, 
-        our subconsciuosness suggests us to get rid of unnatural thing as fast we you can.
+        our subconsciuosness suggests us to get rid of unnatural thing as fast as you can.
         By contrast, natural physicaly motion of things that shouldn't act like live
         beings(like cartoony characters or robots) appeal our attention and araise curiosity.
         That's why so important to have the full control of easing functions.
@@ -67,7 +67,7 @@ module.exports = React.createClass
 
       <p>
         Consider the example below that was made to illustrate 
-        a case when we need precise control over easing function. 
+        the case when we need precise control over easing function. 
         We will take something really easy and then envolve it gradually. 
         The start point is a simple falling square:
       </p>
@@ -83,7 +83,7 @@ module.exports = React.createClass
         }
       </CodeSample>
 
-      <em> <i>Note</i>: There are no vendor prefixes here for the clarity's sake but some browsers still do need them.</em>
+      <em> <i>Note</i>: There are no vendor prefixes here for clarity's sake but some browsers still do need them.</em>
 
       <p>
         We have one sloppy movement here, it doesn’t really look like something falling down at all, so lets add bounce easing:
@@ -121,29 +121,49 @@ module.exports = React.createClass
         effecively - they are hardcoded into this graph:
       </p>
 
-      <PostImage
-        src="app/pages/tutorials/path-easing/i/bouncy-simple-easing.svg"
-        description="Fig.1 Common bounce easing graph"
-        className="post-image--full-image-width">
-      </PostImage>
+      <EasingObjectGraph
+        duration={ 1000 }
+        onUpdate = { (o)=>
+          shift = 180*o.easedP
+          mojs.h.style o.objEl, 'transform', "translateY(#{shift}px) translateZ(0)"
+          "#{shift.toFixed(0)} px"
+        }
+        label="translateY"
+        background="#F1E2D7"
+        path="M0,100 C2.45434624,97.8269293 16.3464551,108.82637 36.7536484,1.51862764 C57.2239404,55.7168427 71.8396693,1.51862764 73.4575634,0.417637977 C82.7586528,14.6942143 89.6790662,2.18537229 91.391449,0 C95.988064,6.63361647 100,0 100,0">
+        
+        <div className="path-easing-rectangle"></div>
+      
+      </EasingObjectGraph>
 
       <p>
         But what if we eventually want to change the weight of our object so it will 
         have much wider bouncing amplitude range? That’s the point where the 
         <span className="highlight">path easing</span> become irreplaceable. 
         Lets jump to vector graphics editor with this common graph as a bootstrap. 
-        Any vector editor will do, I prefer using  Sketch  lately, but any that can 
-        produce <span className="highlight">SVG path</span> works. 
-        We will amplify the bouncing curves a bit, to add our motion the fill of much more lighter object 
-        (or much more bouncy one made of rubber instead of wood for instance).
-        Thats what I it look like: (There is <a href="">.svg file</a> I've made for you.)
+      </p>
+      <em> <i>Note</i>: Any vector editor will do here, I prefer to use Sketch lately, but any that can 
+        produce a <span className="highlight">SVG path</span> works. </em>
+      <p>
+        We will amplify the bouncing curves a bit, to add our motion feel of much more lighter object 
+        (or much more bouncy one - made of rubber instead of wood).
+        Thats what it look like: (There is <a href="">.svg file</a> I've made for you.)
       </p>
 
-      <PostImage
-        src="app/pages/tutorials/path-easing/i/bouncy-amplified-easing.svg"
-        description="Fig.2 Amplified bounce easing graph"
-        className="post-image--full-image-width">
-      </PostImage>
+      <EasingObjectGraph
+        duration={ 1500 }
+        onUpdate = { (o)=>
+          shift = 180*o.easedP
+          mojs.h.style o.objEl, 'transform', "translateY(#{shift}px) translateZ(0)"
+          "#{shift.toFixed(0)} px"
+        }
+        label="translateY"
+        background="#F1E2D7"
+        path="M0,100 C6.50461245,96.8525391 12.6278439,88.3497543 16.6678547,0 C16.6678547,-1.79459817 31.6478577,115.871587 44.1008572,0 C44.1008572,-0.762447191 54.8688736,57.613472 63.0182497,0 C63.0182497,-0.96434046 70.1500549,29.0348701 76.4643231,0 C76.4643231,0 81.9085007,16.5050125 85.8902733,0 C85.8902733,-0.762447191 89.4362183,8.93311024 92.132216,0 C92.132216,-0.156767385 95.0157166,4.59766248 96.918051,0 C96.918051,-0.156767385 98.7040751,1.93815588 100,0">
+        
+        <div className="path-easing-rectangle"></div>
+      
+      </EasingObjectGraph>
 
       <em>
         <i>Note</i>: By default <span className="highlight">mo· js</span> expects you to draw your easing 
@@ -186,8 +206,8 @@ module.exports = React.createClass
       <p>
         If you are familiar with After Effects workflow and have ever worked 
         with <a href="#">animation curves</a> this idea won't be entirely new for you.
-        If you havn't - no worries, it is pretty easy but be attentive it will probably
-        change the way your are treating your animations!
+        If you havn't - no worries, it is pretty easy but be attentive it can change 
+        the way your are treating your animations!
       </p>
 
       <p>
@@ -195,19 +215,19 @@ module.exports = React.createClass
       </p>
 
       <Cite author="Me">
-        With property curves we can specify(read draw) what value would a certain property
-        have on exact point in time with a SVG path.
+        With property curves we can specify(read draw) 
+        how would a certain property behave in time.
       </Cite>
 
       <p>
-        Yes exactly. We can draw for instance, how a translate or scale(or any other really) 
-        propety will behaive on progress change.
+        Yes exactly. We can draw for instance, how a translate or scale(or any other) 
+        propety will behave on progress change.
       </p>
 
       <p>
         Let me describe it more verbosely with code snippet and codepen.
         Imagine our prevous rectangle is very heavy and not bouncy at all.
-        When it hits the ground, it stays still but causes earthquake.
+        When it hits the ground, it stays still and causes earthquake.
         That's what the quake graph will look like (Fig.3):
       </p>
 
@@ -222,13 +242,13 @@ module.exports = React.createClass
        The <span className="highlight">Y</span> axis is the change of our property in time, 
        in this particulary example this is <span className="highlight">translateY</span> property.
        As you can see, property curve's <span className="highlight">Y</span> value shouldn't 
-       obligatory start at <span className="highlight">0</span> and end 
+       start at <span className="highlight">0</span> and end 
        at <span className="highlight">1</span>, it can take any value you want.
        But the <span className="highlight">X</span> value must start 
        at <span className="highlight">0</span> and end 
        at <span className="highlight">1</span> because progress can't go 
        beyond <span className="highlight">1</span> as it makes no sense at all.
-       Now lets jump to codepen to see how does work exactly:
+       Now lets jump to codepen to see how does it work exactly:
       </p>
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
