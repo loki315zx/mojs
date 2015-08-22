@@ -1,19 +1,20 @@
 React       = require 'react'
 Router      = require 'react-router'
-UniteLink   = require '../../partials/unite-link'
+UniteLink   = require '../../../partials/unite-link'
 { Route, RouteHandler, Link } = Router
 
-PostImage     = require '../../partials/post-image'
-Cite          = require '../../partials/cite'
-ORXLine       = require '../../partials/orx-line'
-CodeSample    = require '../../partials/code-sample'
-EasingObjectGraph = require '../../partials/easing-object-graph'
+PostImage     = require '../../../partials/post-image'
+Cite          = require '../../../partials/cite'
+ORXLine       = require '../../../partials/orx-line'
+CodeSample    = require '../../../partials/code-sample'
+EasingObjectGraph = require '../../../partials/easing-object-graph'
 
-HeftyContent  = require '../../partials/hefty-content'
-DisqusComments      = require '../../partials/disqus-comments'
-SocialNetworksAbout = require '../../partials/social-networks-about'
-require '../../css/pages/tutorials-page'
-require '../../css/blocks/post'
+HeftyContent  = require '../../../partials/hefty-content'
+DisqusComments      = require '../../../partials/disqus-comments'
+SocialNetworksAbout = require '../../../partials/social-networks-about'
+require '../../../css/pages/tutorials-page'
+require '../../../css/blocks/post'
+require './path-easing-styles.styl'
 
 module.exports = React.createClass
   render: ()->
@@ -315,6 +316,7 @@ module.exports = React.createClass
           "#{angle.toFixed(0)} deg"
         }
         label="angle"
+        background="#F1E2D7"
         path="M0,100 L3.13085938,99.9098435 C11.128418,-42.5703735 24.7357688,10.2827309 24.7357688,10.2827309 C24.7357688,10.2827309 35.4207115,6.37990438 35.420711,19.4955507 C35.420711,19.4955507 35.4207115,28.4642364 38.4679491,20.0448329 C45.9122391,-2.47328083 48.2480469,19.2718256 49.4205542,19.2718262 C49.4205546,6.82379606 55.0592461,-3.56955878 59,15.8223683 C60.6251608,22.53696 56.8918457,-3.39703265 65.4951172,-3.39703265 C68.7340668,-3.59873581 69.730594,6.54639177 70.328125,13.9672245 C70.9301836,21.4442862 74.0961573,26.974048 74.7888322,18.7754178 C75.3742722,5.88443799 81.9388046,2.60654815 84.8170547,9.46624826 C88.6793176,21.7631952 90.7471271,6.55096632 93.7893906,-0.121967559 C95.5135217,-3.90369547 98.2082808,0.193576387 100,0">
         
         <div className="mole-hand"></div>

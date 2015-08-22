@@ -9,13 +9,13 @@ Main      = require './pages/main'
 Tutorials = require './pages/tutorials'
 GettingStarted = require './pages/tutorials/getting-started'
 MotionPath     = require './pages/tutorials/motion-path'
-Easing1        = require './pages/tutorials/easing-1'
+PathEasing     = require './pages/tutorials/path-easing/path-easing.cjsx'
 
 routes = (
   <Route     name="app" path="/"    handler={App}>
     <Route   name="main"            handler={Main}/>
     <Route   name="tutorials"       handler={Tutorials}>
-      <Route name="easing-1"        handler={Easing1} />
+      <Route name="path-easing"     handler={PathEasing} />
       {#<Route name="getting-started" handler={GettingStarted} />}
       {#<Route name="motion-path"     handler={MotionPath} />}
     </Route>

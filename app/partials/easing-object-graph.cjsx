@@ -9,9 +9,8 @@ mojs          = require 'mo-js'
 require '../css/partials/easing-object-graph.styl'
 
 module.exports = React.createClass
-  getInitialState:-> isTweensAdded: false, isShow: false
   getDefaultProps:->
-    path:     'M 0,100 L 100, 0'
+    path:     'M 0,100 L 100,0'
     duration: 2000
     delay:    1000
 
@@ -25,15 +24,15 @@ module.exports = React.createClass
 
     <HeftyContent
       className="easing-object-graph"
-      onShow={ => @_start() }
-      onHide={ => @_stop() }>
+      onShow={ => @_start() } onHide={ => @_stop() }>
 
       <div className="easing-object-graph__inner">
         <EasingObject
-          timeline  = {@_timeline}
-          easing    = {@_easing}
-          duration  = {@props.duration}
-          onUpdate  = {@props.onUpdate} >
+          timeline    = {@_timeline}
+          easing      = {@_easing}
+          duration    = {@props.duration}
+          onUpdate    = {@props.onUpdate}
+          background  = {@props.background}>
           {@props.children}
         </EasingObject>
 
