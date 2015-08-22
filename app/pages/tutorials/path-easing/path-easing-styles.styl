@@ -10,12 +10,18 @@
   margin-left      -25*PX 
   margin-top       -50*PX
   transform-origin  center top
-  
+ 
+
+size = 4
 .path-easing-rectangle
-  rect          4*gs
+  rect          size*gs
   background    c-purple
   position      absolute
   top           4*gs
   left          50%
-  margin-left  -2*gs
+  margin-left  -(size/2)*gs
   border-radius BRADIUS
+  
+  &--quake
+    top         50%
+    margin-top -(size/2)*gs 

@@ -228,14 +228,23 @@ module.exports = React.createClass
         Let me describe it more verbosely with code snippet and codepen.
         Imagine our prevous rectangle is very heavy and not bouncy at all.
         When it hits the ground, it stays still and causes earthquake.
-        That's what the quake graph will look like (Fig.3):
+        That's what the quake graph will look like:
       </p>
 
-      <PostImage
-        src="app/pages/tutorials/path-easing/i/quake-easing.svg"
-        description="Fig.3 Quake property curve"
-        className="post-image--full-image-width">
-      </PostImage>
+      <EasingObjectGraph
+        duration={ 350 }
+        onUpdate = { (o)=>
+          shift = 100*o.easedP
+          mojs.h.style o.objEl, 'transform', "translateY(#{shift}px) translateZ(0)"
+          "#{shift.toFixed(0)} px"
+        }
+        label="translateY"
+        background="#F1E2D7"
+        path="M0,100 C0,100 4.0173199,82.9648449 6.6417514,100 C9.2661829,116.22712 13.2779121,100 13.2779121,100 C13.2779121,100 16.5033366,87.4358263 21.4140571,100 C26.3247776,111.756139 30.6617252,100 30.6617252,100 C30.6617252,100 37.196174,76.3465416 36.5598618,100 C35.9235497,122.845424 43.9988668,100 43.9988668,100 C43.9988668,100 52.464346,75.7550222 58.5137014,100 C64.5630569,123.436943 71.5901242,100 71.5901242,100 C71.5901242,100 76.5794972,84.1964285 77.2506861,100 C77.921875,114.995537 86.5100569,100 86.5100569,100 C86.5100569,100 90.656647,90.8900683 92.252708,100 C93.84877,108.301897 97.195841,100 97.195841,100 C97.195841,100 98.303581,96.0117193 99.740517,100">
+        
+        <div className="path-easing-rectangle path-easing-rectangle--quake"></div>
+      
+      </EasingObjectGraph>
 
       <p>
        The <span className="highlight">X</span> axis represents progress of our animation.

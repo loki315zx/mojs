@@ -66,7 +66,7 @@ module.exports = React.createClass
 
         <div className="easing-graph__graph">
           <svg viewBox="0 0 100 100">
-            <path d="#{ @props.path }" strokeLinecap="round" fill="none"></path>
+            <path d="#{ @props.path }"></path>
           </svg>
         </div>
 
