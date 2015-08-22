@@ -122,7 +122,7 @@ module.exports = React.createClass
       </p>
 
       <PostImage
-        src="app/pages/tutorials/i/bouncy-simple-easing.svg"
+        src="app/pages/tutorials/path-easing/i/bouncy-simple-easing.svg"
         description="Fig.1 Common bounce easing graph"
         className="post-image--full-image-width">
       </PostImage>
@@ -140,7 +140,7 @@ module.exports = React.createClass
       </p>
 
       <PostImage
-        src="app/pages/tutorials/i/bouncy-amplified-easing.svg"
+        src="app/pages/tutorials/path-easing/i/bouncy-amplified-easing.svg"
         description="Fig.2 Amplified bounce easing graph"
         className="post-image--full-image-width">
       </PostImage>
@@ -212,7 +212,7 @@ module.exports = React.createClass
       </p>
 
       <PostImage
-        src="app/pages/tutorials/i/quake-easing.svg"
+        src="app/pages/tutorials/path-easing/i/quake-easing.svg"
         description="Fig.3 Quake property curve"
         className="post-image--full-image-width">
       </PostImage>
@@ -284,7 +284,7 @@ module.exports = React.createClass
       </p>
 
       <PostImage
-        src="app/pages/tutorials/i/hand-wave.svg"
+        src="app/pages/tutorials/path-easing/i/hand-wave.svg"
         description="Fig.4 Hand waving in the air"
         className="post-image--full-image-width">
       </PostImage>
