@@ -147,7 +147,11 @@ module.exports = React.createClass
       <p>
         We will amplify the bouncing curves a bit, to add our motion feel of much more lighter object 
         (or much more bouncy one - made of rubber instead of wood).
-        Thats what it look like: (There is <a href="">.svg file</a> I've made for you.)
+        By default <span className="highlight">mo· js</span> expects you to draw your easing 
+        paths in rectangle of 100x100 as you can notice in provided <a href="">.svg file</a>, but 
+        you can change that with special option, we will talk about it a bit later 
+        in <span className="highlight">options</span> section of this tutorial.
+        Thats what it look like:
       </p>
 
       <EasingObjectGraph
@@ -164,13 +168,6 @@ module.exports = React.createClass
         <div className="path-easing-rectangle"></div>
       
       </EasingObjectGraph>
-
-      <em>
-        <i>Note</i>: By default <span className="highlight">mo· js</span> expects you to draw your easing 
-        paths in rectangle of 100x100 as you can notice in provided <a href="">.svg file</a>, but 
-        you can change that with special option, we will talk about it a bit later 
-        in <span className="highlight">Options</span> section of this tutorial.
-      </em>
 
       <p>
         Now we can generate our custom easing function from the SVG path commands, the 
@@ -195,7 +192,7 @@ module.exports = React.createClass
 
       <p> Yay! Our square fills much more bouncy now! </p>
       <p>
-        You can image what amount of 
+        You can imagine what amount of 
         freedom <span className="highlight">path easing</span> can give you 
         and how comprehensive your easing functions can now be. But it has much more 
         powerfull purposes, keep reading!
@@ -207,7 +204,7 @@ module.exports = React.createClass
         If you are familiar with After Effects workflow and have ever worked 
         with <a href="#">animation curves</a> this idea won't be entirely new for you.
         If you havn't - no worries, it is pretty easy but be attentive it can change 
-        the way your are treating your animations!
+        the way you are treating your animations!
       </p>
 
       <p>
@@ -246,10 +243,15 @@ module.exports = React.createClass
       
       </EasingObjectGraph>
 
+      <em>
+        <i>Note</i>: This path easing is used in the final demo, 
+        particularly when mole severely closes the door.
+      </em>
+
       <p>
        The <span className="highlight">X</span> axis represents progress of our animation.
        The <span className="highlight">Y</span> axis is the change of our property in time, 
-       in this particulary example this is <span className="highlight">translateY</span> property.
+       in this particularly example this is <span className="highlight">translateY</span> property.
        As you can see, property curve's <span className="highlight">Y</span> value shouldn't 
        start at <span className="highlight">0</span> and end 
        at <span className="highlight">1</span>, it can take any value you want.
@@ -265,15 +267,6 @@ module.exports = React.createClass
                       quakeEasing = mojs.easing.path(''),
                       fallAmount = 100;
 
-                  var quakeTween = new mojs.Tween({
-                    onUpdate: function (progress) {
-                      var quakeProgress = quakeEasing(progress);
-                      // set translateY to the current translateY (fallAmount) 
-                      // + (quakeProgress * 20)
-                      square.style.transform = 'translateY(' + fallAmount + 20*quakeProgress + 'px)';
-                    },
-                  }).start();
-
                   new mojs.Tween({
                     onUpdate: function (progress) {
                       var fallProgress = mojs.easing.cubic.out(progress);
@@ -281,6 +274,15 @@ module.exports = React.createClass
                     },
                     onComplete: function () { quakeTween.start(); }
                   }).start();
+
+                  var quakeTween = new mojs.Tween({
+                    onUpdate: function (progress) {
+                      var quakeProgress = quakeEasing(progress);
+                      // set translateY to the current translateY (fallAmount) 
+                      // + (quakeProgress * 20)
+                      square.style.transform = 'translateY(' + fallAmount + 20*quakeProgress + 'px)';
+                    },
+                  });
           """
         }
       </CodeSample>
@@ -288,40 +290,57 @@ module.exports = React.createClass
       <p>
         In codepen above, we have changed the bouncy easing 
         to <span className="highlight">cubic.out</span> to express the gravity force
-        that was appied to the rectangle (line 13). After the first tween completes, 
-        we subsequently launch the second one (line 16) with the quake curve applied to the 
-        <span className="highlight">translateY</span> property (line 7).
+        that was appied to the rectangle (line 7). After the first tween completes, 
+        it subsequently launches the second one (line 10) with the quake curve applied to the 
+        <span className="highlight">translateY</span> property (line 18).
       </p>
 
       <em>
         <i>Note</i>: You probably want to add these tweens to a 
-        <span className="highlight">timeline</span> for better code organization, it is 
+        <span className="highlight">timeline</span> for better project organization, it is 
         possible with <span className="highlight">mo· js</span> but was omitted here for clarity's sake.
       </em>
 
       <p>
         I hope you had the <span className="highlight">Aha!</span> moment right now. <br />
-        Anyways I will add more examples just to be sure you got it well.
+        Anyways I will add more use cases just to be sure you got it well.
       </p>
 
       <h2>More property curves examples</h2>
 
       <p>
         Pretend you need to animate a character that is angry and arguing to somebody.
-        Meanwhile his hand is waving in the air to exaggerate his bad mood.
+        Meanwhile the blame his hand is waving in the air to exaggerate his bad mood.
         We can describe the hand angle property with path like this:
       </p>
 
-      <PostImage
-        src="app/pages/tutorials/path-easing/i/hand-wave.svg"
-        description="Fig.4 Hand waving in the air"
-        className="post-image--full-image-width">
-      </PostImage>
+      <EasingObjectGraph
+        onUpdate = { (o)=>
+          angle = -200*o.easedP
+          mojs.h.style o.objEl, 'transform', "rotate(#{angle}deg) translateZ(0)"
+          "#{angle.toFixed(0)} deg"
+        }
+        label="angle"
+        background="#F1E2D7"
+        path="M0,100 L3.13085938,99.9098435 C11.128418,-42.5703735 24.7357688,10.2827309 24.7357688,10.2827309 C24.7357688,10.2827309 35.4207115,6.37990438 35.420711,19.4955507 C35.420711,19.4955507 35.4207115,28.4642364 38.4679491,20.0448329 C45.9122391,-2.47328083 48.2480469,19.2718256 49.4205542,19.2718262 C49.4205546,6.82379606 55.0592461,-3.56955878 59,15.8223683 C60.6251608,22.53696 56.8918457,-3.39703265 65.4951172,-3.39703265 C68.7340668,-3.59873581 69.730594,6.54639177 70.328125,13.9672245 C70.9301836,21.4442862 74.0961573,26.974048 74.7888322,18.7754178 C75.3742722,5.88443799 81.9388046,2.60654815 84.8170547,9.46624826 C88.6793176,21.7631952 90.7471271,6.55096632 93.7893906,-0.121967559 C95.5135217,-3.90369547 98.2082808,0.193576387 100,0">
+        
+        <div className="mole-hand"></div>
+      
+      </EasingObjectGraph>
+
+      <em>
+        <i>Note</i>: This path easing is used in the final demo, 
+        particularly when mole tries to persuade bullies to stop 
+        their knock-a-door-run game(as he thinks, dummy).
+      </em>
 
       <p>
         As you can see, the hand is in 0 position at the start, then rises steeply, 
         then twitching up and down the rest of the progress with relatively small
-        angle delta:
+        angle delta. Despite the fact it can look like an easing(it 
+        starts at 0 and ends at 1 Y), it is more likely a 
+        <span className="highlight">property curve</span> since we are describing 
+        how does certaing property acts in time. Lets just to the code:
       </p>
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
@@ -337,20 +356,6 @@ module.exports = React.createClass
           """
         }
       </CodeSample>
-
-      <EasingObjectGraph
-        onUpdate = { (o)=>
-          angle = -200*o.easedP
-          mojs.h.style o.objEl, 'transform', "rotate(#{angle}deg) translateZ(0)"
-          "#{angle.toFixed(0)} deg"
-        }
-        label="angle"
-        background="#F1E2D7"
-        path="M0,100 L3.13085938,99.9098435 C11.128418,-42.5703735 24.7357688,10.2827309 24.7357688,10.2827309 C24.7357688,10.2827309 35.4207115,6.37990438 35.420711,19.4955507 C35.420711,19.4955507 35.4207115,28.4642364 38.4679491,20.0448329 C45.9122391,-2.47328083 48.2480469,19.2718256 49.4205542,19.2718262 C49.4205546,6.82379606 55.0592461,-3.56955878 59,15.8223683 C60.6251608,22.53696 56.8918457,-3.39703265 65.4951172,-3.39703265 C68.7340668,-3.59873581 69.730594,6.54639177 70.328125,13.9672245 C70.9301836,21.4442862 74.0961573,26.974048 74.7888322,18.7754178 C75.3742722,5.88443799 81.9388046,2.60654815 84.8170547,9.46624826 C88.6793176,21.7631952 90.7471271,6.55096632 93.7893906,-0.121967559 C95.5135217,-3.90369547 98.2082808,0.193576387 100,0">
-        
-        <div className="mole-hand"></div>
-      
-      </EasingObjectGraph>
 
       <ORXLine className="post__last-orx-line" type="center" />
       <SocialNetworksAbout className="post__social-networks-about" />
