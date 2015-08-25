@@ -169,6 +169,11 @@ module.exports = React.createClass
       
       </EasingObjectGraph>
 
+      <em>
+        <i>Note</i>: This path easing is used in the final demo (with small tweaks), 
+        particularly when white cube bounces on the floor.
+      </em>
+
       <p>
         Now we can generate our custom easing function from the SVG path commands, the 
         path's <span className="highlight">d attribute</span> contains.

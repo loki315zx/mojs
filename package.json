@@ -1,11 +1,11 @@
 {
-  "name": "mojs-demo-1",
+  "name": "mojs-website",
   "description": "motion graphics for the web",
   "version": "0.0.0",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack",
     "dev": "webpack-dev-server --devtool eval --hot --inline --progress --colors"
   },
   "author": {
@@ -84,6 +84,7 @@
     "marked": "^0.3.3",
     "nodemon": "*",
     "raw-loader": "^0.5.1",
+    "react-hot-loader": "^1.2.9",
     "run-sequence": "^1.0.2",
     "style-loader": "^0.8.3",
     "stylus": "^0.49.3",
