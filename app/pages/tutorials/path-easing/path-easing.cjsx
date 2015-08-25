@@ -1,19 +1,19 @@
 React       = require 'react'
 Router      = require 'react-router'
-UniteLink   = require '../../../partials/unite-link'
+UniteLink   = require 'partials/unite-link'
 { Route, RouteHandler, Link } = Router
 
-PostImage     = require '../../../partials/post-image'
-Cite          = require '../../../partials/cite'
-ORXLine       = require '../../../partials/orx-line'
-CodeSample    = require '../../../partials/code-sample'
-EasingObjectGraph = require '../../../partials/easing-object-graph'
+PostImage     = require 'partials/post-image'
+Cite          = require 'partials/cite'
+ORXLine       = require 'partials/orx-line'
+CodeSample    = require 'partials/code-sample'
+EasingObjectGraph = require 'partials/easing-object-graph'
 
-HeftyContent  = require '../../../partials/hefty-content'
-DisqusComments      = require '../../../partials/disqus-comments'
-SocialNetworksAbout = require '../../../partials/social-networks-about'
-require '../../../css/pages/tutorials-page'
-require '../../../css/blocks/post'
+HeftyContent  = require 'partials/hefty-content'
+DisqusComments      = require 'partials/disqus-comments'
+SocialNetworksAbout = require 'partials/social-networks-about'
+require 'css/pages/tutorials-page'
+require 'css/blocks/post'
 require './path-easing-styles.styl'
 
 module.exports = React.createClass
@@ -36,11 +36,9 @@ module.exports = React.createClass
 
       <p>
         Animation with equal interim spacing(read with linear easing) can 
-        envoke in our brain nothing than suspicious/rum response. 
-        It just feels plastic and unnatural. As a part of self protection, 
-        our subconsciuosness suggests us to get rid of unnatural thing as fast as you can.
-        By contrast, natural physicaly motion of things that shouldn't act like live
-        beings(like cartoony characters or robots) appeal our attention and araise curiosity.
+        envoke in human brain nothing than suspicious or dull response. 
+        By contrast, excellent crafted easing appeal user's attention and araise curiosity,
+        so involvement.
         That's why so important to have the full control of easing functions.
       </p>
 
@@ -68,7 +66,6 @@ module.exports = React.createClass
       <p>
         Consider the example below that was made to illustrate 
         the case when we need precise control over easing function. 
-        We will take something really easy and then envolve it gradually. 
         The start point is a simple falling square:
       </p>
 
@@ -83,10 +80,14 @@ module.exports = React.createClass
         }
       </CodeSample>
 
-      <em> <i>Note</i>: There are no vendor prefixes here for clarity's sake but some browsers still do need them.</em>
+      <em>
+        <i>Note</i>: No vendor prefixes used in the code above for 
+        clarity's sake but some browsers still do need them.
+      </em>
 
       <p>
-        We have one sloppy movement here, it doesn’t really look like something falling down at all, so lets add bounce easing:
+        We have one sloppy movement here, it doesn’t really look 
+        like something falling down at all, so lets add bounce easing:
       </p>
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
@@ -102,7 +103,7 @@ module.exports = React.createClass
       </CodeSample>
 
       <p>
-        We have added the bounce easing by passing the linear progress 
+        The bounce easing was added by passing the linear progress 
         thru <span className="highlight">bounce.out</span> function 
         (line 4)
         &nbsp;that is available on 
@@ -116,8 +117,8 @@ module.exports = React.createClass
       <p>
         If you'll think about it, this bounce easing represents our object's 
         parameters like the material it is made of or it's weight or acceleration it has. 
-        Savvy readers starting to grasp the main problem with the easing function we've 
-        used here - it is limited to one set of these parameters and we can’t change them 
+        Savvy readers starting to grasp the main problem with the usual easing function 
+        - it is limited to one set of these parameters and we can’t change them 
         effecively - they are hardcoded into this graph:
       </p>
 
@@ -142,8 +143,12 @@ module.exports = React.createClass
         <span className="highlight">path easing</span> become irreplaceable. 
         Lets jump to vector graphics editor with this common graph as a bootstrap. 
       </p>
-      <em> <i>Note</i>: Any vector editor will do here, I prefer to use Sketch lately, but any that can 
-        produce a <span className="highlight">SVG path</span> works. </em>
+
+      <em>
+        <i>Note</i>: Any vector editor will do here, I prefer to use Sketch lately, 
+        but any that can produce a <span className="highlight">SVG path</span> works.
+      </em>
+
       <p>
         We will amplify the bouncing curves a bit, to add our motion feel of much more lighter object 
         (or much more bouncy one - made of rubber instead of wood).
@@ -151,7 +156,7 @@ module.exports = React.createClass
         paths in rectangle of 100x100 as you can notice in provided <a href="">.svg file</a>, but 
         you can change that with special option, we will talk about it a bit later 
         in <span className="highlight">options</span> section of this tutorial.
-        Thats what it look like:
+        Thats what it the bouncy graph might look like:
       </p>
 
       <EasingObjectGraph
@@ -195,7 +200,11 @@ module.exports = React.createClass
         }
       </CodeSample>
 
-      <p> Yay! Our square fills much more bouncy now! </p>
+      <p>
+        Yay! We've drawed our custom path easing!
+        Our square fills much more bouncy now!
+      </p>
+
       <p>
         You can imagine what amount of 
         freedom <span className="highlight">path easing</span> can give you 
@@ -207,8 +216,9 @@ module.exports = React.createClass
 
       <p>
         If you are familiar with After Effects workflow and have ever worked 
-        with <a href="#">animation curves</a> this idea won't be entirely new for you.
-        If you havn't - no worries, it is pretty easy but be attentive it can change 
+        with <a href="http://www.schoolofmotion.com/intro-to-animation-curves-in-after-effects/">animation curves </a> (go watch this video, I will wait on you here) 
+        this idea won't be entirely new for you.
+        If you haven't - no worries, it is pretty easy but be attentive it can change 
         the way you are treating your animations!
       </p>
 
@@ -216,7 +226,7 @@ module.exports = React.createClass
         Let me try to describe the idea of property curves:
       </p>
 
-      <Cite author="Me">
+      <Cite author="LegoMushroom">
         With property curves we can specify(read draw) 
         how would a certain property behave in time.
       </Cite>
@@ -228,8 +238,8 @@ module.exports = React.createClass
 
       <p>
         Let me describe it more verbosely with code snippet and codepen.
-        Imagine our prevous rectangle is very heavy and not bouncy at all.
-        When it hits the ground, it stays still and causes earthquake.
+        Imagine our previous rectangle is very heavy and not bouncy at all.
+        When it hits the ground, it stays still and causes a small earthquake.
         That's what the quake graph will look like:
       </p>
 
@@ -345,7 +355,7 @@ module.exports = React.createClass
         angle delta. Despite the fact it can look like an easing(it 
         starts at 0 and ends at 1 Y), it is more likely a 
         <span className="highlight">property curve</span> since we are describing 
-        how does certaing property acts in time. Lets just to the code:
+        how does certaing property acts in time. Lets just to the code 1:
       </p>
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">

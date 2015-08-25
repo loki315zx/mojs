@@ -1,5 +1,4 @@
 var path = require('path');
-var webpack = require('webpack');
 
 module.exports = {
   watch: true,
@@ -27,14 +26,14 @@ module.exports = {
     filename: 'main.js',
     publicPath: 'dist/'
   },
-  moduleDirectories: ['node_modules'],
   resolve: {
-    // root: path.resolve('app/js/'),
+    root: [path.resolve('./app/'), path.resolve('./app/css/'), path.resolve('./app/partials/')],
+    moduleDirectories: ['node_modules'],
     extensions: [
       '', '.js', '.jsx', '.es6',
       '.styl',   '.jade',
       '.coffee', '.cjsx',
       '.html',
-      ]
+    ]
   }
 };

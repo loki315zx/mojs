@@ -5,7 +5,7 @@ UniteLink   = require '../partials/unite-link'
 Router      = require 'react-router'
 Link        = Router.Link
 Icon        = require '../partials/icon'
-MotionDemo  = require '../pages/motion-demo/motion-demo.cjsx'
+# MotionDemo  = require '../pages/motion-demo/motion-demo.cjsx'
 ApiDemo     = require '../partials/api-demo'
 SocialNetworksAbout = require '../partials/social-networks-about'
 
