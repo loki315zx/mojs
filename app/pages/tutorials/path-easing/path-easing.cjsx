@@ -264,7 +264,7 @@ module.exports = React.createClass
       </em>
 
       <p>
-       The <span className="highlight">X</span> axis represents progress of our animation.
+       Consider the graph at right. The <span className="highlight">X</span> axis represents progress of our animation.
        The <span className="highlight">Y</span> axis is the change of our property in time, 
        in this particularly example this is <span className="highlight">translateY</span> property.
        As you can see, property curve's <span className="highlight">Y</span> value shouldn't 
@@ -315,6 +315,28 @@ module.exports = React.createClass
         <span className="highlight">timeline</span> for better project organization, it is 
         possible with <span className="highlight">mo· js</span> but was omitted here for clarity's sake.
       </em>
+
+      <p>
+        We can even draw a combined version of this two easing <span className="highlight">cubic.out</span> and our custom one to use it in one tween:
+      </p>
+
+      <EasingObjectGraph
+        duration = { 350  }
+        delay    = { 2000 }
+        onUpdate = { (o)=>
+          shift = 180*o.easedP
+          mojs.h.style o.objEl, 'transform', "translateY(#{shift}px) translateZ(0)"
+          "#{shift.toFixed(0)} px"
+        }
+        label="translateY"
+        background="#F1E2D7"
+        path="M0,100 C0,100 35.8588122,105.035225 50,-1.95399252e-14 C50,0.404017439 52.0138856,-7.44383313 53.3295152,0.404017439 C54.6451448,8.25186829 56.6562278,0.404017439 56.6562278,0.404017439 C56.6562278,0.404017439 58.2731357,-5.33408001 60.7348837,0.404017439 C63.1966318,6.14211536 65.3707471,0.404017439 65.3707471,0.404017439 C65.3707471,0.404017439 68.6464714,-10.566858 68.3274876,0.404017439 C68.0085039,11.3748935 72.0566667,0.404017439 72.0566667,0.404017439 C72.0566667,0.404017439 76.3004181,-10.8459823 79.3329648,0.404017439 C82.3655115,11.6540177 85.8881858,0.404017439 85.8881858,0.404017439 C85.8881858,0.404017439 88.3893625,-6.8626772 88.72583,0.404017439 C89.0622975,7.67071265 93.3675599,0.404017439 93.3675599,0.404017439 C93.3675599,0.404017439 95.4462488,-3.7041028 96.2463554,0.404017439 C97.0464626,4.51213815 98.7243519,0.404017439 98.7243519,0.404017439 C98.7243519,0.404017439 99.2796628,-1.28731369 100,0">
+        
+        <div className="path-easing-rectangle path-easing-rectangle--eased-quake"></div>
+      
+      </EasingObjectGraph>
+
+
 
       <p>
         I hope you had the <span className="highlight">Aha!</span> moment right now. <br />
