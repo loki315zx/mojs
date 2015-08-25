@@ -325,7 +325,7 @@ module.exports = React.createClass
         delay    = { 2000 }
         onUpdate = { (o)=>
           shift = 180*o.easedP
-          mojs.h.style o.objEl, 'transform', "translateY(#{shift}px) translateZ(0)"
+          mojs.h.style o.objEl,   'transform', "translateY(#{shift}px) translateZ(0)"
           "#{shift.toFixed(0)} px"
         }
         label="translateY"
@@ -393,6 +393,27 @@ module.exports = React.createClass
           """
         }
       </CodeSample>
+
+      <p>
+        Now lets add a property curve for scale to imitate stretch.
+        That's how it will look like solely:
+      </p>
+
+      <EasingObjectGraph
+        onUpdate = { (o)=>
+          scaleX = 1-o.easedP; scaleY = 1+o.easedP
+          mojs.h.style o.objEl, 'transform', "scaleX(#{scaleX}) scaleY(#{scaleY}) translateZ(0)"
+          "scaleX(#{scaleX.toFixed(2)}) scaleY(#{scaleY.toFixed(2)})"
+        }
+        label="scale"
+        background="#F1E2D7"
+        path="M0,100 C0,100 5.01160836,100.097038 8.74856937,100.270866 C15.1440434,57.219434 23.7860103,98.447299 23.7860103,100.097037 C30.2913574,71.1380541 36.1603623,98.3939125 36.160361,100.162142 C41.9325738,44.182975 49.1344299,98.9199542 49.1344299,100.053418 C53.6287224,80.2298508 59.2720971,99.9303714 59.2720971,99.9303714 C59.2720971,99.9303714 63.6972656,56.5605469 70.2742418,100.003578 C72.7851563,131.47461 74.5979385,101.614397 75,100.097038 C78.8691406,68.734375 82.3889542,100.577847 94.1109085,100.097038 L100,100">
+        
+        <div className="mole-hand"></div>
+      
+      </EasingObjectGraph>
+
+
 
       <ORXLine className="post__last-orx-line" type="center" />
       <SocialNetworksAbout className="post__social-networks-about" />

@@ -12,7 +12,7 @@ module.exports = React.createClass
     delay:    1000
 
   componentDidMount:->
-    objEl = @getDOMNode().children[0]
+    objEl   = @getDOMNode().children[0]
     @_tween = new mojs.Tween
       duration: @props.duration
       delay:    @props.delay

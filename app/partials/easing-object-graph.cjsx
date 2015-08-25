@@ -31,6 +31,7 @@ module.exports = React.createClass
           timeline    = {@_timeline}
           easing      = {@_easing}
           duration    = {@props.duration}
+          delay       = {@props.delay}
           onUpdate    = {@props.onUpdate}
           background  = {@props.background}>
           {@props.children}
