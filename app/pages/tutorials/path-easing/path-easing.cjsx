@@ -284,7 +284,7 @@ module.exports = React.createClass
 
                   new mojs.Tween({
                     onUpdate: function (progress) {
-                      var fallProgress = mojs.easing.cubic.out(progress);
+                      var fallProgress = mojs.easing.cubic.in(progress);
                       square.style.transform = 'translateY(' + fallAmount*fallProgress + 'px)';
                     },
                     onComplete: function () { quakeTween.start(); }
@@ -304,7 +304,7 @@ module.exports = React.createClass
 
       <p>
         In codepen above, we have changed the bouncy easing 
-        to <span className="highlight">cubic.out</span> to express the gravity force
+        to <span className="highlight">cubic.in</span> to express the gravity force
         that was appied to the rectangle (line 7). After the first tween completes, 
         it subsequently launches the second one (line 10) with the quake curve applied to the 
         <span className="highlight">translateY</span> property (line 18).
@@ -317,7 +317,7 @@ module.exports = React.createClass
       </em>
 
       <p>
-        We can even draw a combined version of this two easing <span className="highlight">cubic.out</span> and our custom one to use it in one tween:
+        We can even draw a combined version of this two curves <span className="highlight">cubic.in + quake</span> to use it in one tween:
       </p>
 
       <EasingObjectGraph
@@ -377,17 +377,17 @@ module.exports = React.createClass
         angle delta. Despite the fact it can look like an easing(it 
         starts at 0 and ends at 1 Y), it is more likely a 
         <span className="highlight">property curve</span> since we are describing 
-        how does certaing property acts in time. Lets just to the code 1:
+        how does certaing property acts in time. Lets just to the code:
       </p>
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
-        { js: """var square = document.querySelector('#js-square'),
-                      bouncyEasing = mojs.easing.path('M0,100 C2.45434624,97.8269293 16.3464551,108.82637 36.7536484,1.51862764 C57.1552734,140.170898 73.4575653,0 73.4575634,0.417637977 C84.8740234,87.625 91.391449,0 91.391449,0 C97.2792969,51.6884766 100,0 100,0');
+        { js: """var hand = document.querySelector('#js-hand'),
+                      handCurve = mojs.easing.path('M0,100 L3.13085938,99.9098435 C11.128418,-42.5703735 24.7357688,10.2827309 24.7357688,10.2827309 C24.7357688,10.2827309 35.4207115,6.37990438 35.420711,19.4955507 C35.420711,19.4955507 35.4207115,28.4642364 38.4679491,20.0448329 C45.9122391,-2.47328083 48.2480469,19.2718256 49.4205542,19.2718262 C49.4205546,6.82379606 55.0592461,-3.56955878 59,15.8223683 C60.6251608,22.53696 56.8918457,-3.39703265 65.4951172,-3.39703265 C68.7340668,-3.59873581 69.730594,6.54639177 70.328125,13.9672245 C70.9301836,21.4442862 74.0961573,26.974048 74.7888322,18.7754178 C75.3742722,5.88443799 81.9388046,2.60654815 84.8170547,9.46624826 C88.6793176,21.7631952 90.7471271,6.55096632 93.7893906,-0.121967559 C95.5135217,-3.90369547 98.2082808,0.193576387 100,0');
 
                   new Tween({
                     onUpdate: function (progress) {
-                      var bounceProgress = bouncyEasing(progress);
-                      square.style.transform = 'translateY(' + 100*bounceProgress + 'px)';
+                      var handProgress = handCurve(progress);
+                      square.style.transform = 'rotate(' + -200*handProgress + 'deg)';
                     }
                   }).start();
           """
@@ -395,7 +395,7 @@ module.exports = React.createClass
       </CodeSample>
 
       <p>
-        Now lets add a property curve for scale to imitate stretch.
+        Now lets add another property curve for scale to imitate squash&stretch of the hand.
         That's how it will look like solely:
       </p>
 
@@ -412,6 +412,38 @@ module.exports = React.createClass
         <div className="mole-hand"></div>
       
       </EasingObjectGraph>
+
+      <p>
+        As you can notice, this property curve represents a deviation from 0 
+        and stays in range of about <span className="highlight">±.25</span>.
+        To make the hand's squash&stretch motion, we can substract curve's value from 1 
+        for <span className="highlight">scaleX</span> property and add the value to 
+        1 for <span className="highlight">scaleY</span> property respectively.
+        Waving and squash&stretch curves together:
+      </p>
+
+
+      <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
+        { js: """var hand = document.querySelector('#js-hand'),
+                      handCurve = mojs.easing.path('M0,100 L3.13085938,99.9098435 C11.128418,-42.5703735 24.7357688,10.2827309 24.7357688,10.2827309 C24.7357688,10.2827309 35.4207115,6.37990438 35.420711,19.4955507 C35.420711,19.4955507 35.4207115,28.4642364 38.4679491,20.0448329 C45.9122391,-2.47328083 48.2480469,19.2718256 49.4205542,19.2718262 C49.4205546,6.82379606 55.0592461,-3.56955878 59,15.8223683 C60.6251608,22.53696 56.8918457,-3.39703265 65.4951172,-3.39703265 C68.7340668,-3.59873581 69.730594,6.54639177 70.328125,13.9672245 C70.9301836,21.4442862 74.0961573,26.974048 74.7888322,18.7754178 C75.3742722,5.88443799 81.9388046,2.60654815 84.8170547,9.46624826 C88.6793176,21.7631952 90.7471271,6.55096632 93.7893906,-0.121967559 C95.5135217,-3.90369547 98.2082808,0.193576387 100,0'),
+                      handStretchCurve = mojs.easing.path('M0,100 L3.13085938,99.9098435 C11.128418,-42.5703735 24.7357688,10.2827309 24.7357688,10.2827309 C24.7357688,10.2827309 35.4207115,6.37990438 35.420711,19.4955507 C35.420711,19.4955507 35.4207115,28.4642364 38.4679491,20.0448329 C45.9122391,-2.47328083 48.2480469,19.2718256 49.4205542,19.2718262 C49.4205546,6.82379606 55.0592461,-3.56955878 59,15.8223683 C60.6251608,22.53696 56.8918457,-3.39703265 65.4951172,-3.39703265 C68.7340668,-3.59873581 69.730594,6.54639177 70.328125,13.9672245 C70.9301836,21.4442862 74.0961573,26.974048 74.7888322,18.7754178 C75.3742722,5.88443799 81.9388046,2.60654815 84.8170547,9.46624826 C88.6793176,21.7631952 90.7471271,6.55096632 93.7893906,-0.121967559 C95.5135217,-3.90369547 98.2082808,0.193576387 100,0');
+
+                  new Tween({
+                    onUpdate: function (progress) {
+                      var handProgress = handCurve(progress);
+                      var stretchProgress = handStretchCurve(progress);
+                      
+                      square.style.transform = ''
+                        // squash&stretch
+                        + 'scaleX(' + (1-stretchProgress) + ') scaleY(' + (1+stretchProgress) + ') '
+                        // waving
+                        + 'rotate(' + -200*handProgress + 'deg)';
+
+                    }
+                  }).start();
+          """
+        }
+      </CodeSample>
 
 
 
