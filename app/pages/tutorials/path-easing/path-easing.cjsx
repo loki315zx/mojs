@@ -445,6 +445,28 @@ module.exports = React.createClass
         }
       </CodeSample>
 
+      <p>
+        I hope it is cristal clear for you what the property curves are and how to use 
+        them in your animation project. If you still unconfortable with the idea, fill 
+        free to <a href="# link to websites repo / issues">ask me anything</a>. 
+        I've build a bit more complicated demo almost entirely on this concept and 
+        pushed it to <a href="# link to property curves demo repo">the github repo</a> so you can play with it more. Here <a href="# link to the demo pen">it is on codepen</a> also!
+      </p>
+
+      <h2>Options</h2>
+
+      <p>
+        When you create a easing path with <span className="highlight">mojs.easing.path</span>, you can pass a hash object with options just after the path coordinates string:
+      </p>
+
+      <CodeSample>
+        { js: """
+                  var easing = mojs.easing.path('M0,100 ..', { // options });
+          """
+        }
+      </CodeSample>
+
+
 
 
       <ORXLine className="post__last-orx-line" type="center" />

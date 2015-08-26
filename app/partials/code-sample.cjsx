@@ -47,7 +47,8 @@ module.exports = React.createClass
                   </pre>
       itemButtons.push <Tappable className="code-sample__button #{showClass}" onTap=@["_show#{key}"] key={i}>{key}</Tappable>
 
-    <div className="code-sample">
+    className = if !@props.pen? then 'is-alone' else ''
+    <div className="code-sample #{className}">
       <div className="code-sample__syntax" id="js-syntax">
         <div className="code-sample__buttons">{itemButtons}</div>
         <div className="code-sample__codes">{items}</div>

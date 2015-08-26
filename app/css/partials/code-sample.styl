@@ -1,13 +1,17 @@
 @import '../imports.styl'
 
+
+codeSampleBorder()
+  border 2*PX solid c-purple-2
+
 {el = '.code-sample'}
   &__syntax
-    border                  2*PX solid c-purple-2
-    border-bottom           0
     border-top-left-radius  BRADIUS
     border-top-right-radius BRADIUS
     position                relative
     height                  19.4*gs
+    codeSampleBorder()
+    border-bottom           0
     .line-numbers
       display               none
       // +mobile()
@@ -67,6 +71,17 @@
   &__pen
     // margin-left     - PX
     height            330*PX
+    
+  &.is-alone
+    {el}__syntax
+      border-bottom-left-radius  BRADIUS
+      border-bottom-right-radius BRADIUS
+      codeSampleBorder()
+    {el}__code
+      margin-top                -2*PX
+      padding-bottom             18*PX
+    {el}__pen
+      display                    none
 
 
 
