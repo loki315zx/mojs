@@ -108,7 +108,7 @@ module.exports = React.createClass
         (line 4)
         &nbsp;that is available on 
         <span className="highlight">mojs.easing</span> object - the place where 
-        all easing functions, constructors and helpers are stored. 
+        all easing functions and helpers are stored. 
         The result is pretty obvious - you probably did it thousands times - 
         we have something that kind of looking like falling object with it’s own physics, 
         despite the fact that it is not.
@@ -141,7 +141,7 @@ module.exports = React.createClass
         But what if we eventually want to change the weight of our object so it will 
         have much wider bouncing amplitude range? That’s the point where the 
         <span className="highlight">path easing</span> become irreplaceable. 
-        Lets jump to vector graphics editor with this common graph as a bootstrap. 
+        Lets jump to vector graphics editor with <a href="">this common graph</a> as a bootstrap. 
       </p>
 
       <em>
@@ -180,7 +180,7 @@ module.exports = React.createClass
       </em>
 
       <p>
-        Now we can generate our custom easing function from the SVG path commands, the 
+        Now we can generate our custom easing function from the SVG path commands the 
         path's <span className="highlight">d attribute</span> contains.
         For this simply copy the commands and pass it to 
         the <span className="highlight">mojs.easing.path</span> function (line 2):
@@ -201,7 +201,7 @@ module.exports = React.createClass
       </CodeSample>
 
       <p>
-        Yay! We've drawed our custom path easing!
+        Yay! We've drawn our custom path easing!
         Our square fills much more bouncy now!
       </p>
 
@@ -414,7 +414,7 @@ module.exports = React.createClass
       </EasingObjectGraph>
 
       <p>
-        As you can notice, this property curve represents a deviation from 0 
+        As you can notice, this property curve represents deviation from 0 
         and stays in range of about <span className="highlight">±.25</span>.
         To make the hand's squash&stretch motion, we can substract curve's value from 1 
         for <span className="highlight">scaleX</span> property and add the value to 
@@ -445,11 +445,12 @@ module.exports = React.createClass
       </CodeSample>
 
       <p>
-        I hope it is cristal clear for you what the property curves are and how to use 
-        them in your animation project. If you still unconfortable with the idea, fill 
+        I hope it is cristal clear for you now and you understand what the property 
+        curves are and how to use them in your animation project. If you still 
+        unconfortable with the idea, fill 
         free to <a href="# link to websites repo / issues">ask me anything</a>. 
         I've build a bit more complicated demo almost entirely on this concept and 
-        pushed it to <a href="# link to property curves demo repo">the github repo</a> so you can play with it more. Here <a href="# link to the demo pen">it is on codepen</a> also!
+        pushed it to <a href="# link to property curves demo repo">the github repo</a> so you can play with it more. Here <a href="# link to the demo pen">it is on CodePen</a> also!
       </p>
 
       <h2>Options</h2>
@@ -462,8 +463,9 @@ module.exports = React.createClass
         { js: """
                   var easing = mojs.easing.path('M0,100 ..', {
                     // options
-                    precompute: 2000, // in range of 100 - 10000, default is 140
-                    eps:        0.001 // default is 0.01
+                    precompute: 140,  // in range of 100 - 10000, default is 140
+                    eps:        0.01, // default is 0.01
+                    rect:       100   // default is 100
                   });
           """
         }
@@ -491,11 +493,89 @@ module.exports = React.createClass
         <span className="highlight">eps</span> of 0.0001 should be enough.
       </p>
 
+      <p>
+        The <span className="highlight">rect</span> option sets the rectangle size, the 
+        path was drawn in. By default the rectangle is 100x100, but you can specify any 
+        size that works good for you.
+      </p>
+
       <h2>Recap</h2>
 
-      <p></p>
+      <p>
+        Among lots of other easing functions and helpers, 
+        <span className="highlight">mo· js</span> has <span className="highlight">path easing</span> function for precise easing function generation from SVG path coordinates. You can get the custom easing function by sending the path's 
+        data to the <span className="highlight">mojs.easing.path</span> method and 
+        get new easing function back:
+      </p>
+
+      <CodeSample>
+        { js: """
+                  var easing = mojs.easing.path('M0,100 L100, 0');
+                  // .. then
+                  var easedProgress = easing(progress);
+          """
+        }
+      </CodeSample>
+
+      <p>
+        The <span className="highlight">path easing</span> also allows as to 
+        generate the <span className="highlight">property curves</span> - 
+        much more complex and powerfull easing paths.
+      </p>
+
+      <p>
+        You can also control how fast/presice your custom easing function will be 
+        with <span className="highlight">precompute</span> and 
+        <span className="highlight">eps</span> options. 
+        The <span className="highlight">rect</span> option 
+        sets the rectangle size the easing path was drawn in.
+      </p>
+
+      <p>
+        It is worth noting that when you draw your easing path, 
+        it must start at 0 and end at 100 
+        (or at <span className="highlight">rect</span> option that you will set). 
+        This rule comes from the fact that the <span className="highlight">X</span> axis 
+        of your path represents <span className="highlight">progress</span> and the 
+        progress can't go beyond 100% or before 0%. This restriction is set only for 
+        <span className="highlight">X</span> values and doesn't apply 
+        to <span className="highlight">Y</span> values of your path.
+      </p>
 
       <h2>Future plans</h2>
+
+      <p>
+        Plans for the future are:
+      </p>
+
+      <ul>
+        <li>
+          Make a page with a searchable list of path easings with live examples and graphs, 
+          So developers can collaborate and share their easing paths and find path easing 
+          that suite their current needs.
+        </li>
+        
+        <li>
+          Add more tranforms and helpers to work with path easing function.
+        </li>
+
+        <li>
+          Add more tranforms and helpers to work with path easing function.
+        </li>
+      </ul>
+
+      <p>
+        Thanks a lot to the reader for it's time and effort in reading this tutorial! 
+        Bunch of great stuff is comming up so stay tuned!
+      </p>
+
+      <br />
+      <br />
+
+      <p style= { 'text-align': 'center' }>
+        <a href="">demo on CodePen</a> | <a href="">demo's repo on GitHub</a> | 
+        <a href="">mo· js on GitHub</a>
+      </p>
 
       <ORXLine className="post__last-orx-line" type="center" />
       <SocialNetworksAbout className="post__social-networks-about" />

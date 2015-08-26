@@ -37,6 +37,7 @@ module.exports = React.createClass
           <UniteLink link="path-easing" className="tutorials-sidebar__link"> Path Easing </UniteLink>
           <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Mix </UniteLink>
           <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Helpers </UniteLink>
+          <UniteLink link="/" isDisabled="true" className="tutorials-sidebar__link"> Transforms </UniteLink>
         </div>
 
         <div className="tutorials-sidebar__section">
