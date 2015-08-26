@@ -1,15 +1,17 @@
 @import '~imports.styl'
 
 .mole-hand
-  width             54*PX
-  height            102*PX
+  width             49*PX
+  height            129*PX
   background        url('./i/mole-hand.svg') no-repeat center center
   border-radius     BRADIUS
   position          absolute
   nw                50%
   margin-left      -25*PX 
-  margin-top       -50*PX
+  margin-top       -20*PX
   transform-origin  center top
+  &--squash
+    margin-top      -70*PX
 
 size = 4
 .path-easing-rectangle

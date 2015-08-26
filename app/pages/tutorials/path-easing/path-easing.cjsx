@@ -348,7 +348,7 @@ module.exports = React.createClass
       <p>
         Pretend you need to animate a character that is angry and arguing to somebody.
         Meanwhile the blame his hand is waving in the air to exaggerate his bad mood.
-        We can describe the hand angle property with path like this:
+        We can describe the hand angle property with a path like this:
       </p>
 
       <EasingObjectGraph
@@ -377,7 +377,7 @@ module.exports = React.createClass
         angle delta. Despite the fact it can look like an easing(it 
         starts at 0 and ends at 1 Y), it is more likely a 
         <span className="highlight">property curve</span> since we are describing 
-        how does certaing property acts in time. Lets just to the code:
+        how does certaing property acts in time. Lets jump to the code:
       </p>
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
@@ -409,7 +409,7 @@ module.exports = React.createClass
         background="#F1E2D7"
         path="M0,100 C0,100 5.01160836,100.097038 8.74856937,100.270866 C15.1440434,57.219434 23.7860103,98.447299 23.7860103,100.097037 C30.2913574,71.1380541 36.1603623,98.3939125 36.160361,100.162142 C41.9325738,44.182975 49.1344299,98.9199542 49.1344299,100.053418 C53.6287224,80.2298508 59.2720971,99.9303714 59.2720971,99.9303714 C59.2720971,99.9303714 63.6972656,56.5605469 70.2742418,100.003578 C72.7851563,131.47461 74.5979385,101.614397 75,100.097038 C78.8691406,68.734375 82.3889542,100.577847 94.1109085,100.097038 L100,100">
         
-        <div className="mole-hand"></div>
+        <div className="mole-hand mole-hand--squash"></div>
       
       </EasingObjectGraph>
 
@@ -421,7 +421,6 @@ module.exports = React.createClass
         1 for <span className="highlight">scaleY</span> property respectively.
         Waving and squash&stretch curves together:
       </p>
-
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
         { js: """var hand = document.querySelector('#js-hand'),
@@ -456,18 +455,47 @@ module.exports = React.createClass
       <h2>Options</h2>
 
       <p>
-        When you create a easing path with <span className="highlight">mojs.easing.path</span>, you can pass a hash object with options just after the path coordinates string:
+        When you create an easing path with <span className="highlight">mojs.easing.path</span>, you can pass a hash object with options just after the path coordinates string:
       </p>
 
       <CodeSample>
         { js: """
-                  var easing = mojs.easing.path('M0,100 ..', { // options });
+                  var easing = mojs.easing.path('M0,100 ..', {
+                    // options
+                    precompute: 2000, // in range of 100 - 10000, default is 140
+                    eps:        0.001 // default is 0.01
+                  });
           """
         }
       </CodeSample>
 
+      <p>
+        When you generate an easing function from path, 
+        the <span className="highlight">mojs.easing.path</span> samples path values. 
+        The <span className="highlight">precompute</span> option defines how 
+        much samples you would like to take on initialization in range 
+        of <span className="highlight">100 - 10000</span>. More samples, means 
+        your result easing function would be more performant on runtime, but will 
+        take longer to initializate.
+      </p>
 
+      <p>
+        The <span className="highlight">eps</span> option defines how presice will the 
+        result easing function be. The smaller <span className="highlight">eps</span> option 
+        is, the more precisely it will evaluate in the future (but more slowly though).
+        If you are using very big durations and see that you path easing function 
+        gives to your animation some twitching, 
+        increase <span className="highlight">precompute</span> option and decrease 
+        the <span className="highlight">eps</span> one to solve the issue. 
+        In most tough cases <span className="highlight">precompute</span> of 3000 and 
+        <span className="highlight">eps</span> of 0.0001 should be enough.
+      </p>
 
+      <h2>Recap</h2>
+
+      <p></p>
+
+      <h2>Future plans</h2>
 
       <ORXLine className="post__last-orx-line" type="center" />
       <SocialNetworksAbout className="post__social-networks-about" />
