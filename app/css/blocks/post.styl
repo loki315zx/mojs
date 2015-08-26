@@ -73,4 +73,35 @@
     margin          3.5*gs 0
     +mobile()
       margin        2.5*gs 0 3.5*gs
+      
+  @media all and (max-width: 720px)
+    .easing-object-graph
+      margin        3*gs 0
+      .easing-object,
+      .easing-graph
+        clear       both
+      .easing-object
+        border-bottom-left-radius 0
+        border-top-right-radius   BRADIUS
+      .easing-graph
+        border-bottom-left-radius BRADIUS
+        border-top-right-radius   0
+  
+  @media all and (max-width: 340px)
+    .easing-object-graph
+      margin          2*gs 0
+      margin-left    -1*gs
+  @media all and (max-width: 330px)
+    .easing-object-graph
+      margin-left    -1.5*gs
+  @media all and (max-width: 320px)
+    .easing-object-graph
+      margin-left    -2*gs
+      .easing-object,
+      .easing-graph
+        border-radius   0
+      
+
+        
+    
     

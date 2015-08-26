@@ -23,6 +23,16 @@ module.exports = React.createClass
       <div className="post__description"> This post is about path easing curves for your precise timing control. </div>
       <ORXLine className="post__orx-line" />
 
+      <p>TODO: add links here</p>
+      <p>TODO: add links everywhere on the post</p>
+      <p>TODO: add pens</p>
+      <p>TODO: with motion for the web demo</p>
+      <p>TODO: add server rendering to this website</p>
+      <p>TODO: move it to anothe repo</p>
+      <p>TODO: buy domain</p>
+      <p>TODO: make mojs' release</p>
+      <p>TODO: add easing graph background</p>
+
       <p>
         Easing (or timing function) is the secret sauce ingredient that makes a good motion delightful. 
         Linear movement trudging unnatural and sloppy, 
@@ -549,6 +559,7 @@ module.exports = React.createClass
       </p>
 
       <ul>
+
         <li>
           Make a page with a searchable list of path easings with live examples and graphs, 
           So developers can collaborate and share their easing paths and find path easing 
@@ -562,6 +573,7 @@ module.exports = React.createClass
         <li>
           Add more tranforms and helpers to work with path easing function.
         </li>
+        
       </ul>
 
       <p>
@@ -572,7 +584,7 @@ module.exports = React.createClass
       <br />
       <br />
 
-      <p style= { 'text-align': 'center' }>
+      <p style= { textAlign: 'center' }>
         <a href="">demo on CodePen</a> | <a href="">demo's repo on GitHub</a> | 
         <a href="">mo· js on GitHub</a>
       </p>

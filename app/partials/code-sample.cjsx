@@ -12,7 +12,7 @@ module.exports = React.createClass
       pen = document.createElement('script'); pen.type = 'text/javascript'; pen.async = true
       pen.src = '//assets.codepen.io/assets/embed/ei.js'; pen.id  = 'js-codepen-script'
       (document.getElementsByTagName('head')[0] or document.getElementsByTagName('body')[0]).appendChild(pen)
-    else CodePenEmbed?.showCodePenEmbeds()
+    else CodePenEmbed?.showCodePenEmbeds?()
 
   _showjs:->  @state.show isnt 'js'  and @setState show: 'js'
   _showes6:-> @state.show isnt 'es6' and @setState show: 'es6'
