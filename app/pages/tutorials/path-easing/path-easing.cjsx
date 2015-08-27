@@ -20,22 +20,21 @@ module.exports = React.createClass
   render: ()->
     <div className="post">
       <div className="post__header">Easing / Path Easing</div>
-      <div className="post__description"> This post is about path easing curves for your precise timing control.</div>
-      
-      <ORXLine className="post__orx-line" />
+      <div className="post__description"> This post is about path easing functions for your precise timing control.</div>
 
-      <p style= { textAlign: 'center', fontSize: '.65em', marginTop: '-12px', opacity: '.75' }>
+      <p style= { textAlign: 'left', fontSize: '.65em', opacity: '.75', marginTop: '15px' }>
         <a href="">demo on CodePen</a> | <a href="">demo's repo on GitHub</a> | 
         <a href="">mo· js on GitHub</a>
       </p>
-
-
+      
+      <ORXLine className="post__orx-line" />
+      
       { ###
         <p>TODO: add links everywhere on the post</p>
         <p>TODO: add pens</p>
         <p>TODO: fix motion for the web demo</p>
         <p>TODO: add server rendering to this website</p>
-        <p>TODO: move it to anothe repo</p>
+        <p>TODO: move it to another repo</p>
         <p>TODO: buy domain</p>
         <p>TODO: make mojs' release</p>
         <p>TODO: add easing graph background</p>
@@ -43,7 +42,7 @@ module.exports = React.createClass
 
       <p>
         Easing (or timing function) is the secret sauce ingredient that makes a good motion delightful. 
-        Linear movement trudging unnatural and sloppy, 
+        Linear movement trudging unnaturally and sloppy, 
         this felling comes from our physical world experience - nothing moves linearly around us.
       </p>
 
@@ -55,9 +54,9 @@ module.exports = React.createClass
       <p>
         Animation with equal interim spacing(read with linear easing) can 
         envoke in human brain nothing than suspicious or dull response. 
-        By contrast, excellent crafted easing appeal user's attention and araise curiosity,
-        so involvement.
-        That's why so important to have the full control of easing functions.
+        By contrast, excellent crafted easing appeal user's attention, araise curiosity
+        and involvement.
+        That's why so important to have full control of easing functions.
       </p>
 
       <p>
@@ -74,8 +73,9 @@ module.exports = React.createClass
             Springs
           </UniteLink> that you can find in other web animation libraries, 
           <span className="highlight">mo· js</span>
-          &nbsp;has super precise easing function type - Path Easing.
-          Now you can finally draw your timing functions! 
+          &nbsp;has super precise easing function type 
+          - <span className="highlight">Path Easing</span>.
+          It allows you to draw your timing functions! 
           That's what this tutorial is dedicated to, hang tight!
       </p>
 
@@ -156,7 +156,7 @@ module.exports = React.createClass
       </EasingObjectGraph>
 
       <p>
-        But what if we eventually want to change the weight of our object so it will 
+        But what if we want to change the weight parameter of our object so it will 
         have much wider bouncing amplitude range? That’s the point where the 
         <span className="highlight">path easing</span> become irreplaceable. 
         Lets jump to vector graphics editor with <a href="">this common graph</a> as a bootstrap. 
@@ -170,10 +170,6 @@ module.exports = React.createClass
       <p>
         We will amplify the bouncing curves a bit, to add our motion feel of much more lighter object 
         (or much more bouncy one - made of rubber instead of wood).
-        By default <span className="highlight">mo· js</span> expects you to draw your easing 
-        paths in rectangle of 100x100 as you can notice in provided <a href="">.svg file</a>, but 
-        you can change that with special option, we will talk about it a bit later 
-        in <span className="highlight">options</span> section of this tutorial.
         Thats what it the bouncy graph might look like:
       </p>
 
@@ -198,6 +194,7 @@ module.exports = React.createClass
       </em>
 
       <p>
+        There is my <a href="">.svg file</a> with the bouncy graph.
         Now we can generate our custom easing function from the SVG path commands the 
         path's <span className="highlight">d attribute</span> contains.
         For this simply copy the commands and pass it to 
@@ -220,15 +217,22 @@ module.exports = React.createClass
 
       <p>
         Yay! We've drawn our custom path easing!
-        Our square fills much more bouncy now!
+        Our square feels much more bouncy now!
       </p>
-
+      
       <p>
         You can imagine what amount of 
         freedom <span className="highlight">path easing</span> can give you 
         and how comprehensive your easing functions can now be. But it has much more 
         powerfull purposes, keep reading!
       </p>
+
+      <em>
+        <i>Note</i>: 
+        As you can see in the <a href="">.svg file</a>, by default <span className="highlight">mo· js</span> expects you to draw your easing paths in rectangle of 100x100, but 
+        you can change that with special option, we will talk about it a bit later, 
+        in <span className="highlight">options</span> section of this tutorial.
+      </em>
 
       <h2>Property curves</h2>
 
@@ -241,11 +245,11 @@ module.exports = React.createClass
       </p>
 
       <p>
-        Let me try to describe the idea of property curves:
+        Let me try to describe the idea of property curves in one sentence:
       </p>
 
       <Cite author="LegoMushroom">
-        With property curves we can specify(read draw) 
+        With property curves we can specify(or draw) 
         how would a certain property behave in time.
       </Cite>
 
@@ -262,7 +266,7 @@ module.exports = React.createClass
       </p>
 
       <EasingObjectGraph
-        duration={ 350 }
+        duration={ 250 }
         onUpdate = { (o)=>
           shift = 100*o.easedP
           mojs.h.style o.objEl, 'transform', "translateY(#{shift}px) translateZ(0)"
@@ -282,16 +286,16 @@ module.exports = React.createClass
       </em>
 
       <p>
-       Consider the graph at right. The <span className="highlight">X</span> axis represents progress of our animation.
-       The <span className="highlight">Y</span> axis is the change of our property in time, 
+       Consider the graph at right. The <span className="highlight">x</span> axis represents progress of our animation.
+       The <span className="highlight">y</span> axis is the change of our property in time, 
        in this particularly example this is <span className="highlight">translateY</span> property.
-       As you can see, property curve's <span className="highlight">Y</span> value shouldn't 
+       As you can see, curve's <span className="highlight">Y</span> value shouldn't 
        start at <span className="highlight">0</span> and end 
        at <span className="highlight">1</span>, it can take any value you want.
-       But the <span className="highlight">X</span> value must start 
+       But the <span className="highlight">x</span> value must start 
        at <span className="highlight">0</span> and end 
        at <span className="highlight">1</span> because progress can't go 
-       beyond <span className="highlight">1</span> as it makes no sense at all.
+       beyond <span className="highlight">100%</span> as it makes no sense.
        Now lets jump to codepen to see how does it work exactly:
       </p>
 
@@ -323,8 +327,8 @@ module.exports = React.createClass
       <p>
         In codepen above, we have changed the bouncy easing 
         to <span className="highlight">cubic.in</span> to express the gravity force
-        that was appied to the rectangle (line 7). After the first tween completes, 
-        it subsequently launches the second one (line 10) with the quake curve applied to the 
+        that is appied to the rectangle (line 7). After the first tween completes, 
+        it launches the second one (line 10) with the quake curve applied to the 
         <span className="highlight">translateY</span> property (line 18).
       </p>
 
@@ -335,7 +339,7 @@ module.exports = React.createClass
       </em>
 
       <p>
-        We can even draw a combined version of this two curves <span className="highlight">cubic.in + quake</span> to use it in one tween:
+        We can even draw a combined version of this two curves <span className="highlight">cubic.in + quake</span> to use it as one property curve:
       </p>
 
       <EasingObjectGraph
@@ -386,7 +390,7 @@ module.exports = React.createClass
       <em>
         <i>Note</i>: This path easing is used in the final demo, 
         particularly when mole tries to persuade bullies to stop 
-        their knock-a-door-run game(as he thinks, dummy).
+        their knock-a-door-run game(as he dummy thinks).
       </em>
 
       <p>
@@ -395,7 +399,7 @@ module.exports = React.createClass
         angle delta. Despite the fact it can look like an easing(it 
         starts at 0 and ends at 1 Y), it is more likely a 
         <span className="highlight">property curve</span> since we are describing 
-        how does certaing property acts in time. Lets jump to the code:
+        how does certain property acts in time. Lets jump to the code:
       </p>
 
       <CodeSample pen="8312611e3618e83d4103390afc2c8bef">
@@ -414,7 +418,7 @@ module.exports = React.createClass
 
       <p>
         Now lets add another property curve for scale to imitate squash&stretch of the hand.
-        That's how it will look like solely:
+        That's how it will look like at it's own:
       </p>
 
       <EasingObjectGraph
@@ -465,7 +469,7 @@ module.exports = React.createClass
       <p>
         I hope you have cristal clear understanding now what the property 
         curves are and how to use them. It is definitelly takes some time to wrap 
-        your head around this notion ans start thinking in curves, but it will hundred percent worth your time investment. If you still unconfortable with this idea, fill 
+        head around this notion and start thinking in curves, but it will hundred percent worth your time investment. If you still unconfortable with this idea, feel 
         free to <a href="# link to websites repo / issues">ask me anything</a> by kick offing an issue on the repo. 
         I've build a bit more complicated demo almost entirely on this concept and 
         pushed it to <a href="# link to property curves demo repo">the github repo</a> so you can play with it more. Here <a href="# link to the demo pen">it is on CodePen</a> also!
@@ -474,7 +478,10 @@ module.exports = React.createClass
       <h2>Options</h2>
 
       <p>
-        When you create an easing path with <span className="highlight">mojs.easing.path</span>, you can pass a hash object with options just after the path coordinates string:
+        When you create an easing path with help 
+        of <span className="highlight">mojs.easing.path</span>, you can 
+        pass an object with options just after the path coordinates string, as the 
+        second parameter:
       </p>
 
       <CodeSample>
@@ -494,16 +501,16 @@ module.exports = React.createClass
         the <span className="highlight">mojs.easing.path</span> samples 
         it's coordinates' values. 
         The <span className="highlight">precompute</span> option defines how 
-        much samples you would like to take from the path on initialization in range 
-        of <span className="highlight">100 - 10000</span>. More samples, means 
+        much samples you would like to take from the path on initialization stage 
+        in range of <span className="highlight">100 - 10000</span>. More samples, means 
         your result easing function would be more performant on runtime, but it will 
-        take longer to initializate.
+        take longer to take all the samples, so to initialize.
       </p>
 
       <p>
         The <span className="highlight">eps</span> option defines how precise will the 
-        result easing function be. The smaller <span className="highlight">eps</span> option is, the more precisely it will evaluate in the future (but more slowly 
-        though). If you are using very big time resolution (long tween duration) and see that your path easing function gives to your animation some twitching, 
+        result easing function be. Smaller <span className="highlight">eps</span> option is, more precisely it will work on during the runtime (but more slowly 
+        though). If you are using very big time resolution (long tween duration) and see that your path easing function gives to your motion some twitching, 
         increase <span className="highlight">precompute</span> option and decrease 
         the <span className="highlight">eps</span> one to solve the issue. 
         In most tough cases <span className="highlight">precompute</span> of 3000 and 
@@ -549,56 +556,43 @@ module.exports = React.createClass
         with <span className="highlight">precompute</span> and 
         <span className="highlight">eps</span> options. 
         The <span className="highlight">rect</span> option 
-        sets the rectangle size the easing path was drawn in.
+        specifies the rectangle's size the easing path was drawn in.
       </p>
 
       <p>
         It is worth noting that when you draw your easing path, 
         it must start at 0 and end at 100 
         (or at <span className="highlight">rect</span> option's value that you have set). 
-        This rule comes from the fact that the <span className="highlight">X</span> axis 
+        This rule comes from the fact that the <span className="highlight">x</span> axis 
         of your path represents <span className="highlight">progress</span> and the 
-        progress can't go beyond 100% or before 0%. This restriction is set only for 
-        <span className="highlight">X</span> values and doesn't apply 
-        to <span className="highlight">Y</span> values of your path, which can take
-        any value at all.
+        progress can't go beyond 100% or before 0%. This restriction is must only for 
+        <span className="highlight">x</span> values and doesn't apply 
+        to <span className="highlight">y</span> values of your path which can take
+        any value you want.
       </p>
 
       <h2>Thank you!</h2>
 
       <p>
-        Plans for the future are:
+        Thanks a lot to the reader for time and effort in reading this tutorial! 
+        In a short future we are planning to add a page with a searchable list of path easings with live examples and graphs.
+        So developers can collaborate and share their easing paths and find ones 
+        that suite their current needs.
+        <br />
+        Bunch of great stuff is comming up on other topics also so stay tuned!
       </p>
 
-      <ul>
-
-        <li>
-          Make a page with a searchable list of path easings with live examples and graphs, 
-          So developers can collaborate and share their easing paths and find path easing 
-          that suite their current needs.
-        </li>
-        
-        <li>
-          Add more tranforms and helpers to work with path easing function.
-        </li>
-
-        <li>
-          Add more tranforms and helpers to work with path easing function.
-        </li>
-
-      </ul>
-
-      <p>
-        Thanks a lot to the reader for it's time and effort in reading this tutorial! 
-        Bunch of great stuff is comming up so stay tuned!
-      </p>
-
-      <br />
       <br />
 
       <p style= { textAlign: 'center' }>
-        <a href="">demo on CodePen</a> | <a href="">demo's repo on GitHub</a> | 
-        <a href="">mo· js on GitHub</a>
+        <UniteLink link="http://codepen.io/">demo on CodePen</UniteLink> | 
+        <UniteLink link="http://github.com/">demo's repo on GitHub</UniteLink> | 
+        <UniteLink link="http://github.com/legomushroom/mojs/">mo · js on GitHub</UniteLink>
+      </p>
+
+      <p style= { textAlign: 'center' }>
+        <br />
+        Next: &nbsp;<UniteLink link="/tutorials/mix" isDisabled="true" className="highlight">Easing: Mix tutorial</UniteLink>
       </p>
 
       <ORXLine className="post__last-orx-line" type="center" />
