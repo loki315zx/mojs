@@ -20,18 +20,26 @@ module.exports = React.createClass
   render: ()->
     <div className="post">
       <div className="post__header">Easing / Path Easing</div>
-      <div className="post__description"> This post is about path easing curves for your precise timing control. </div>
+      <div className="post__description"> This post is about path easing curves for your precise timing control.</div>
+      
       <ORXLine className="post__orx-line" />
 
-      <p>TODO: add links here</p>
-      <p>TODO: add links everywhere on the post</p>
-      <p>TODO: add pens</p>
-      <p>TODO: with motion for the web demo</p>
-      <p>TODO: add server rendering to this website</p>
-      <p>TODO: move it to anothe repo</p>
-      <p>TODO: buy domain</p>
-      <p>TODO: make mojs' release</p>
-      <p>TODO: add easing graph background</p>
+      <p style= { textAlign: 'center', fontSize: '.65em', marginTop: '-12px', opacity: '.75' }>
+        <a href="">demo on CodePen</a> | <a href="">demo's repo on GitHub</a> | 
+        <a href="">mo· js on GitHub</a>
+      </p>
+
+
+      { ###
+        <p>TODO: add links everywhere on the post</p>
+        <p>TODO: add pens</p>
+        <p>TODO: fix motion for the web demo</p>
+        <p>TODO: add server rendering to this website</p>
+        <p>TODO: move it to anothe repo</p>
+        <p>TODO: buy domain</p>
+        <p>TODO: make mojs' release</p>
+        <p>TODO: add easing graph background</p>
+      ### }
 
       <p>
         Easing (or timing function) is the secret sauce ingredient that makes a good motion delightful. 
@@ -455,10 +463,10 @@ module.exports = React.createClass
       </CodeSample>
 
       <p>
-        I hope it is cristal clear for you now and you understand what the property 
-        curves are and how to use them in your animation project. If you still 
-        unconfortable with the idea, fill 
-        free to <a href="# link to websites repo / issues">ask me anything</a>. 
+        I hope you have cristal clear understanding now what the property 
+        curves are and how to use them. It is definitelly takes some time to wrap 
+        your head around this notion ans start thinking in curves, but it will hundred percent worth your time investment. If you still unconfortable with this idea, fill 
+        free to <a href="# link to websites repo / issues">ask me anything</a> by kick offing an issue on the repo. 
         I've build a bit more complicated demo almost entirely on this concept and 
         pushed it to <a href="# link to property curves demo repo">the github repo</a> so you can play with it more. Here <a href="# link to the demo pen">it is on CodePen</a> also!
       </p>
@@ -473,30 +481,29 @@ module.exports = React.createClass
         { js: """
                   var easing = mojs.easing.path('M0,100 ..', {
                     // options
-                    precompute: 140,  // in range of 100 - 10000, default is 140
-                    eps:        0.01, // default is 0.01
-                    rect:       100   // default is 100
+                    precompute: 140,  // default, could be in range of 100 - 10000
+                    eps:        0.01, // default
+                    rect:       100   // default
                   });
           """
         }
       </CodeSample>
 
       <p>
-        When you generate an easing function from path, 
-        the <span className="highlight">mojs.easing.path</span> samples path values. 
+        When you generate an easing function from a SVG path, 
+        the <span className="highlight">mojs.easing.path</span> samples 
+        it's coordinates' values. 
         The <span className="highlight">precompute</span> option defines how 
-        much samples you would like to take on initialization in range 
+        much samples you would like to take from the path on initialization in range 
         of <span className="highlight">100 - 10000</span>. More samples, means 
-        your result easing function would be more performant on runtime, but will 
+        your result easing function would be more performant on runtime, but it will 
         take longer to initializate.
       </p>
 
       <p>
-        The <span className="highlight">eps</span> option defines how presice will the 
-        result easing function be. The smaller <span className="highlight">eps</span> option 
-        is, the more precisely it will evaluate in the future (but more slowly though).
-        If you are using very big durations and see that you path easing function 
-        gives to your animation some twitching, 
+        The <span className="highlight">eps</span> option defines how precise will the 
+        result easing function be. The smaller <span className="highlight">eps</span> option is, the more precisely it will evaluate in the future (but more slowly 
+        though). If you are using very big time resolution (long tween duration) and see that your path easing function gives to your animation some twitching, 
         increase <span className="highlight">precompute</span> option and decrease 
         the <span className="highlight">eps</span> one to solve the issue. 
         In most tough cases <span className="highlight">precompute</span> of 3000 and 
@@ -504,18 +511,21 @@ module.exports = React.createClass
       </p>
 
       <p>
-        The <span className="highlight">rect</span> option sets the rectangle size, the 
-        path was drawn in. By default the rectangle is 100x100, but you can specify any 
-        size that works good for you.
+        The <span className="highlight">rect</span> option provides 
+        to <span className="highlight">mojs.easing.path</span> the rectangle size, 
+        the path was drawn in. By default the rectangle 
+        is <span className="highlight">100x100</span>, but you can 
+        specify any size that works good for you.
       </p>
 
       <h2>Recap</h2>
 
       <p>
         Among lots of other easing functions and helpers, 
-        <span className="highlight">mo· js</span> has <span className="highlight">path easing</span> function for precise easing function generation from SVG path coordinates. You can get the custom easing function by sending the path's 
-        data to the <span className="highlight">mojs.easing.path</span> method and 
-        get new easing function back:
+        <span className="highlight">mo· js</span> has <span className="highlight">path easing</span> that allows you to generate advanced easing functions from SVG 
+        path coordinates. To do so the path's data should be sent to 
+        the <span className="highlight">mojs.easing.path</span> method, 
+        the newely generated easing function will be returned back:
       </p>
 
       <CodeSample>
@@ -530,11 +540,12 @@ module.exports = React.createClass
       <p>
         The <span className="highlight">path easing</span> also allows as to 
         generate the <span className="highlight">property curves</span> - 
-        much more complex and powerfull easing paths.
+        much more complex and powerfull easing paths, to descibe some property 
+        change in time with a graph.
       </p>
 
       <p>
-        You can also control how fast/presice your custom easing function will be 
+        You can also control how fast/precise your custom easing function will be 
         with <span className="highlight">precompute</span> and 
         <span className="highlight">eps</span> options. 
         The <span className="highlight">rect</span> option 
@@ -544,15 +555,16 @@ module.exports = React.createClass
       <p>
         It is worth noting that when you draw your easing path, 
         it must start at 0 and end at 100 
-        (or at <span className="highlight">rect</span> option that you will set). 
+        (or at <span className="highlight">rect</span> option's value that you have set). 
         This rule comes from the fact that the <span className="highlight">X</span> axis 
         of your path represents <span className="highlight">progress</span> and the 
         progress can't go beyond 100% or before 0%. This restriction is set only for 
         <span className="highlight">X</span> values and doesn't apply 
-        to <span className="highlight">Y</span> values of your path.
+        to <span className="highlight">Y</span> values of your path, which can take
+        any value at all.
       </p>
 
-      <h2>Future plans</h2>
+      <h2>Thank you!</h2>
 
       <p>
         Plans for the future are:
@@ -573,7 +585,7 @@ module.exports = React.createClass
         <li>
           Add more tranforms and helpers to work with path easing function.
         </li>
-        
+
       </ul>
 
       <p>
