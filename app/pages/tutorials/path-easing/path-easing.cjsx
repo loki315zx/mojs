@@ -475,6 +475,24 @@ module.exports = React.createClass
         pushed it to <a href="# link to property curves demo repo">the github repo</a> so you can play with it more. Here <a href="# link to the demo pen">it is on CodePen</a> also!
       </p>
 
+      <h2>Thinking in property curves</h2>
+
+      <p>
+        Now when you have some clue what the property curves are, this section will 
+        help you to gain some skill how and when to use them. We can use curves in 
+        <UniteLink link="https://vimeo.com/111574737">lots of different angles</UniteLink>, 
+        but here I will show you how to yhink in curves when you want to move an object 
+        on screen or transform it from one state to another.
+      </p>
+
+      <p>
+        Consider the <UniteLink link="http://final demo">final demo</UniteLink>, particulary this 
+        part when mole deviates slightly back to inhale some air and then bend forward swiftly with his tongue out:
+      </p>
+
+      <PostImage description="Fig. 1 - Mole Moves back then forward" src="app/pages/tutorials/path-easing/i/mole-1.gif" />
+
+
       <h2>Options</h2>
 
       <p>
