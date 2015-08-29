@@ -483,7 +483,7 @@ module.exports = React.createClass
         Now when you have some clue what the property curves are, this section will 
         help you to gain some skill how and when to use them. We can use curves in 
         <UniteLink link="https://vimeo.com/111574737">lots of different angles</UniteLink>, 
-        but here I will show you how to yhink in curves when you want to move an object 
+        but here I will show you how to think in curves when you want to move an object 
         on screen or transform it from one state to another.
       </p>
 
@@ -492,9 +492,127 @@ module.exports = React.createClass
         part when mole deviates slightly back to inhale some air and then bend forward swiftly with his tongue out:
       </p>
 
-
       <Vimeo id="137677120" name="Inhale" />
 
+      <p>
+        We can describe the swinging with the next propety curve 
+        of <span className="highlight">skew</span> property:
+      </p>
+
+      <EasingObjectGraph
+        onUpdate = { (o)=>
+          scaleX = o.easedP; scaleY = o.easedP
+          # mojs.h.style o.objEl, 'transform', "scaleX(#{scaleX}) scaleY(#{scaleY}) translateZ(0)"
+          "skewX(#{scaleX.toFixed(2)}) skewY(#{scaleY.toFixed(2)})"
+        }
+        label="skew"
+        background="#50E3C2"
+        path="M0,100 C0,100 18.1450901,69.0663515 24.0949898,99.9609384 C30.0448895,130.855525 100,100 100,100">
+        
+        <div className="mole-skew-sample">
+          <div className="mole-scene" id="js-mole-scene">
+
+            <div id="js-cube-scene" className="cube-wrapper">
+              <div className="cube-shadow-wrapper" id="js-shadow-wrapper">
+                <div className="cube-shadow" id="js-shadow"></div>
+              </div>
+            </div>
+
+            <div className="mole mole-scene__mole" id="js-mole">
+              <div className="mole__inner" id="js-mole-inner">
+
+                <div id="js-mole-hat" className="mole__hat">
+                  <div className="mole__hat-base">
+                    <div className="mole__hat-shadow" id="js-mole-hat-shadow"></div>
+                  </div>
+                  <div className="mole__hat-cone-wrapper">
+                    <div className="mole__hat-cone-rotator" id="js-mole-hat-cone">
+                      <div className="mole__hat-cone"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mole__head">
+                  <div className="mole-mouth">
+                    <div className="mole-mouth__inner" id="js-mole-tongue">
+                      <svg viewBox="0 0 60 60" style= { maxWidth: '20px' }>
+                        <path id="js-mole-tongue-path" d="M0 30 Q 20 10, 30 25 T 50 30" stroke="#C95549" fill="none" strokeWidth="18" strokeLinecap="round" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="mole__mouth-wrapper" id="js-mole-mouth">
+                    <div className="mole__mouth" id="js-mole-mouth-outer">
+                      <div className="mole__mouth-inner" id="js-mole-mouth-inner"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mole__eye" id="js-mole-eye">
+                  <svg width="13px" height="6px" viewBox="0 0 13 6">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <path d="M0,0 Q 6.5 10, 13 0" id="js-mole-eye-lash" stroke="#4C4040" strokeWidth="2"></path>
+                    </g>
+                  </svg>
+                </div>
+                <div className="mole__glasses" id="js-mole-glasses"></div>
+                <div className="mole__glasses-left" id="js-mole-glasses-left"></div>
+                <div className="mole__body" id="js-mole-body"></div>
+                <div className="mole__hand" id="js-mole-hand">
+                  <div className="mole__hand-circle" id="js-mole-hand-circle"></div>
+                </div>
+                <div className="mole__hand-left" id="js-mole-hand-left"></div>  
+              </div>
+            </div>
+
+            <div className="mole-scene__door">
+              <div className="door-shadow">
+                <div className="door-shadow__el" id="js-door-shadow"></div>
+              </div>
+              <div className="mole-scene__door-rotation" id="js-door">
+                <div className="shape cuboid-1 cub-1 door">
+                  <div className="face ft"></div>
+                  <div className="face bk"></div>
+                  <div className="face rt"></div>
+                  <div className="face lt"></div>
+                  <div className="face bm"></div>
+                  <div className="face tp">
+                    <div className="door-handle">
+                      <div className="door-handle__shadow">
+                        <div className="door-handle__shadow-inner" id="js-door-handle-shadow"></div>
+                      </div>
+                      <div className="door-handle__part door-handle__part--bottom"></div>
+                      <div className="door-handle__part door-handle__part--top"></div>
+                    </div>
+                  </div>
+                  <div className="cr cr-0">
+                    <div className="face side s0"></div>
+                    <div className="face side s1"></div>
+                    <div className="face side s2"></div>
+                  </div>
+                  <div className="cr cr-1">
+                    <div className="face side s0"></div>
+                    <div className="face side s1"></div>
+                    <div className="face side s2"></div>
+                  </div>
+                  <div className="cr cr-3">
+                    <div className="face side s0"></div>
+                    <div className="face side s1"></div>
+                    <div className="face side s2"></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div className="mole-scene__ground"></div>
+            <div className="mole-scene__door-wave-wrapper">
+              <div className="mole-scene__door-wave" id="js-door-wave"></div>
+            </div>
+            <div className="mole-scene__mask"></div>
+          </div>
+          
+
+        </div>
+      
+      </EasingObjectGraph>
 
 
       <h2>Options</h2>
