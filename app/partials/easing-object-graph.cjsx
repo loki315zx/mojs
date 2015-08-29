@@ -32,6 +32,7 @@ module.exports = React.createClass
           easing      = {@_easing}
           duration    = {@props.duration}
           delay       = {@props.delay}
+          onStart     = {@props.onStart}
           onUpdate    = {@props.onUpdate}
           background  = {@props.background}>
           {@props.children}

@@ -14,13 +14,13 @@ module.exports = React.createClass
   componentDidMount:->
     objEl   = @getDOMNode().children[0]
     @_tween = new mojs.Tween
+      onStart:  @props.onStart
       duration: @props.duration
       delay:    @props.delay
       onUpdate: (p)=>
         return if !@props.onUpdate?
         easedP = @props.easing(p)
         @setState label: @props.onUpdate { objEl, easedP, p }
-
     @props.timeline?.add @_tween
 
   _run:->  @_tween.run()
