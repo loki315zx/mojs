@@ -3,6 +3,8 @@ Router      = require 'react-router'
 UniteLink   = require 'partials/unite-link'
 { Route, RouteHandler, Link } = Router
 
+
+Vimeo         = require 'partials/vimeo'
 PostImage     = require 'partials/post-image'
 Cite          = require 'partials/cite'
 ORXLine       = require 'partials/orx-line'
@@ -490,7 +492,9 @@ module.exports = React.createClass
         part when mole deviates slightly back to inhale some air and then bend forward swiftly with his tongue out:
       </p>
 
-      <PostImage description="Fig. 1 - Mole Moves back then forward" src="app/pages/tutorials/path-easing/i/mole-1.gif" />
+
+      <Vimeo id="137677120" name="Inhale" />
+
 
 
       <h2>Options</h2>
