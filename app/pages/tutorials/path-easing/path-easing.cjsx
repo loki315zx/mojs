@@ -4,6 +4,7 @@ UniteLink   = require 'partials/unite-link'
 { Route, RouteHandler, Link } = Router
 
 
+mojs          = require 'mo-js'
 MoleSample    = require './mole-sample'
 Vimeo         = require 'partials/vimeo'
 PostImage     = require 'partials/post-image'
@@ -496,14 +497,17 @@ module.exports = React.createClass
       <Vimeo id="137677120" name="Inhale" />
 
       <p>
-        We can describe the swinging with the next propety curve 
-        of <span className="highlight">skewX</span> property:
+        We can describe the swinging motion with the next propety curve 
+        for <span className="highlight">skewX</span> property:
       </p>
 
       <EasingObjectGraph
         duration = { 1800 }
-        onUpdate = { (o)=>
-          @moleEl ?= document.querySelector '#js-mole'
+        onUpdate = { (o)->
+          
+          @scopeEl ?= document.querySelector '#js-mole-sample-1'
+          @moleEl ?= @scopeEl.querySelector '#js-mole'
+
           mojs.h.style(@moleEl, 'transform', "skewX(#{75*o.easedP}deg) translateZ(0)");
 
           "skewX(#{(100*o.easedP).toFixed(2)}deg)"
@@ -513,8 +517,73 @@ module.exports = React.createClass
         background="#50E3C2"
         path="M0,100 C0,100 18.1450901,69.0663515 24.0949898,99.9609384 C30.0448895,130.855525 100,100 100,100">
         
-        <MoleSample />
+        <MoleSample id="js-mole-sample-1" />
+
+      </EasingObjectGraph>
       
+      <p>
+        Now lets describe hand's curve. We will work 
+        with <span className="highlight">rotate</span> property obviously:
+      </p>
+
+      <EasingObjectGraph
+        duration = { 1800 }
+        onUpdate = { (o)->
+          @scopeEl    ?= document.querySelector '#js-mole-sample-2'
+          @moleEl     ?= @scopeEl.querySelector '#js-mole'
+          @moleHandEl ?= @scopeEl.querySelector '#js-mole-hand'
+          @skewEasing ?= mojs.easing.path 'M0,100 C0,100 18.1450901,69.0663515 24.0949898,99.9609384 C30.0448895,130.855525 100,100 100,100'
+          @handAngleEasing ?= mojs.easing.path 'M0,100 C0,100 12.0486221,-124.260309 24,99.7583642 C28.9933624,142.723104 100.152384,100 100.152384,100'
+  
+          skewP  = @skewEasing o.p
+          angleP = @handAngleEasing o.p
+
+          mojs.h.style(@moleEl, 'transform', "skewX(#{75*skewP}deg) translateZ(0)");
+
+          mojs.h.style(@moleHandEl, 'transform', "rotate(#{-200*angleP}deg) translateZ(0)");
+          "rotate(#{(-200*angleP).toFixed(2)}deg)"
+        }
+
+        label="angle"
+        background="#50E3C2"
+        path="M0,100 C0,100 12.0486221,-124.260309 24,99.7583642 C28.9933624,142.723104 100.152384,100 100.152384,100">
+        
+        <MoleSample id="js-mole-sample-2" />
+
+      </EasingObjectGraph>
+
+      <p>
+        For the left hand we can use the same 
+        <span className="highlight">skew</span> graph for 
+        <span className="highlight">translate</span> and <span className="highlight">rotate</span> properties :
+      </p>
+
+      <EasingObjectGraph
+        duration = { 1800 }
+        onUpdate = { (o)->
+          @scopeEl    ?= document.querySelector '#js-mole-sample-3'
+          @moleEl     ?= @scopeEl.querySelector '#js-mole'
+          @moleHandEl ?= @scopeEl.querySelector '#js-mole-hand'
+          @moleHandLeftEl ?= @scopeEl.querySelector '#js-mole-hand-left'
+          @skewEasing ?= mojs.easing.path 'M0,100 C0,100 18.1450901,69.0663515 24.0949898,99.9609384 C30.0448895,130.855525 100,100 100,100'
+          @handAngleEasing ?= mojs.easing.path 'M0,100 C0,100 12.0486221,-124.260309 24,99.7583642 C28.9933624,142.723104 100.152384,100 100.152384,100'
+  
+          skewP  = @skewEasing o.p
+          angleP = @handAngleEasing o.p
+
+          mojs.h.style(@moleEl,         'transform', "skewX(#{75*skewP}deg) translateZ(0)");
+          mojs.h.style(@moleHandEl,     'transform', "rotate(#{-200*angleP}deg) translateZ(0)");
+          mojs.h.style(@moleHandLeftEl, 'transform', "translate(#{100*skewP}px, #{-80*skewP}px) rotate(#{-110*skewP}deg) translateZ(0)");
+
+          "translate(#{(100*skewP).toFixed(2)}px, #{(-80*skewP).toFixed(2)}px) rotate(#{(-110*skewP).toFixed(2)}deg)"
+        }
+
+        label="angle"
+        background="#50E3C2"
+        path="M0,100 C0,100 18.1450901,69.0663515 24.0949898,99.9609384 C30.0448895,130.855525 100,100 100,100">
+        
+        <MoleSample id="js-mole-sample-3" />
+
       </EasingObjectGraph>
 
 

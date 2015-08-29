@@ -3,7 +3,7 @@ React       = require 'react'
 
 module.exports = React.createClass
   render:->
-    <div className="mole-skew-sample">
+    <div className="mole-skew-sample #{@props.className}" id="#{@props.id or ''}">
       <div className="mole-scene" id="js-mole-scene">
 
         <div id="js-cube-scene" className="cube-wrapper">
